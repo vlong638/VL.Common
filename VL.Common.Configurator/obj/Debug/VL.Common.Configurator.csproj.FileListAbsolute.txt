@@ -1,0 +1,4 @@
+D:\GitProjects\VL.Common\VL.Common.Configurator\bin\Debug\VL.Common.Configurator.dll
+D:\GitProjects\VL.Common\VL.Common.Configurator\bin\Debug\VL.Common.Configurator.pdb
+D:\GitProjects\VL.Common\VL.Common.Configurator\obj\Debug\VL.Common.Configurator.dll
+D:\GitProjects\VL.Common\VL.Common.Configurator\obj\Debug\VL.Common.Configurator.pdb

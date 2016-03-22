@@ -1,0 +1,5 @@
+D:\GitProjects\VL.Common\VL.Common.Logger\bin\Debug\VL.Common.Logger.dll
+D:\GitProjects\VL.Common\VL.Common.Logger\bin\Debug\VL.Common.Logger.pdb
+D:\GitProjects\VL.Common\VL.Common.Logger\obj\Debug\VL.Common.Logger.csprojResolveAssemblyReference.cache
+D:\GitProjects\VL.Common\VL.Common.Logger\obj\Debug\VL.Common.Logger.dll
+D:\GitProjects\VL.Common\VL.Common.Logger\obj\Debug\VL.Common.Logger.pdb
