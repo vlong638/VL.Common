@@ -1,0 +1,8 @@
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.Testing.exe.config
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.Testing.exe
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.Testing.pdb
+D:\GitProjects\VL.Common\VL.Common.Testing\obj\Debug\VL.Common.Testing.csprojResolveAssemblyReference.cache
+D:\GitProjects\VL.Common\VL.Common.Testing\obj\Debug\VL.Common.Testing.exe
+D:\GitProjects\VL.Common\VL.Common.Testing\obj\Debug\VL.Common.Testing.pdb
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.Configurator.dll
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.Configurator.pdb

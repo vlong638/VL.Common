@@ -1,0 +1,5 @@
+D:\GitProjects\VL.Common\VL.Object.AccountOperators\bin\Debug\VL.Objects.AccountOperators.dll
+D:\GitProjects\VL.Common\VL.Object.AccountOperators\bin\Debug\VL.Objects.AccountOperators.pdb
+D:\GitProjects\VL.Common\VL.Object.AccountOperators\obj\Debug\VL.Objects.AccountOperators.csprojResolveAssemblyReference.cache
+D:\GitProjects\VL.Common\VL.Object.AccountOperators\obj\Debug\VL.Objects.AccountOperators.dll
+D:\GitProjects\VL.Common\VL.Object.AccountOperators\obj\Debug\VL.Objects.AccountOperators.pdb

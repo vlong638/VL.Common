@@ -1,0 +1,5 @@
+D:\GitProjects\VL.Common\VL.Common.IdGenerator\bin\Debug\VL.Common.IdGenerator.dll
+D:\GitProjects\VL.Common\VL.Common.IdGenerator\bin\Debug\VL.Common.IdGenerator.pdb
+D:\GitProjects\VL.Common\VL.Common.IdGenerator\obj\Debug\VL.Common.IdGenerator.csprojResolveAssemblyReference.cache
+D:\GitProjects\VL.Common\VL.Common.IdGenerator\obj\Debug\VL.Common.IdGenerator.dll
+D:\GitProjects\VL.Common\VL.Common.IdGenerator\obj\Debug\VL.Common.IdGenerator.pdb
