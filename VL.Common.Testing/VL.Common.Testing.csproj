@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4167518B-D35A-4F12-8A5E-B7BEA320C76D}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{4A44364C-E8BD-4B70-93E4-96B68F3E97F3}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VL.Common.Configurator</RootNamespace>
-    <AssemblyName>VL.Common.Configurator</AssemblyName>
+    <RootNamespace>VL.Common.Testing</RootNamespace>
+    <AssemblyName>VL.Common.Testing</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,13 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\ConfigEntities\FileConfigEntity.cs" />
-    <Compile Include="Objects\Sample\ORMGeneratorConfigEntity.cs" />
-    <Compile Include="Objects\ConfigEntities\XConfigEntity.cs" />
+    <Compile Include="Controllers\Executers\ConsoleExecuter.cs" />
+    <Compile Include="Objects\ConsoloMenuItem.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="设计蓝图.txt" />
+    <None Include="App.config" />
+    <None Include="Configs\ORMGenerate.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\VL.Common.Configurator\VL.Common.Configurator.csproj">
+      <Project>{4167518b-d35a-4f12-8a5e-b7bea320c76d}</Project>
+      <Name>VL.Common.Configurator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
