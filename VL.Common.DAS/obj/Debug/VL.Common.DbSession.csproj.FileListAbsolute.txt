@@ -1,0 +1,8 @@
+D:\GitProjects\VL.Common\VL.Common.DbSession\bin\Debug\VL.Common.DbSession.dll
+D:\GitProjects\VL.Common\VL.Common.DbSession\bin\Debug\VL.Common.DbSession.pdb
+D:\GitProjects\VL.Common\VL.Common.DbSession\obj\Debug\VL.Common.DbSession.csprojResolveAssemblyReference.cache
+D:\GitProjects\VL.Common\VL.Common.DbSession\obj\Debug\VL.Common.DbSession.dll
+D:\GitProjects\VL.Common\VL.Common.DbSession\obj\Debug\VL.Common.DbSession.pdb
+D:\GitProjects\VL.Common\VL.Common.DbSession\bin\Debug\VL.Common.DbSession.dll.config
+D:\GitProjects\VL.Common\VL.Common.DbSession\bin\Debug\MySql.Data.dll
+D:\GitProjects\VL.Common\VL.Common.DbSession\bin\Debug\Oracle.ManagedDataAccess.dll

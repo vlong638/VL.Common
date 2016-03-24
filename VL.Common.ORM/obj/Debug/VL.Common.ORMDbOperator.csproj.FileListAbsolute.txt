@@ -1,0 +1,5 @@
+D:\GitProjects\VL.Common\VL.Common.ORMDbOperator\bin\Debug\VL.Common.ORMDbOperator.dll
+D:\GitProjects\VL.Common\VL.Common.ORMDbOperator\bin\Debug\VL.Common.ORMDbOperator.pdb
+D:\GitProjects\VL.Common\VL.Common.ORMDbOperator\obj\Debug\VL.Common.ORMDbOperator.csprojResolveAssemblyReference.cache
+D:\GitProjects\VL.Common\VL.Common.ORMDbOperator\obj\Debug\VL.Common.ORMDbOperator.dll
+D:\GitProjects\VL.Common\VL.Common.ORMDbOperator\obj\Debug\VL.Common.ORMDbOperator.pdb

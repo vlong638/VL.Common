@@ -1,0 +1,5 @@
+D:\GitProjects\VL.Common\VL.Common.ORM\bin\Debug\VL.Common.ORM.dll
+D:\GitProjects\VL.Common\VL.Common.ORM\bin\Debug\VL.Common.ORM.pdb
+D:\GitProjects\VL.Common\VL.Common.ORM\obj\Debug\VL.Common.ORM.csprojResolveAssemblyReference.cache
+D:\GitProjects\VL.Common\VL.Common.ORM\obj\Debug\VL.Common.ORM.dll
+D:\GitProjects\VL.Common\VL.Common.ORM\obj\Debug\VL.Common.ORM.pdb
