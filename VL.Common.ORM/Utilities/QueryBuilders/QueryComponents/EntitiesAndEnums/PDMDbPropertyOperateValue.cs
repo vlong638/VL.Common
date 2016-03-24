@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Data.Common;
-using VL.ADO.NET.Objects;
-using VL.ORM.DbOperateLib.Objects;
+using VL.Common.ORM.Objects;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {

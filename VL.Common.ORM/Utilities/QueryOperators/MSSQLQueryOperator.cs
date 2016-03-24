@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
-using VL.ADO.NET.Objects;
+using VL.Common.DAS.Objects;
 using VL.Common.ORM.Utilities.QueryBuilders;
 
 namespace VL.ORM.DbOperateLib.Utilities.QueryOperators

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using VL.ADO.NET.Objects;
+using VL.Common.DAS.Objects;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Data.Common;
-using VL.ADO.NET.Objects;
-
-namespace VL.Common.ORM.Utilities.QueryBuilders
+﻿namespace VL.Common.ORM.Utilities.QueryBuilders
 {
     /// <summary>
     /// 查询构造器

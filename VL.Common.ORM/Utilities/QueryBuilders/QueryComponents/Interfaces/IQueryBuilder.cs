@@ -1,5 +1,5 @@
 ﻿using System.Data.Common;
-using VL.ADO.NET.Objects;
+using VL.Common.DAS.Objects;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {

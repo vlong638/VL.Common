@@ -1,4 +1,4 @@
-﻿using VL.ORM.DbOperateLib.Objects;
+﻿using VL.Common.ORM.Objects;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {

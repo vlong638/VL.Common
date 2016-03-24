@@ -1,6 +1,4 @@
-﻿using VL.ADO.NET.Objects;
-
-namespace VL.Common.ORM.Utilities.QueryBuilders
+﻿namespace VL.Common.ORM.Utilities.QueryBuilders
 {
     public abstract class ISubQueryBuilder
     {
