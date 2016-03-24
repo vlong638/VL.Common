@@ -1,5 +1,0 @@
-D:\GitProjects\VL.Common\VL.Common.Enums\bin\Debug\VL.Common.Enums.dll
-D:\GitProjects\VL.Common\VL.Common.Enums\bin\Debug\VL.Common.Enums.pdb
-D:\GitProjects\VL.Common\VL.Common.Enums\obj\Debug\VL.Common.Enums.csprojResolveAssemblyReference.cache
-D:\GitProjects\VL.Common\VL.Common.Enums\obj\Debug\VL.Common.Enums.dll
-D:\GitProjects\VL.Common\VL.Common.Enums\obj\Debug\VL.Common.Enums.pdb

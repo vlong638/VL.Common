@@ -1,5 +1,0 @@
-D:\GitProjects\VL.Common\VL.Objects.Account\bin\Debug\VL.Objects.Account.dll
-D:\GitProjects\VL.Common\VL.Objects.Account\bin\Debug\VL.Objects.Account.pdb
-D:\GitProjects\VL.Common\VL.Objects.Account\obj\Debug\VL.Objects.Account.csprojResolveAssemblyReference.cache
-D:\GitProjects\VL.Common\VL.Objects.Account\obj\Debug\VL.Objects.Account.dll
-D:\GitProjects\VL.Common\VL.Objects.Account\obj\Debug\VL.Objects.Account.pdb
