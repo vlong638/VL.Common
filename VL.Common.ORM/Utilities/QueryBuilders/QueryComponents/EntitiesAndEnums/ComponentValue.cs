@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using VL.Common.DAS.Objects;
-using VL.ORM.DbOperateLib.Utilities;
+using VL.Common.ORM.DbOperateLib.Utilities;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {

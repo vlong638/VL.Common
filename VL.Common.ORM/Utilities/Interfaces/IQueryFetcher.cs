@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VL.ORM.CodeGenerateLib.Samples.Utilities
+namespace VL.Common.ORM.CodeGenerateLib.Samples.Utilities
 {
     public interface IQueryFetcher<T>
     {

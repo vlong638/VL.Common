@@ -4,7 +4,7 @@ using VL.Common.DAS.Objects;
 using VL.Common.ORM.Objects;
 using VL.Common.ORM.Utilities.QueryBuilders;
 
-namespace VL.ORM.DbOperateLib.Utilities.QueryOperators
+namespace VL.Common.ORM.DbOperateLib.Utilities.QueryOperators
 {
     public abstract class IDbQueryOperator
     {

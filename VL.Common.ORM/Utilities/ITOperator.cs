@@ -1,7 +1,7 @@
 ﻿//using System.Collections.Generic;
 //using VL.Common.DAS.Objects;
 
-//namespace VL.ORM.CodeGenerateLib.Samples.Utilities
+//namespace VL.Common.ORM.CodeGenerateLib.Samples.Utilities
 //{
 //    public interface EntityOperator<T>
 //    {

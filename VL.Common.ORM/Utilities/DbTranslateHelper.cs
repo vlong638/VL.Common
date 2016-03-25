@@ -9,7 +9,7 @@ using VL.Common.DAS.Objects;
 using VL.Common.ORM.Objects;
 using VL.Common.ORM.Utilities.QueryBuilders;
 
-namespace VL.ORM.DbOperateLib.Utilities
+namespace VL.Common.ORM.DbOperateLib.Utilities
 {
     public static class DbTranslateHelper
     {
