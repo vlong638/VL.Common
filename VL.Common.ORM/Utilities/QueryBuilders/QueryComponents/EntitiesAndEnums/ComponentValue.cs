@@ -12,9 +12,10 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     {
         public ComponentValue(IQueryBuilder queryBuilder) : base(queryBuilder)
         {
+            Values = new List<PDMDbPropertyValue>();
         }
 
-        public List<PDMDbPropertyValue> Values { set; get; } = new List<PDMDbPropertyValue>();
+        public List<PDMDbPropertyValue> Values { set; get; } 
 
 
         public string ToQueryComponentOfFields()

@@ -7,3 +7,4 @@ D:\GitProjects\VL.Common\VL.Common.ORM\bin\Debug\VL.Common.ORM.dll.config
 D:\GitProjects\VL.Common\VL.Common.ORM\bin\Debug\MySql.Data.dll
 D:\GitProjects\VL.Common\VL.Common.ORM\bin\Debug\Oracle.ManagedDataAccess.dll
 D:\GitProjects\VL.Common\VL.Common.ORM\bin\Debug\VL.Common.DAS.dll
+D:\GitProjects\VL.Common\VL.Common.ORM\bin\Debug\VL.Common.ORM.XML

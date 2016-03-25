@@ -10,9 +10,10 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     {
         public ComponentOrder(IQueryBuilder queryBuilder) : base(queryBuilder)
         {
+            Orders = new List<Order>();
         }
 
-        public List<Order> Orders { set; get; } = new List<Order>();
+        public List<Order> Orders { set; get; }
 
         public string ToQueryComponentOfOrders()
         {

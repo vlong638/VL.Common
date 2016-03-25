@@ -15,26 +15,31 @@ namespace VL.Common.Configurator.Objects
         /// <summary>
         /// PDM文件目录
         /// </summary>
-        public string PDMFilePath { set; get; } = "";
+        public string PDMFilePath { set; get; }
         /// <summary>
         /// 目标文件夹目录
         /// </summary>
-        public string TargetDirectoryPath { set; get; } = "";
+        public string TargetDirectoryPath { set; get; }
         /// <summary>
         /// 目标命名空间
         /// </summary>
-        public string TargetNamespace { set; get; } = "";
+        public string TargetNamespace { set; get; }
         /// <summary>
         /// 目标数据库类型
         /// </summary>
-        public EDatabaseType TargetDatabaseType { set; get; } = EDatabaseType.None;
+        public EDatabaseType TargetDatabaseType { set; get; }
         /// <summary>
         /// 是否支持WCF
         /// </summary>
-        public bool IsSupportWCF { set; get; } = false;
+        public bool IsSupportWCF { set; get; }
 
         public ORMGeneratorConfigEntity(string fileName, string directoryPath, bool isInitFromFile = false) : base(fileName, directoryPath, isInitFromFile)
         {
+            PDMFilePath = "";
+            TargetDirectoryPath = "";
+            TargetNamespace = "";
+            TargetDatabaseType = EDatabaseType.None;
+            IsSupportWCF = false;
         }
 
         public override XElement ToXElement()

@@ -50,7 +50,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                                         var varchars = where.Value as IEnumerable<String>;
                                         if (varchars == null)
                                         {
-                                            throw new NotImplementedException("参数需为" + nameof(IEnumerable<String>) + "规格");
+                                            throw new NotImplementedException("参数需为" + typeof(IEnumerable<String>).Name + "规格");
                                         }
                                         command.CommandText = command.CommandText.Replace(parameterPlaceholder, "'" + string.Join("','", varchars) + "'");
                                         break;
@@ -96,7 +96,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                                                 var times = where.Value as IEnumerable<DateTime>;
                                                 if (times == null)
                                                 {
-                                                    throw new NotImplementedException("参数需为" + nameof(IEnumerable<DateTime>) + "规格");
+                                                    throw new NotImplementedException("参数需为" + typeof(IEnumerable<DateTime>).Name + "规格");
                                                 }
                                                 command.CommandText = command.CommandText.Replace(parameterPlaceholder, string.Join(",", times.Select(c => "to_date('" + c + "','yyyy-mm-dd hh24:mi:ss')")));
                                                 break;
@@ -112,7 +112,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                                         var guids = where.Value as IEnumerable<Guid>;
                                         if (guids == null)
                                         {
-                                            throw new NotImplementedException("参数需为" + nameof(IEnumerable<Guid>) + "规格");
+                                            throw new NotImplementedException("参数需为" + typeof(IEnumerable<Guid>).Name + "规格");
                                         }
                                         command.CommandText = command.CommandText.Replace(parameterPlaceholder, "'" + string.Join("','", guids) + "'");
                                         break;

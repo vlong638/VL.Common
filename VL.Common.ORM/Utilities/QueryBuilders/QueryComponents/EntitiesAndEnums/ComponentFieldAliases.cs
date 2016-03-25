@@ -11,9 +11,10 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     {
         public ComponentFieldAliases(IQueryBuilder queryBuilder) : base(queryBuilder)
         {
+            FieldAliases = new FieldAliases();
         }
 
-        public FieldAliases FieldAliases { set; get; } = new FieldAliases();
+        public FieldAliases FieldAliases { set; get; }
 
         public string ToQueryComponentOfFieldAliases()
         {

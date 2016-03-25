@@ -14,9 +14,10 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     {
         public ComponentWhere(IQueryBuilder queryBuilder) : base(queryBuilder)
         {
+            Wheres = new List<PDMDbPropertyOperateValue>();
         }
 
-        public List<PDMDbPropertyOperateValue> Wheres { get; set; } = new List<PDMDbPropertyOperateValue>();
+        public List<PDMDbPropertyOperateValue> Wheres { get; set; }
 
         public string ToQueryComponentOfWheres(DbSession session)
         {
