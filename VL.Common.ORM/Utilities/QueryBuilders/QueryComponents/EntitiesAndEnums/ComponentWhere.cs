@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using VL.Common.DAS.Objects;
-using VL.Common.ORM.DbOperateLib.Utilities;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {

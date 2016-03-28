@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml.Linq;
 
 namespace VL.Common.Configurator.Objects
@@ -12,6 +11,7 @@ namespace VL.Common.Configurator.Objects
         public XConfigEntity(string fileName, string directoryPath, bool isInitFromFile = false) : base(fileName, directoryPath, isInitFromFile)
         {
         }
+
         /// <summary>
         /// 加载配置
         /// </summary>
@@ -19,9 +19,9 @@ namespace VL.Common.Configurator.Objects
         /// <returns>false:文件不存在</returns>
         public override bool Load()
         {
-            if (File.Exists(FilePath))
+            if (File.Exists(InputFilePath))
             {
-                XDocument doc = XDocument.Load(FilePath);
+                XDocument doc = XDocument.Load(InputFilePath);
                 Load(doc);
                 return true;
             }
@@ -29,11 +29,11 @@ namespace VL.Common.Configurator.Objects
         }
         public override void Save()
         {
-            if (!Directory.Exists(DirectoryPath))
+            if (!Directory.Exists(OutputDirectoryPath))
             {
-                Directory.CreateDirectory(DirectoryPath);
+                Directory.CreateDirectory(OutputDirectoryPath);
             }
-            this.ToXElement().Save(FilePath);
+            this.ToXElement().Save(OutputFilePath);
         }
         public abstract XElement ToXElement();
         protected abstract void Load(XDocument doc);

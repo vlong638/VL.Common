@@ -7,14 +7,33 @@ namespace VL.Common.Configurator.Objects
     /// </summary>
     public abstract class FileConfigEntity
     {
-        protected string FileName { set; get; }
-        protected string DirectoryPath { set; get; }
-        public string FilePath { get { return Path.Combine(DirectoryPath, FileName + ".config"); } }
+        protected string InputFileName { set; get; }
+        protected string InputDirectoryPath { set; get; }
+        public string InputFilePath { get { return Path.Combine(InputDirectoryPath, InputFileName); } }
+        protected string OutputFileName { set; get; }
+        protected string OutputDirectoryPath { set; get; }
+        public string OutputFilePath { get { return Path.Combine(OutputDirectoryPath, OutputFileName); } }
 
-        public FileConfigEntity(string fileName, string directoryPath, bool isInitFromFile = false)
+        public FileConfigEntity(string fileName, string directoryPath
+            , bool isInitFromFile = false)
         {
-            FileName = fileName;
-            DirectoryPath = directoryPath;
+            InputFileName = fileName;
+            InputDirectoryPath = directoryPath;
+            OutputFileName = fileName;
+            OutputDirectoryPath = directoryPath;
+            if (isInitFromFile)
+            {
+                Load();
+            }
+        }
+        public FileConfigEntity(string inputFileName, string inputDirectoryPath
+            , string outputFileName, string outputDirectoryPath
+            , bool isInitFromFile = false)
+        {
+            InputFileName = inputFileName;
+            InputDirectoryPath = inputDirectoryPath;
+            OutputFileName = outputFileName;
+            OutputDirectoryPath = outputDirectoryPath;
             if (isInitFromFile)
             {
                 Load();

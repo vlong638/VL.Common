@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Objects\ConfigEntities\FileConfigEntity.cs" />
+    <Compile Include="Objects\ConfigEntities\TextConfigEntity.cs" />
     <Compile Include="Objects\Sample\ORMGeneratorConfigEntity.cs" />
     <Compile Include="Objects\ConfigEntities\XConfigEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
