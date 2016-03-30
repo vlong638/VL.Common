@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Common.Testing", "VL.Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Common.ORM", "VL.Common.ORM\VL.Common.ORM.csproj", "{6C5AC894-C902-494C-9743-8A57BA2B637B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Common.Protocol", "VL.Common.Protocol\VL.Common.Protocol.csproj", "{8CD7B6CA-A803-4FAC-9ACD-85555F6C2844}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{6C5AC894-C902-494C-9743-8A57BA2B637B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C5AC894-C902-494C-9743-8A57BA2B637B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C5AC894-C902-494C-9743-8A57BA2B637B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CD7B6CA-A803-4FAC-9ACD-85555F6C2844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CD7B6CA-A803-4FAC-9ACD-85555F6C2844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CD7B6CA-A803-4FAC-9ACD-85555F6C2844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CD7B6CA-A803-4FAC-9ACD-85555F6C2844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

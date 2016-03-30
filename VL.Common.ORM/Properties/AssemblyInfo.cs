@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("VL.Common.ORM")]
 [assembly: AssemblyDescription("关系映射模型")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("VL")]
+[assembly: AssemblyCompany("SecretV")]
 [assembly: AssemblyProduct("VL.Common.ORM")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
-[assembly: AssemblyTrademark("VL")]
+[assembly: AssemblyTrademark("SecretV")]
 [assembly: AssemblyCulture("")]
 
 //将 ComVisible 设置为 false 将使此程序集中的类型
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.1603291738.1")]
 [assembly: AssemblyFileVersion("1.0.*")]

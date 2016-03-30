@@ -37,6 +37,6 @@ namespace VL.Common.Configurator.Objects
             File.WriteAllText(InputFilePath, ToContent());
         }
         public abstract string ToContent();
-        protected abstract void Load(StreamReader steam);
+        protected abstract void Load(StreamReader stream);
     }
 }
