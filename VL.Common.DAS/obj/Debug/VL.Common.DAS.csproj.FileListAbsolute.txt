@@ -6,3 +6,11 @@ D:\GitProjects\VL.Common\VL.Common.DbSession\bin\Debug\VL.Common.DAS.dll
 D:\GitProjects\VL.Common\VL.Common.DbSession\bin\Debug\VL.Common.DAS.pdb
 D:\GitProjects\VL.Common\VL.Common.DbSession\obj\Debug\VL.Common.DAS.dll
 D:\GitProjects\VL.Common\VL.Common.DbSession\obj\Debug\VL.Common.DAS.pdb
+D:\GitProjects\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.DAS.dll.config
+D:\GitProjects\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.DAS.dll
+D:\GitProjects\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.DAS.pdb
+D:\GitProjects\VL.Common\VL.Common.DAS\bin\Debug\MySql.Data.dll
+D:\GitProjects\VL.Common\VL.Common.DAS\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\GitProjects\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.csprojResolveAssemblyReference.cache
+D:\GitProjects\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.dll
+D:\GitProjects\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.pdb
