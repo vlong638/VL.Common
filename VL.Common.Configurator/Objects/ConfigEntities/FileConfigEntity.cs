@@ -42,5 +42,9 @@ namespace VL.Common.Configurator.Objects
 
         public abstract bool Load();
         public abstract void Save();
+        public string ToDisplayFormat()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
     }
 }

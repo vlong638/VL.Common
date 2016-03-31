@@ -24,7 +24,7 @@ namespace VL.Common.Configurator.Objects.BuiltInConfigEntities
             {
                 XElement configItems = new XElement("DbConnectionConfig"
                     , new XAttribute(nameof(DbConnectionConfigEntity.Name), project.Name)
-                    , new XAttribute(nameof(DbConnectionConfigEntity.DatabaseType), project.DatabaseType)
+                    //, new XAttribute(nameof(DbConnectionConfigEntity.DatabaseType), project.DatabaseType)
                     , new XAttribute(nameof(DbConnectionConfigEntity.ConnectingString), project.ConnectingString));
                 root.Add(configItems);
             }
@@ -37,7 +37,7 @@ namespace VL.Common.Configurator.Objects.BuiltInConfigEntities
             foreach (var configItem in configItems)
             {
                 DbConnectionConfigs.Add(new DbConnectionConfigEntity(configItem.Attribute(nameof(DbConnectionConfigEntity.Name)).Value
-                    , configItem.Attribute(nameof(DbConnectionConfigEntity.DatabaseType)).Value
+                    //, configItem.Attribute(nameof(DbConnectionConfigEntity.DatabaseType)).Value
                     , configItem.Attribute(nameof(DbConnectionConfigEntity.ConnectingString)).Value));
             }
         }
@@ -52,13 +52,13 @@ namespace VL.Common.Configurator.Objects.BuiltInConfigEntities
     public class DbConnectionConfigEntity
     {
         public string Name { set; get; }
-        public EDatabaseType DatabaseType { set; get; }
+        //public EDatabaseType DatabaseType { set; get; }
         public string ConnectingString { set; get; }
 
-        public DbConnectionConfigEntity(string name, string databaseTypeString, string connectingString)
+        public DbConnectionConfigEntity(string name,  string connectingString)//string databaseTypeString,
         {
             Name = name;
-            DatabaseType = (EDatabaseType)Enum.Parse(typeof(EDatabaseType), databaseTypeString.ToLower());
+            //DatabaseType = (EDatabaseType)Enum.Parse(typeof(EDatabaseType), databaseTypeString.ToLower());
             ConnectingString = connectingString;
         }
     }

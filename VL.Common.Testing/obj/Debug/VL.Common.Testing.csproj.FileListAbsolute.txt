@@ -6,3 +6,5 @@ D:\GitProjects\VL.Common\VL.Common.Testing\obj\Debug\VL.Common.Testing.exe
 D:\GitProjects\VL.Common\VL.Common.Testing\obj\Debug\VL.Common.Testing.pdb
 D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.Configurator.dll
 D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.Configurator.pdb
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\Newtonsoft.Json.dll
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\Newtonsoft.Json.xml

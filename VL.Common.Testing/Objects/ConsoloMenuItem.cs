@@ -39,14 +39,15 @@ namespace VL.Common.Testing.Objects
             this.Name = name;
             this.Action = () =>
             {
-                if (function())
-                {
-                    Console.WriteLine(string.Format("operate {0} succeed", name));
-                }
-                else
-                {
-                    Console.WriteLine(string.Format("operate {0} failed", name));
-                }
+                Console.WriteLine(function() ? "succeed" : "failed");
+                //if (function())
+                //{
+                //    Console.WriteLine(string.Format("operate {0} succeed", name));
+                //}
+                //else
+                //{
+                //    Console.WriteLine(string.Format("operate {0} failed", name));
+                //}
             };
         }
     }
