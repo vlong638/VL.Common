@@ -14,30 +14,27 @@ namespace VL.Common.Configurator.Objects
         protected string OutputDirectoryPath { set; get; }
         public string OutputFilePath { get { return Path.Combine(OutputDirectoryPath, OutputFileName); } }
 
-        public FileConfigEntity(string fileName, string directoryPath
-            , bool isInitFromFile = false)
+        public FileConfigEntity(string fileName)
+        {
+            InputFileName = fileName;
+            InputDirectoryPath = Path.Combine(System.Environment.CurrentDirectory, "Configs");
+            OutputFileName = fileName;
+            OutputDirectoryPath = Path.Combine(System.Environment.CurrentDirectory, "Configs");
+        }
+        public FileConfigEntity(string fileName, string directoryPath)
         {
             InputFileName = fileName;
             InputDirectoryPath = directoryPath;
             OutputFileName = fileName;
             OutputDirectoryPath = directoryPath;
-            if (isInitFromFile)
-            {
-                Load();
-            }
         }
         public FileConfigEntity(string inputFileName, string inputDirectoryPath
-            , string outputFileName, string outputDirectoryPath
-            , bool isInitFromFile = false)
+            , string outputFileName, string outputDirectoryPath)
         {
             InputFileName = inputFileName;
             InputDirectoryPath = inputDirectoryPath;
             OutputFileName = outputFileName;
             OutputDirectoryPath = outputDirectoryPath;
-            if (isInitFromFile)
-            {
-                Load();
-            }
         }
 
         public abstract bool Load();

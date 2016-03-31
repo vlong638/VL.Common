@@ -8,7 +8,11 @@ namespace VL.Common.Configurator.Objects
     /// </summary>
     public abstract class XConfigEntity : FileConfigEntity
     {
-        public XConfigEntity(string fileName, string directoryPath, bool isInitFromFile = false) : base(fileName, directoryPath, isInitFromFile)
+        public XConfigEntity(string fileName) : base(fileName)
+        {
+        }
+
+        public XConfigEntity(string fileName, string directoryPath) : base(fileName, directoryPath)
         {
         }
 

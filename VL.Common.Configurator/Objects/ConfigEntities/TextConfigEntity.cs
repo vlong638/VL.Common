@@ -7,7 +7,11 @@ namespace VL.Common.Configurator.Objects
     /// </summary>
     public abstract class TextConfigEntity : FileConfigEntity
     {
-        public TextConfigEntity(string fileName, string directoryPath, bool isInitFromFile = false) : base(fileName, directoryPath, isInitFromFile)
+        public TextConfigEntity(string fileName) : base(fileName)
+        {
+        }
+
+        public TextConfigEntity(string fileName, string directoryPath) : base(fileName, directoryPath)
         {
         }
 

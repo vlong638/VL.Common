@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("VL.Common.Configurator")]
-[assembly: AssemblyDescription("VL")]
+[assembly: AssemblyDescription("支持单一构造函数")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("VL")]
 [assembly: AssemblyProduct("VL.Common.Configurator")]
