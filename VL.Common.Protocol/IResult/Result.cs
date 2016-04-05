@@ -3,7 +3,7 @@
 namespace VL.Common.Protocol.IResult
 {
     [DataContract]
-    public class MethodResult
+    public class Result
     {
         [DataMember]
         public EResultCode ResultCode { set; get; }
@@ -11,7 +11,7 @@ namespace VL.Common.Protocol.IResult
         public string Content { set; get; }
     }
     [DataContract]
-    public class MethodResult<T>
+    public class Result<T>
     {
         [DataMember]
         public EResultCode ResultCode { set; get; }

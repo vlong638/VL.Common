@@ -1,9 +1,12 @@
 ﻿using System.IO;
 
-namespace VL.Common.Configurator.Objects
+namespace VL.Common.Configurator.Objects.ConfigEntities
 {
     /// <summary>
-    /// 文件类型配置对象
+    /// 文件类型配置对象 即Level1 
+    /// Level@n表支持几级节点 
+    /// 2表根+1级子节点 
+    /// 3表根+2级子节点
     /// </summary>
     public abstract class FileConfigEntity
     {

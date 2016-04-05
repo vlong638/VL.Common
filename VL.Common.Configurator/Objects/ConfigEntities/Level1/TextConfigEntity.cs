@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace VL.Common.Configurator.Objects
+namespace VL.Common.Configurator.Objects.ConfigEntities
 {
     /// <summary>
     /// 采用XML.Linq进行存储的文件类型配置对象
