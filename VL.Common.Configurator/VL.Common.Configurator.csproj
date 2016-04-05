@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\ConfigEntities\Level1\KeyValuesConfigEntity.cs" />
+    <Compile Include="Objects\ConfigEntities\Level1\KS+ConfigEntity.cs" />
     <Compile Include="Objects\ConfigEntities\FileConfigEntity.cs" />
     <Compile Include="Objects\ConfigEntities\Level1\TextConfigEntity.cs" />
     <Compile Include="Objects\ConfigEntities\Level1\XConfigEntity.cs" />
