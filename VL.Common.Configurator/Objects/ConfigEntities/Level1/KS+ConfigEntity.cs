@@ -99,7 +99,7 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
     /// 项目配置对象
     /// 负责记录项目和其路径信息
     /// </summary>
-    public abstract class KeyValueCollectionConfigEntity<T> : XConfigEntity where T : KeyConfigEntity
+    public abstract class KeyValueCollectionConfigEntity<T> : XMLConfigEntity where T : KeyConfigEntity
     {
         public string ItemsName { set; get; }
         public string ItemName { set; get; }

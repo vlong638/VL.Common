@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Linq;
 using VL.Common.Configurator.Objects.ConfigEntities;
+using VL.Common.DAS.Objects;
 
 namespace VL.Common.DAS.Utilities
 {
     public class DbConfigHelper
     {
-        static KSConfigEntity DbConnections;
+        static KSSConfigEntity DbConnections;
 
         static DbConfigHelper()
         {
-            DbConnections = new KSConfigEntity("DbConnections.config", "dbConnections", "dbConnection", "connectingString");
+            DbConnections = new KSSConfigEntity("DbConnections.config", "dbConnections", "dbConnection", "connectingString", "dbType");
             if (!DbConnections.Load())
             {
                 CreateConfigFile();
@@ -20,8 +21,8 @@ namespace VL.Common.DAS.Utilities
 
         public static void CreateConfigFile()
         {
-            DbConnections = new KSConfigEntity("DbConnections.config", "dbConnections", "dbConnection", "connectingString");
-            DbConnections.Items.Add(new KeyValueConfigEntity<string>("ConnectionName", "ConnectingString"));
+            DbConnections = new KSSConfigEntity("DbConnections.config", "dbConnections", "dbConnection", "connectingString", "dbType");
+            DbConnections.Items.Add(new KeyValueConfigEntity<string, string>("ConnectionName", "ConnectingString", EDatabaseType.None.ToString()));
             DbConnections.Save();
         }
         public static string GetDbConnectingString(string dbName)
@@ -31,7 +32,16 @@ namespace VL.Common.DAS.Utilities
             {
                 throw new NotImplementedException("未配置对应的数据库连接字符串" + dbName);
             }
-            return dbConnection.Value;
+            return dbConnection.Value1;
+        }
+        public static EDatabaseType GetDbType(string dbName)
+        {
+            var dbConnection = DbConnections.Items.FirstOrDefault(c => c.Key == dbName);
+            if (dbConnection == null)
+            {
+                throw new NotImplementedException("未配置对应的数据库连接字符串" + dbName);
+            }
+            return (EDatabaseType)Enum.Parse(typeof(EDatabaseType), dbConnection.Value2);
         }
     }
 }

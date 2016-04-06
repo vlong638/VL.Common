@@ -6,13 +6,13 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
     /// <summary>
     /// 采用XML.Linq进行存储的文件类型配置对象
     /// </summary>
-    public abstract class XConfigEntity : FileConfigEntity
+    public abstract class XMLConfigEntity : FileConfigEntity
     {
-        public XConfigEntity(string fileName) : base(fileName)
+        public XMLConfigEntity(string fileName) : base(fileName)
         {
         }
 
-        public XConfigEntity(string fileName, string directoryPath) : base(fileName, directoryPath)
+        public XMLConfigEntity(string fileName, string directoryPath) : base(fileName, directoryPath)
         {
         }
 

@@ -47,7 +47,7 @@
     <Compile Include="Objects\ConfigEntities\Level1\KS+ConfigEntity.cs" />
     <Compile Include="Objects\ConfigEntities\FileConfigEntity.cs" />
     <Compile Include="Objects\ConfigEntities\Level1\TextConfigEntity.cs" />
-    <Compile Include="Objects\ConfigEntities\Level1\XConfigEntity.cs" />
+    <Compile Include="Objects\ConfigEntities\Level1\XMLConfigEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
