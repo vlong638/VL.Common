@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A44364C-E8BD-4B70-93E4-96B68F3E97F3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{B8147AAF-EAF7-4B00-976D-E33923F7C810}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VL.Common.Testing</RootNamespace>
-    <AssemblyName>VL.Common.Testing</AssemblyName>
+    <RootNamespace>VL.Common.LocalCache</RootNamespace>
+    <AssemblyName>VL.Common.LocalCache</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,26 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\Executers\ConsoleExecuter.cs" />
-    <Compile Include="Objects\ConsoloMenuItem.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Configs\DbConnections.config" />
-    <None Include="Configs\ORMGenerate.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\VL.Common.Configurator\VL.Common.Configurator.csproj">
-      <Project>{4167518b-d35a-4f12-8a5e-b7bea320c76d}</Project>
-      <Name>VL.Common.Configurator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VL.Common.DAS\VL.Common.DAS.csproj">
-      <Project>{1af58dc2-559c-46da-b27c-2c9a7cf10af1}</Project>
-      <Name>VL.Common.DAS</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,13 +23,13 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
             ValueName = valueName;
         }
 
-
         public override XElement ToXElement()
         {
             XElement root = new XElement(ItemsName);
             foreach (var project in Items)
             {
                 XElement configItems = new XElement(ItemName
+                    , new XAttribute(nameof(KeyConfigEntity.Key), project.Key)
                     , new XAttribute(ValueName, project.Value));
                 root.Add(configItems);
             }
@@ -48,7 +48,7 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
     /// <summary>
     /// Key+String+String
     /// </summary>
-    public class KSSConfigEntity : KeyValueCollectionConfigEntity<KeyValueConfigEntity<string,string>>
+    public class KSSConfigEntity : KeyValueCollectionConfigEntity<KeyValueConfigEntity<string, string>>
     {
         public string Value1Name { set; get; }
         public string Value2Name { set; get; }
@@ -75,6 +75,7 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
             foreach (var project in Items)
             {
                 XElement configItems = new XElement(ItemName
+                    , new XAttribute(nameof(KeyConfigEntity.Key), project.Key)
                     , new XAttribute(Value1Name, project.Value1)
                     , new XAttribute(Value2Name, project.Value2));
                 root.Add(configItems);
@@ -146,6 +147,6 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
             Value1 = value1;
             Value2 = value2;
         }
-    } 
+    }
     #endregion
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using VL.Common.Configurator.Objects;
+using VL.Common.DAS.Utilities;
 using VL.Common.Testing.Objects;
 
 namespace VL.Common.Testing
@@ -10,6 +11,9 @@ namespace VL.Common.Testing
     {
         static void Main(string[] args)
         {
+            DbConfigHelper.CreateConfigFile();
+
+
             //List<ConsoloMenuItem> consoloMenuItems = new List<ConsoloMenuItem>();
             //consoloMenuItems.Add(new ConsoloMenuItem("save", "生成ORM配置文件", () =>
             //{

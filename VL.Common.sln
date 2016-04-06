@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Common.ORM", "VL.Common.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Common.Protocol", "VL.Common.Protocol\VL.Common.Protocol.csproj", "{8CD7B6CA-A803-4FAC-9ACD-85555F6C2844}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Common.LocalCache", "VL.Common.LocalCache\VL.Common.LocalCache.csproj", "{B8147AAF-EAF7-4B00-976D-E33923F7C810}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Common.RemoteCache", "VL.Common.RemoteCache\VL.Common.RemoteCache.csproj", "{2244271A-8C6D-47B6-9C97-D7E16E4E4A8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{8CD7B6CA-A803-4FAC-9ACD-85555F6C2844}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CD7B6CA-A803-4FAC-9ACD-85555F6C2844}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CD7B6CA-A803-4FAC-9ACD-85555F6C2844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8147AAF-EAF7-4B00-976D-E33923F7C810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8147AAF-EAF7-4B00-976D-E33923F7C810}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8147AAF-EAF7-4B00-976D-E33923F7C810}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8147AAF-EAF7-4B00-976D-E33923F7C810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2244271A-8C6D-47B6-9C97-D7E16E4E4A8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2244271A-8C6D-47B6-9C97-D7E16E4E4A8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2244271A-8C6D-47B6-9C97-D7E16E4E4A8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2244271A-8C6D-47B6-9C97-D7E16E4E4A8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

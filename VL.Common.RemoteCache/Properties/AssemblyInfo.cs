@@ -1,15 +1,15 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("VL.Common.DAS")]
-[assembly: AssemblyDescription("SecretV")]
+[assembly: AssemblyTitle("VL.Common.RemoteCache")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SecretV")]
-[assembly: AssemblyProduct("VL.Common.DAS")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("VL.Common.RemoteCache")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("1af58dc2-559c-46da-b27c-2c9a7cf10af1")]
+[assembly: Guid("2244271a-8c6d-47b6-9c97-d7e16e4e4a8e")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
