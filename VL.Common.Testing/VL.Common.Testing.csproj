@@ -50,8 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Configs\DbConnections.config" />
-    <None Include="Configs\ORMGenerate.config" />
+    <None Include="Configs\DbConnections.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Configs\ORMGenerate.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -62,6 +69,10 @@
     <ProjectReference Include="..\VL.Common.DAS\VL.Common.DAS.csproj">
       <Project>{1af58dc2-559c-46da-b27c-2c9a7cf10af1}</Project>
       <Name>VL.Common.DAS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VL.Common.Logger\VL.Common.Logger.csproj">
+      <Project>{0293cb98-eab0-43cc-b293-9a84fd84b518}</Project>
+      <Name>VL.Common.Logger</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

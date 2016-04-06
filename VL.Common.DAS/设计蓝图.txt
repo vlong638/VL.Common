@@ -22,3 +22,4 @@ o	例子
 	ORMGeneratorConfigEntity:XConfigEntity
 	一个派生实现样例
 	
+	爱上

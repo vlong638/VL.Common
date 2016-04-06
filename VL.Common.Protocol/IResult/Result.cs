@@ -10,6 +10,7 @@ namespace VL.Common.Protocol.IResult
         [DataMember]
         public string Content { set; get; }
     }
+
     [DataContract]
     public class Result<T>
     {

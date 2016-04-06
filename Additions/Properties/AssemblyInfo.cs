@@ -1,17 +1,15 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("VL.Common.Logger")]
-[assembly: AssemblyDescription("增加两类Logger支持
-TextLogger
-Log4netLogger")]
+[assembly: AssemblyTitle("Additions")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VL.Common.Logger")]
+[assembly: AssemblyProduct("Additions")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +20,7 @@ Log4netLogger")]
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("0293cb98-eab0-43cc-b293-9a84fd84b518")]
+[assembly: Guid("e17cafb3-8b36-4e10-865c-3107e049a7b2")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -34,5 +32,5 @@ Log4netLogger")]
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

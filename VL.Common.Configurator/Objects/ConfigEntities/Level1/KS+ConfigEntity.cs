@@ -10,11 +10,11 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
     {
         public string ValueName { set; get; }
 
-        public KSConfigEntity(string fileName, string rootName = "Items", string itemName = "Item", string valueName = "Value") : base(fileName, rootName, itemName)
+        public KSConfigEntity(string fileName, string rootName = "configuration", string itemName = "Item", string valueName = "Value") : base(fileName, rootName, itemName)
         {
             Init(valueName);
         }
-        public KSConfigEntity(string fileName, string directoryPath, string rootName = "Items", string itemName = "Item", string valueName = "Value") : base(fileName, directoryPath, rootName, itemName)
+        public KSConfigEntity(string fileName, string directoryPath, string rootName = "configuration", string itemName = "Item", string valueName = "Value") : base(fileName, directoryPath, rootName, itemName)
         {
             Init(valueName);
         }

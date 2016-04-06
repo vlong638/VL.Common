@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using VL.Common.Configurator.Objects;
 using VL.Common.DAS.Utilities;
-using VL.Common.Testing.Objects;
+using VL.Common.Logger.Utilities;
 
 namespace VL.Common.Testing
 {
@@ -11,8 +8,14 @@ namespace VL.Common.Testing
     {
         static void Main(string[] args)
         {
-            DbConfigHelper.CreateConfigFile();
-
+            //TestCreateConfig();
+            var log4Logger = LogHelper.GetLog4netLogger("Generator");
+            log4Logger.Error("error");
+            log4Logger.Info("info");
+            var textLogger = LogHelper.GetTextLogger("text.config", System.Environment.CurrentDirectory + "/TextLogs");
+            textLogger.Error("error2");
+            textLogger.Info("info2");
+            Console.ReadLine();
 
             //List<ConsoloMenuItem> consoloMenuItems = new List<ConsoloMenuItem>();
             //consoloMenuItems.Add(new ConsoloMenuItem("save", "生成ORM配置文件", () =>
@@ -28,6 +31,11 @@ namespace VL.Common.Testing
             //    return configEntity.Load();
             //}));
             //consoloMenuItems.WaitForOperation();
+        }
+
+        private static void TestCreateConfig()
+        {
+            DbConfigHelper.CreateConfigFile();
         }
     }
 }

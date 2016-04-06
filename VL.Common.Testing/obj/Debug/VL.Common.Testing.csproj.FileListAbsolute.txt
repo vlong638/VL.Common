@@ -12,3 +12,10 @@ D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.DAS.dll
 D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\MySql.Data.dll
 D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\Oracle.ManagedDataAccess.dll
 D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.DAS.pdb
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.Logger.dll
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\log4net.dll
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\VL.Common.Logger.pdb
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\log4net.xml
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\log4net.config
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\Configs\DbConnections.config
+D:\GitProjects\VL.Common\VL.Common.Testing\bin\Debug\Configs\ORMGenerate.config
