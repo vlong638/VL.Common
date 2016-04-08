@@ -10,7 +10,7 @@ namespace VL.Common.DAS.Objects
     /// <summary>
     /// 会话对象
     /// </summary>
-    public class DbSession :  IDisposable
+    public class DbSession //:  IDisposable
     {
         #region NestedTypes
         /// <summary>
@@ -28,7 +28,7 @@ namespace VL.Common.DAS.Objects
                     return "@";
                 case EDatabaseType.Oracle:
                 case EDatabaseType.MySQL:
-                //TODO
+                    return ":";
                 default:
                     throw new NotImplementedException();
             }
@@ -50,16 +50,16 @@ namespace VL.Common.DAS.Objects
                 connectString = new System.Configuration.AppSettingsReader().GetValue("DefaultConnectString", typeof(string)).ToString();
             this.DatabaseType = databaseType;
             this.Connection = CreateConnection(databaseType, connectString);
-            this.Open();
+            //this.Open();
         }
-        ~DbSession()
-        {
-            Close();
-        }
-        public void Dispose()
-        {
-            Close();
-        }
+        //~DbSession()
+        //{
+        //    Close();
+        //}
+        //public void Dispose()
+        //{
+        //    Close();
+        //}
         #endregion
 
         #region Connection and Command

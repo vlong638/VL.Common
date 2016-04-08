@@ -58,7 +58,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="VL.Common.DAS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.DAS.1.0.1604060854.0\lib\net452\VL.Common.DAS.dll</HintPath>
+      <HintPath>..\packages\VL.Common.DAS.1.0.1604071737.0\lib\net452\VL.Common.DAS.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -95,9 +95,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="设计蓝图.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
