@@ -12,13 +12,9 @@ namespace VL.Common.Protocol.IResult
     }
 
     [DataContract]
-    public class Result<T>
+    public class Result<T>: Result
     {
         [DataMember]
-        public EResultCode ResultCode { set; get; }
-        [DataMember]
         public T SubResultCode { set; get; }
-        [DataMember]
-        public string Content { set; get; }
     }
 }

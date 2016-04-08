@@ -29,10 +29,10 @@ namespace VL.Common.Testing
 
         private static void TestLongger()
         {
-            var log4Logger = LogProvider.GetLog4netLogger("Generator");
+            var log4Logger = LoggerProvider.GetLog4netLogger("Generator");
             log4Logger.Error("error");
             log4Logger.Info("info");
-            var textLogger = LogProvider.GetTextLogger("text.config", System.Environment.CurrentDirectory + "/TextLogs");
+            var textLogger = LoggerProvider.GetTextLogger("text.config", System.Environment.CurrentDirectory + "/TextLogs");
             textLogger.Error("error2");
             textLogger.Info("info2");
             Console.ReadLine();

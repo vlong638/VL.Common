@@ -2,7 +2,7 @@
 
 namespace VL.Common.Logger.Utilities
 {
-    public class LogProvider
+    public class LoggerProvider
     {
         public static ILogger GetLog4netLogger(string loggerName)
         {

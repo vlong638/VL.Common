@@ -49,7 +49,7 @@
     <Compile Include="Objects\Log4netLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objects\TextLogger.cs" />
-    <Compile Include="Utilities\LogProvider.cs" />
+    <Compile Include="Utilities\LoggerProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Configs\App.config" />
