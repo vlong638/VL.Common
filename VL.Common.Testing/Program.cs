@@ -8,14 +8,8 @@ namespace VL.Common.Testing
     {
         static void Main(string[] args)
         {
-            //TestCreateConfig();
-            var log4Logger = LogHelper.GetLog4netLogger("Generator");
-            log4Logger.Error("error");
-            log4Logger.Info("info");
-            var textLogger = LogHelper.GetTextLogger("text.config", System.Environment.CurrentDirectory + "/TextLogs");
-            textLogger.Error("error2");
-            textLogger.Info("info2");
-            Console.ReadLine();
+            TestCreateConfig();
+            //TestLongger();
 
             //List<ConsoloMenuItem> consoloMenuItems = new List<ConsoloMenuItem>();
             //consoloMenuItems.Add(new ConsoloMenuItem("save", "生成ORM配置文件", () =>
@@ -31,6 +25,17 @@ namespace VL.Common.Testing
             //    return configEntity.Load();
             //}));
             //consoloMenuItems.WaitForOperation();
+        }
+
+        private static void TestLongger()
+        {
+            var log4Logger = LogProvider.GetLog4netLogger("Generator");
+            log4Logger.Error("error");
+            log4Logger.Info("info");
+            var textLogger = LogProvider.GetTextLogger("text.config", System.Environment.CurrentDirectory + "/TextLogs");
+            textLogger.Error("error2");
+            textLogger.Info("info2");
+            Console.ReadLine();
         }
 
         private static void TestCreateConfig()
