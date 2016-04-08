@@ -92,6 +92,22 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         ///// 未查询到数据时返回 New List()
         ///// </summary>
         //public abstract List<T> SelectAll<T>(DbSession session, IDbQueryBuilder queryBuilder) where T : IPDMTBase, new();
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public abstract int? SelectAsInt(DbSession session, SelectBuilder selectBuilder);
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public abstract long? SelectAsLong(DbSession session, SelectBuilder selectBuilder);
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public abstract string SelectAsString(DbSession session, SelectBuilder selectBuilder);
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public abstract DateTime? SelectAsDateTime(DbSession session, SelectBuilder selectBuilder);
         #endregion
     }
 }

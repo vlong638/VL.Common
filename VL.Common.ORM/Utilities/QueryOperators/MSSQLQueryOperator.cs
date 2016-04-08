@@ -118,7 +118,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
                 result = result && session.ExecuteNonQuery(command) > 0;
             }
             return result;
-        } 
+        }
         #endregion
         #region Select
         /// <summary>
@@ -238,7 +238,92 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         public override List<T> SelectUnion<T>(DbSession session, IDbQueryBuilder queryBuilder)
         {
             throw new NotImplementedException();
-        } 
+        }
+        #endregion
+        #region SelectAs
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public override int? SelectAsInt(DbSession session, SelectBuilder selectBuilder)
+        {
+            if (selectBuilder == null)
+            {
+                throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
+            }
+            DbCommand command = session.CreateCommand();
+            command.CommandText = selectBuilder.ToQueryString(session, selectBuilder.TableName);
+            selectBuilder.AppendQueryParameter(ref command, session);
+            var data = session.ExecuteScalar(command);
+            int result;
+            if (int.TryParse(data.ToString(), out result))
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public override long? SelectAsLong(DbSession session, SelectBuilder selectBuilder)
+        {
+            if (selectBuilder == null)
+            {
+                throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
+            }
+            DbCommand command = session.CreateCommand();
+            command.CommandText = selectBuilder.ToQueryString(session, selectBuilder.TableName);
+            selectBuilder.AppendQueryParameter(ref command, session);
+            var data = session.ExecuteScalar(command);
+            long result;
+            if (long.TryParse(data.ToString(), out result))
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public override string SelectAsString(DbSession session, SelectBuilder selectBuilder)
+        {
+            if (selectBuilder == null)
+            {
+                throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
+            }
+            DbCommand command = session.CreateCommand();
+            command.CommandText = selectBuilder.ToQueryString(session, selectBuilder.TableName);
+            selectBuilder.AppendQueryParameter(ref command, session);
+            return session.ExecuteScalar(command).ToString();
+        }
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public override DateTime? SelectAsDateTime(DbSession session, SelectBuilder selectBuilder)
+        {
+            if (selectBuilder == null)
+            {
+                throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
+            }
+            DbCommand command = session.CreateCommand();
+            command.CommandText = selectBuilder.ToQueryString(session, selectBuilder.TableName);
+            selectBuilder.AppendQueryParameter(ref command, session);
+            var data = session.ExecuteScalar(command);
+            DateTime result;
+            if (DateTime.TryParse(data.ToString(), out result))
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
         #endregion
     }
 }
