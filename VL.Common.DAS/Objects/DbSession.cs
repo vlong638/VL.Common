@@ -10,7 +10,7 @@ namespace VL.Common.DAS.Objects
     /// <summary>
     /// 会话对象
     /// </summary>
-    public class DbSession //:  IDisposable
+    public class DbSession :  IDisposable
     {
         #region NestedTypes
         /// <summary>
@@ -52,14 +52,14 @@ namespace VL.Common.DAS.Objects
             this.Connection = CreateConnection(databaseType, connectString);
             //this.Open();
         }
-        //~DbSession()
-        //{
-        //    Close();
-        //}
-        //public void Dispose()
-        //{
-        //    Close();
-        //}
+        ~DbSession()
+        {
+            Close();
+        }
+        public void Dispose()
+        {
+            Close();
+        }
         #endregion
 
         #region Connection and Command
@@ -131,7 +131,8 @@ namespace VL.Common.DAS.Objects
         /// </summary>
         public void Close()
         {
-            Connection.Close();
+            if (Connection.State == ConnectionState.Open)
+                Connection.Close();
         }
         #endregion
 
