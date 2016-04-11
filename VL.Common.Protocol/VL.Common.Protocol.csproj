@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IService\IServiceNode.cs" />
+    <Compile Include="ISimulation\ISimulatable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IResult\EResultCode.cs" />
     <Compile Include="IResult\Result.cs" />

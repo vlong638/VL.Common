@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("VL.Common.Protocol")]
-[assembly: AssemblyDescription("增加IResult规范(接口的返回码)")]
+[assembly: AssemblyDescription("VL生态圈协议")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("VL.Common.Protocol")]
