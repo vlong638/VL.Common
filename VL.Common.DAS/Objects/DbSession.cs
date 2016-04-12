@@ -131,7 +131,7 @@ namespace VL.Common.DAS.Objects
         /// </summary>
         public void Close()
         {
-            if (Connection.State == ConnectionState.Open)
+            if (Connection != null && Connection.State == ConnectionState.Open)
                 Connection.Close();
         }
         #endregion
@@ -146,6 +146,8 @@ namespace VL.Common.DAS.Objects
         /// </summary>
         public void BeginTransaction()
         {
+            //if (Connection.State != ConnectionState.Open)
+            //    Connection.Open();
             BeginTransaction(IsolationLevel.ReadCommitted);
         }
         /// <summary>
@@ -153,8 +155,8 @@ namespace VL.Common.DAS.Objects
         /// </summary>
         public void BeginTransaction(IsolationLevel level)
         {
-            if (Connection.State != ConnectionState.Open)
-                Connection.Open();
+            //if (Connection.State != ConnectionState.Open)
+            //    Connection.Open();
             Transaction = Connection.BeginTransaction(level);
         }
         /// <summary>
@@ -163,8 +165,8 @@ namespace VL.Common.DAS.Objects
         public void CommitTransaction()
         {
             Transaction.Commit();
-            if (Connection.State != ConnectionState.Closed)
-                Connection.Close();
+            //if (Connection.State != ConnectionState.Closed)
+            //    Connection.Close();
         }
         /// <summary>
         /// 回滚事务
@@ -172,8 +174,8 @@ namespace VL.Common.DAS.Objects
         public void RollBackTransaction()
         {
             Transaction.Rollback();
-            if (Connection.State != ConnectionState.Closed)
-                Connection.Close();
+            //if (Connection.State != ConnectionState.Closed)
+            //    Connection.Close();
         }
         #endregion
 

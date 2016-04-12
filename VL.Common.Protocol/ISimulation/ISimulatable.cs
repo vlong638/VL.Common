@@ -11,8 +11,8 @@ namespace VL.Common.Protocol.ISimulation
     /// 对象:模拟的目标内容
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface ISimulatable<T>
+    public interface ISimulatable
     {
-        Result SimulateCreate(DbSession session, T t, DateTime simulateTime);
+        Result SimulateCreate(DbSession session, DateTime simulateTime);
     }
 }
