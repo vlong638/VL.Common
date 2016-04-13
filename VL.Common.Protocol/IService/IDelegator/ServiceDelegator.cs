@@ -1,6 +1,5 @@
 ﻿using System;
 using VL.Common.DAS.Objects;
-using VL.Common.DAS.Utilities;
 
 namespace VL.Common.Protocol.IService
 {
@@ -32,7 +31,7 @@ namespace VL.Common.Protocol.IService
                 result.ResultCode = EResultCode.Error;
                 result.Content = ex.Message;
             }
-            ServiceLogHelper.LogResult(result);
+            ServiceContext.ServiceLogger.LogResult(result);
             return result;
         }
         /// <summary>
@@ -86,7 +85,7 @@ namespace VL.Common.Protocol.IService
             {
                 session.Close();
             }
-            ServiceLogHelper.LogResult(result);
+            ServiceContext.ServiceLogger.LogResult(result);
             return result;
         }
     }
