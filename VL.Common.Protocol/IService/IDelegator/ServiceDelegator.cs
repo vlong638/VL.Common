@@ -1,7 +1,6 @@
 ﻿using System;
 using VL.Common.DAS.Objects;
 using VL.Common.DAS.Utilities;
-using VL.Common.Protocol.IResult;
 
 namespace VL.Common.Protocol.IService
 {
@@ -17,7 +16,7 @@ namespace VL.Common.Protocol.IService
             var result = new T();
             result.ResultCode = EResultCode.Success;
             //模拟开关检测
-            if (!ProtocolConfig.IsSimulationAvailable)
+            if (isSimulation&&!ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
             {
                 result.ResultCode = EResultCode.Failure;
                 result.Content = "未开启对Simulation的支持";
@@ -48,7 +47,7 @@ namespace VL.Common.Protocol.IService
             result.ResultCode = EResultCode.Success;
             DbSession session = null;
             //模拟开关检测
-            if (!ProtocolConfig.IsSimulationAvailable)
+            if (isSimulation && !ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
             {
                 result.ResultCode = EResultCode.Failure;
                 result.Content = "未开启对Simulation的支持";
@@ -57,7 +56,7 @@ namespace VL.Common.Protocol.IService
             //业务逻辑处理
             try
             {
-                session = DbHelper.GetDbSession(dbName);
+                session = ServiceContext.DatabaseConfig.GetDbConfigItem(dbName).GetDbSession();
                 session.Open();
                 session.BeginTransaction();
                 try

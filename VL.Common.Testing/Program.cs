@@ -8,7 +8,7 @@ namespace VL.Common.Testing
     {
         static void Main(string[] args)
         {
-            var isSimulationAvailable = ProtocolConfig.IsSimulationAvailable;
+            //var isSimulationAvailable = ProtocolConfig.IsSimulationAvailable;
             //TestCreateConfig();
             //TestLongger();
         }
@@ -26,7 +26,7 @@ namespace VL.Common.Testing
 
         private static void TestCreateConfig()
         {
-            DbConfigHelper.CreateConfigFile();
+            //DbConfigHelper.CreateConfigFile();
         }
     }
 }

@@ -54,12 +54,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="VL.Common.Configurator, Version=1.1.5942.25976, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.Configurator.1.1.1604111016.1\lib\net452\VL.Common.Configurator.dll</HintPath>
+    <Reference Include="VL.Common.Configurator, Version=1.1.5947.26749, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VL.Common.Configurator.1.1.1604131452.1\lib\net452\VL.Common.Configurator.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="VL.Common.DAS, Version=1.0.5945.30439, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.DAS.1.0.1604111654.1\lib\net452\VL.Common.DAS.dll</HintPath>
+    <Reference Include="VL.Common.DAS, Version=1.0.5947.27678, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VL.Common.DAS.1.0.1604131522.1\lib\net452\VL.Common.DAS.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

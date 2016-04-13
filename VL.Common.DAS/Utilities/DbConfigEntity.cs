@@ -15,16 +15,15 @@ namespace VL.Common.DAS.Utilities
         {
             DbConfigItems = GetDbConfigItems();
         }
+        public DbConfigEntity(string fileName, string directoryPath) : base(fileName, directoryPath)
+        {
+            DbConfigItems = GetDbConfigItems();
+        }
 
         protected abstract List<DbConfigItem> GetDbConfigItems();
-        public override XElement ToXElement()
+        public override IEnumerable<XElement> GetXElements()
         {
-            XElement root = new XElement("configuration");
-            foreach (var dbConfigDetail in DbConfigItems)
-            {
-                root.Add(dbConfigDetail.ToXElement());
-            }
-            return root;
+            return DbConfigItems.Select(c => c.ToXElement());
         }
         protected override void Load(XDocument doc)
         {
@@ -39,23 +38,32 @@ namespace VL.Common.DAS.Utilities
                 dbConfigDetail.Init(element);
             }
         }
-        public string GetDbConnectingString(string dbName)
+        public DbConfigItem GetDbConfigItem(string dbName)
         {
             var dbConfigItem = DbConfigItems.FirstOrDefault(c => c.DbName == dbName);
             if (dbConfigItem == null)
             {
                 throw new NotImplementedException("未配置对应的数据库连接字符串" + dbName);
             }
-            return dbConfigItem.ConnectingString;
+            return dbConfigItem;
         }
-        public EDatabaseType GetDbType(string dbName)
-        {
-            var dbConfigItem = DbConfigItems.FirstOrDefault(c => c.DbName == dbName);
-            if (dbConfigItem == null)
-            {
-                throw new NotImplementedException("未配置对应的数据库连接字符串" + dbName);
-            }
-            return dbConfigItem.DbType;
-        }
+        //public string GetDbConnectingString(string dbName)
+        //{
+        //    var dbConfigItem = DbConfigItems.FirstOrDefault(c => c.DbName == dbName);
+        //    if (dbConfigItem == null)
+        //    {
+        //        throw new NotImplementedException("未配置对应的数据库连接字符串" + dbName);
+        //    }
+        //    return dbConfigItem.ConnectingString;
+        //}
+        //public EDatabaseType GetDbType(string dbName)
+        //{
+        //    var dbConfigItem = DbConfigItems.FirstOrDefault(c => c.DbName == dbName);
+        //    if (dbConfigItem == null)
+        //    {
+        //        throw new NotImplementedException("未配置对应的数据库连接字符串" + dbName);
+        //    }
+        //    return dbConfigItem.DbType;
+        //}
     }
 }
