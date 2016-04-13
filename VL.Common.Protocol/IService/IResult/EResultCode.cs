@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace VL.Common.Protocol.IResult
+namespace VL.Common.Protocol.IService
 {
     [DataContract]
     public enum EResultCode

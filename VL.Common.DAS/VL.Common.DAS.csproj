@@ -59,8 +59,8 @@
     <Compile Include="Objects\DbSession.cs" />
     <Compile Include="Objects\EDatabaseType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\DbConfigHelper.cs" />
-    <Compile Include="Utilities\DbHelper.cs" />
+    <Compile Include="Utilities\DbConfigEntity.cs" />
+    <Compile Include="Utilities\DbConfigItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

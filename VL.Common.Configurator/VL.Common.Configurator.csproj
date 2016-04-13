@@ -44,10 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\ConfigEntities\Level1\KS+ConfigEntity.cs" />
+    <Compile Include="Objects\ConfigEntities\ConfigEntity.cs" />
     <Compile Include="Objects\ConfigEntities\FileConfigEntity.cs" />
-    <Compile Include="Objects\ConfigEntities\Level1\TextConfigEntity.cs" />
-    <Compile Include="Objects\ConfigEntities\Level1\XMLConfigEntity.cs" />
+    <Compile Include="Objects\ConfigEntities\FileConfigEntities\TextConfigEntity.cs" />
+    <Compile Include="Objects\ConfigEntities\FileConfigEntities\XMLConfigEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

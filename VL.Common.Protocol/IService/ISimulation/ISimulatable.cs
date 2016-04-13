@@ -1,8 +1,7 @@
 ﻿using System;
 using VL.Common.DAS.Objects;
-using VL.Common.Protocol.IResult;
 
-namespace VL.Common.Protocol.ISimulation
+namespace VL.Common.Protocol.IService
 {
     /// <summary>
     /// 模拟三要素

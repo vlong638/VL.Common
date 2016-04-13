@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace VL.Common.Configurator.Objects.ConfigEntities
 {
@@ -8,7 +9,7 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
     /// 2表根+1级子节点 
     /// 3表根+2级子节点
     /// </summary>
-    public abstract class FileConfigEntity
+    public abstract class FileConfigEntity: ConfigEntity
     {
         protected string InputFileName { set; get; }
         protected string InputDirectoryPath { set; get; }
@@ -20,9 +21,9 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
         public FileConfigEntity(string fileName)
         {
             InputFileName = fileName;
-            InputDirectoryPath = Path.Combine(System.Environment.CurrentDirectory, "Configs");
+            InputDirectoryPath = Path.Combine(Environment.CurrentDirectory, "Configs");
             OutputFileName = fileName;
-            OutputDirectoryPath = Path.Combine(System.Environment.CurrentDirectory, "Configs");
+            OutputDirectoryPath = Path.Combine(Environment.CurrentDirectory, "Configs");
         }
         public FileConfigEntity(string fileName, string directoryPath)
         {
@@ -38,13 +39,6 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
             InputDirectoryPath = inputDirectoryPath;
             OutputFileName = outputFileName;
             OutputDirectoryPath = outputDirectoryPath;
-        }
-
-        public abstract bool Load();
-        public abstract void Save();
-        public string ToDisplayFormat()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
         }
     }
 }

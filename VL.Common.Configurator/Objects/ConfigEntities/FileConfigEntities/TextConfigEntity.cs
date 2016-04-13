@@ -15,22 +15,12 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
         {
         }
 
-        /// <summary>
-        /// 加载配置
-        /// </summary>
-        /// <returns>true:存在文件并已执行加载</returns>
-        /// <returns>false:文件不存在</returns>
-        public override bool Load()
+        public override void Load()
         {
-            if (File.Exists(InputFilePath))
+            using (StreamReader steam = File.OpenText(InputFilePath))
             {
-                using (StreamReader steam = File.OpenText(InputFilePath))
-                {
-                    Load(steam);
-                    return true;
-                }
+                Load(steam);
             }
-            return false;
         }
         public override void Save()
         {

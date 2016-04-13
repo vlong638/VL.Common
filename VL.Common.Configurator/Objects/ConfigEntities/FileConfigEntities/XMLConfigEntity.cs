@@ -16,20 +16,10 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
         {
         }
 
-        /// <summary>
-        /// 加载配置
-        /// </summary>
-        /// <returns>true:存在文件并已执行加载</returns>
-        /// <returns>false:文件不存在</returns>
-        public override bool Load()
+        public override void Load()
         {
-            if (File.Exists(InputFilePath))
-            {
-                XDocument doc = XDocument.Load(InputFilePath);
-                Load(doc);
-                return true;
-            }
-            return false;
+            XDocument doc = XDocument.Load(InputFilePath);
+            Load(doc);
         }
         public override void Save()
         {
