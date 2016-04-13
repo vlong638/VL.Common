@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using VL.Common.Configurator.Objects.ConfigEntities;
 using VL.Common.DAS.Utilities;
 using VL.Common.Logger.Objects;
@@ -52,10 +53,30 @@ namespace VL.Common.Protocol.IService
         /// <returns></returns>
         private static bool CheckAvailabilityOfConfig(FileConfigEntity configEntity)
         {
+            //文件不存在的辅助处理
+            if (!File.Exists(configEntity.InputFilePath))
+            {
+                if (!Directory.Exists(configEntity.InputDirectoryPath))
+                {
+                    Directory.CreateDirectory(configEntity.InputDirectoryPath);
+                }
+                ServiceLogger.Error("配置文件不存在,配置文件:" + configEntity.InputFileName);
+                try
+                {
+                    configEntity.Save();
+                    ServiceLogger.Error("已创建默认的配置文件,请在配置后重试,文件路径:" + configEntity.InputFilePath);
+                }
+                catch (Exception ex)
+                {
+                    ServiceLogger.Error("创建默认的配置文件失败,错误详情:" + ex.ToString());
+                }
+                return true;
+            }
+            //可用性检验
             try
             {
                 configEntity.Load();
-                ServiceLogger.Error("配置文件加载成功,配置文件:" + configEntity.InputFileName);
+                ServiceLogger.Info("配置文件加载成功,配置文件:" + configEntity.InputFileName);
                 return true;
             }
             catch (Exception ex)
@@ -78,7 +99,7 @@ namespace VL.Common.Protocol.IService
                 if (session != null)
                 {
                     session.Open();
-                    ServiceLogger.Error("数据库连接成功,数据库配置名称:" + dbConfigItem.DbName);
+                    ServiceLogger.Info("数据库连接成功,数据库配置名称:" + dbConfigItem.DbName);
                     session.Close();
                 }
                 return true;
