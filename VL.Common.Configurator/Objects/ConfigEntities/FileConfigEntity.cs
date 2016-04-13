@@ -11,11 +11,11 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
     /// </summary>
     public abstract class FileConfigEntity: ConfigEntity
     {
-        protected string InputFileName { set; get; }
-        protected string InputDirectoryPath { set; get; }
+        public string InputFileName { set; get; }
+        public string InputDirectoryPath { set; get; }
         public string InputFilePath { get { return Path.Combine(InputDirectoryPath, InputFileName); } }
-        protected string OutputFileName { set; get; }
-        protected string OutputDirectoryPath { set; get; }
+        public string OutputFileName { set; get; }
+        public string OutputDirectoryPath { set; get; }
         public string OutputFilePath { get { return Path.Combine(OutputDirectoryPath, OutputFileName); } }
 
         public FileConfigEntity(string fileName)

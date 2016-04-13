@@ -58,8 +58,8 @@
       <HintPath>..\packages\VL.Common.Configurator.1.1.1604131452.1\lib\net452\VL.Common.Configurator.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="VL.Common.DAS, Version=1.0.5947.27678, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.DAS.1.0.1604131522.1\lib\net452\VL.Common.DAS.dll</HintPath>
+    <Reference Include="VL.Common.DAS, Version=1.0.5947.27705, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VL.Common.DAS.1.0.1604131525.1\lib\net452\VL.Common.DAS.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
