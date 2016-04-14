@@ -21,9 +21,9 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
         public FileConfigEntity(string fileName)
         {
             InputFileName = fileName;
-            InputDirectoryPath = Path.Combine(Environment.CurrentDirectory, "Configs");
+            InputDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs");
             OutputFileName = fileName;
-            OutputDirectoryPath = Path.Combine(Environment.CurrentDirectory, "Configs");
+            OutputDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs");
         }
         public FileConfigEntity(string fileName, string directoryPath)
         {
