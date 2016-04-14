@@ -10,9 +10,9 @@ namespace VL.Common.Protocol.IService
             if (result.ResultCode == EResultCode.Success)
                 return;
             if (result.ResultCode == EResultCode.Failure)
-                logger.Info(result.Content);
+                logger.Info(result.Message);
             if (result.ResultCode == EResultCode.Error)
-                logger.Error(result.Content);
+                logger.Error(result.Message);
         }
     }
 }

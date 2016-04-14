@@ -70,10 +70,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IService\IDependency\DependencyDetail.cs" />
+    <Compile Include="IService\IDependency\DependencyResult.cs" />
+    <Compile Include="IService\IDependency\DependencyType.cs" />
     <Compile Include="IService\IContext\ServiceContext.cs" />
-    <Compile Include="IService\IServiceNode.cs" />
+    <Compile Include="IService\IDependency\IWCFServiceNode.cs" />
     <Compile Include="IService\IDelegator\ServiceDelegator.cs" />
-    <Compile Include="IService\ILogger\LoggerEx.cs" />
+    <Compile Include="IService\IResult\LoggerEx.cs" />
     <Compile Include="IService\ISimulation\ISimulatable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IService\IResult\EResultCode.cs" />
@@ -84,9 +87,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IService\IDependency\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,0 +1,20 @@
+﻿using System.Runtime.Serialization;
+
+namespace VL.Common.Protocol.IService
+{
+    /// <summary>
+    /// 依赖项详情
+    /// </summary>
+    [DataContract]
+    public class DependencyDetail
+    {
+        [DataMember]
+        public string DependencyName { set; get; }
+        [DataMember]
+        public DependencyType DependencyType { set; get; }
+        [DataMember]
+        public bool IsDependencyAvailable { set; get; }
+        [DataMember]
+        public string Message { set; get; }
+    }
+}

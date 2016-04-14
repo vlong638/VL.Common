@@ -3,6 +3,9 @@ using VL.Common.DAS.Objects;
 
 namespace VL.Common.Protocol.IService
 {
+    /// <summary>
+    /// 用于规范服务的方法外框架(以隔离核心处理逻辑)
+    /// </summary>
     public class ServiceDelegator
     {
         /// <summary>
@@ -18,7 +21,7 @@ namespace VL.Common.Protocol.IService
             if (isSimulation&&!ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
             {
                 result.ResultCode = EResultCode.Failure;
-                result.Content = "未开启对Simulation的支持";
+                result.Message = "未开启对Simulation的支持";
                 return result;
             }
             //业务逻辑处理
@@ -29,7 +32,7 @@ namespace VL.Common.Protocol.IService
             catch (Exception ex)
             {
                 result.ResultCode = EResultCode.Error;
-                result.Content = ex.Message;
+                result.Message = ex.Message;
             }
             ServiceContext.ServiceLogger.LogResult(result);
             return result;
@@ -49,7 +52,7 @@ namespace VL.Common.Protocol.IService
             if (isSimulation && !ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
             {
                 result.ResultCode = EResultCode.Failure;
-                result.Content = "未开启对Simulation的支持";
+                result.Message = "未开启对Simulation的支持";
                 return result;
             }
             //业务逻辑处理
@@ -65,7 +68,7 @@ namespace VL.Common.Protocol.IService
                 catch (Exception ex)
                 {
                     result.ResultCode = EResultCode.Error;
-                    result.Content = ex.Message;
+                    result.Message = ex.Message;
                 }
                 if (result.ResultCode == EResultCode.Success)
                 {
@@ -79,7 +82,7 @@ namespace VL.Common.Protocol.IService
             catch (Exception ex)
             {
                 result.ResultCode = EResultCode.Error;
-                result.Content = ex.Message;
+                result.Message = ex.Message;
             }
             finally
             {
