@@ -8,12 +8,15 @@ namespace VL.Common.Protocol.IService
     public class Result
     {
         [DataMember]
-        public EResultCode ResultCode { set; get; }
+        public EResultCode ResultCode { set; get; } = EResultCode.Success;
         [DataMember]
-        public string Message { set; get; }
+        public string Message { set; get; } = "";
         [DataMember]
-        protected string MethodName { set; get; }
+        public string MethodName { set; get; } = "";
 
+        public Result()
+        {
+        }
         public Result(string methodName)
         {
             MethodName = methodName;
@@ -28,16 +31,41 @@ namespace VL.Common.Protocol.IService
             if (ResultCode == EResultCode.Error)
                 logger.Error(Message);
         }
+        public void CopyAll(Result result)
+        {
+            MethodName = result.MethodName;
+            ResultCode = result.ResultCode;
+            Message = result.Message;
+        }
+        public void CopyContent(Result result)
+        {
+            ResultCode = result.ResultCode;
+            Message = result.Message;
+        }
     }
 
     [DataContract]
-    public class Result<T>: Result
+    public class Result<T> : Result
     {
+        public Result()
+        {
+        }
         public Result(string methodName) : base(methodName)
         {
         }
 
         [DataMember]
-        public T SubResultCode { set; get; }
+        public T SubResultCode { set; get; } = default(T);
+
+        public void CopyAll(Result<T> result)
+        {
+            SubResultCode = result.SubResultCode;
+            base.CopyAll(result);
+        }
+        public void CopyContent(Result<T> result)
+        {
+            SubResultCode = result.SubResultCode;
+            base.CopyContent(result);
+        }
     }
 }

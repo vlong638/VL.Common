@@ -16,9 +16,10 @@ namespace VL.Common.Protocol.IService
         public static T HandleEvent<T>(Func<T> func, bool isSimulation = false) where T : Result, new()
         {
             var result = new T();
+            result.MethodName = nameof(HandleEvent);
             result.ResultCode = EResultCode.Success;
             //模拟开关检测
-            if (isSimulation&&!ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
+            if (isSimulation && !ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
             {
                 result.ResultCode = EResultCode.Failure;
                 result.Message = "未开启对Simulation的支持";
@@ -27,7 +28,7 @@ namespace VL.Common.Protocol.IService
             //业务逻辑处理
             try
             {
-                result = func();
+                result.CopyAll(func());
             }
             catch (Exception ex)
             {
@@ -46,6 +47,7 @@ namespace VL.Common.Protocol.IService
         public static T HandleSimpleTransactionEvent<T>(string dbName, Func<DbSession, T> func, bool isSimulation = false) where T : Result, new()
         {
             var result = new T();
+            result.MethodName = nameof(HandleSimpleTransactionEvent);
             result.ResultCode = EResultCode.Success;
             DbSession session = null;
             //模拟开关检测
@@ -63,7 +65,7 @@ namespace VL.Common.Protocol.IService
                 session.BeginTransaction();
                 try
                 {
-                    result = func(session);
+                    result.CopyAll(func(session));
                 }
                 catch (Exception ex)
                 {
