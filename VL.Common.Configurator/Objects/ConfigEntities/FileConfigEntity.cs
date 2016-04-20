@@ -20,21 +20,29 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
 
         public FileConfigEntity(string fileName)
         {
-            InputFileName = fileName;
-            InputDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs");
-            OutputFileName = fileName;
-            OutputDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs");
+            var directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs");
+            Init(fileName, directoryPath, fileName, directoryPath);
         }
         public FileConfigEntity(string fileName, string directoryPath)
         {
-            InputFileName = fileName;
-            InputDirectoryPath = directoryPath;
-            OutputFileName = fileName;
-            OutputDirectoryPath = directoryPath;
+            Init(fileName, directoryPath, fileName, directoryPath);
         }
         public FileConfigEntity(string inputFileName, string inputDirectoryPath
             , string outputFileName, string outputDirectoryPath)
         {
+            Init(inputFileName, inputDirectoryPath, outputFileName, outputDirectoryPath);
+        }
+
+        private void Init(string inputFileName, string inputDirectoryPath, string outputFileName, string outputDirectoryPath)
+        {
+            if (inputFileName.IndexOf(".") <= 0)
+            {
+                inputFileName += ".config";
+            }
+            if (outputFileName.IndexOf(".") <= 0)
+            {
+                outputFileName += ".config";
+            }
             InputFileName = inputFileName;
             InputDirectoryPath = inputDirectoryPath;
             OutputFileName = outputFileName;
