@@ -46,7 +46,7 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
         XElement ToXElement();
     }
 
-    public class KeyValueConfigItem<T> : XMLConfigItem where T : struct, IConvertible
+    public class KeyValueConfigItem<T> : XMLConfigItem where T : IConvertible//struct,
     {
         public string Key { set; get; }
         public T Value { set; get; }
