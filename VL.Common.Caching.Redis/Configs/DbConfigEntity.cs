@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using VL.Common.Configurator.Objects.ConfigEntities;
-using VL.Common.DAS.Objects;
 
-namespace VL.Common.DAS.Utilities
+namespace VL.Common.Caching.Redis.Configs
 {
     public abstract class DbConfigEntity : XMLConfigEntity
     {
         public List<DbConfigItem> DbConfigItems { set; get; }
 
-        public DbConfigEntity(string fileName) : base(fileName)
+        public DbConfigEntity(string fileName="RedisDbConnections") : base(fileName)
         {
             DbConfigItems = GetDbConfigItems();
         }

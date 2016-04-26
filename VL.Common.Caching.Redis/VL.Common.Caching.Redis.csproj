@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A44364C-E8BD-4B70-93E4-96B68F3E97F3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{BCAFC198-ED5C-46DE-9726-1422251E82CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VL.Common.Testing</RootNamespace>
-    <AssemblyName>VL.Common.Testing</AssemblyName>
+    <RootNamespace>VL.Common.Caching.Redis</RootNamespace>
+    <AssemblyName>VL.Common.Caching.Redis</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,6 +30,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=4.0.54.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Common.4.0.54\lib\net40\ServiceStack.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=4.0.0.0, Culture=neutral, PublicKeyToken=e06fbc6124f57c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Interfaces.4.0.54\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=4.0.54.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.4.0.54\lib\net40\ServiceStack.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.0.54.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.4.0.54\lib\net40\ServiceStack.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
@@ -42,53 +59,26 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="VL.Common.Configurator, Version=1.1.5954.20021, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VL.Common.Configurator.1.1.1604201107.1\lib\net452\VL.Common.Configurator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configs\RedisDbConfigEntity.cs" />
-    <Compile Include="Controllers\Executers\ConsoleExecuter.cs" />
-    <Compile Include="Objects\ConsoloMenuItem.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Configs\DbConfigEntity.cs" />
+    <Compile Include="Configs\DbConfigItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedisCacheBuilder.cs" />
+    <Compile Include="RedisCacheProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="Configs\DbConfigEntity.config" />
-    <None Include="Configs\DbConnections.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ORMGenerate.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\VLProtocol.config" />
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\VL.Common.Caching.Redis\VL.Common.Caching.Redis.csproj">
-      <Project>{bcafc198-ed5c-46de-9726-1422251e82ce}</Project>
-      <Name>VL.Common.Caching.Redis</Name>
-    </ProjectReference>
     <ProjectReference Include="..\VL.Common.Caching\VL.Common.Caching.csproj">
       <Project>{7c3f7157-0dd1-47e2-9fb6-aa5cd8435bc9}</Project>
       <Name>VL.Common.Caching</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VL.Common.Configurator\VL.Common.Configurator.csproj">
-      <Project>{4167518b-d35a-4f12-8a5e-b7bea320c76d}</Project>
-      <Name>VL.Common.Configurator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VL.Common.DAS\VL.Common.DAS.csproj">
-      <Project>{1af58dc2-559c-46da-b27c-2c9a7cf10af1}</Project>
-      <Name>VL.Common.DAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VL.Common.Logger\VL.Common.Logger.csproj">
-      <Project>{0293cb98-eab0-43cc-b293-9a84fd84b518}</Project>
-      <Name>VL.Common.Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VL.Common.Protocol\VL.Common.Protocol.csproj">
-      <Project>{8cd7b6ca-a803-4fac-9acd-85555f6c2844}</Project>
-      <Name>VL.Common.Protocol</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

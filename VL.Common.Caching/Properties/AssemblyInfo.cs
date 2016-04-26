@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("VL.Common.LocalCache")]
+[assembly: AssemblyTitle("VL.Common.Caching")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VL.Common.LocalCache")]
+[assembly: AssemblyProduct("VL.Common.Caching")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("b8147aaf-eaf7-4b00-976d-e33923f7c810")]
+[assembly: Guid("7c3f7157-0dd1-47e2-9fb6-aa5cd8435bc9")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

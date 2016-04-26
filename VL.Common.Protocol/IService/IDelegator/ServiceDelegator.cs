@@ -35,7 +35,7 @@ namespace VL.Common.Protocol.IService
                 result.ResultCode = EResultCode.Error;
                 result.Message = ex.Message;
             }
-            ServiceContext.ServiceLogger.LogResult(result);
+            result.LogResult(ServiceContext.ServiceLogger);
             return result;
         }
         /// <summary>
@@ -90,7 +90,7 @@ namespace VL.Common.Protocol.IService
             {
                 session.Close();
             }
-            ServiceContext.ServiceLogger.LogResult(result);
+            result.LogResult(ServiceContext.ServiceLogger);
             return result;
         }
     }
