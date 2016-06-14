@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.ORM</id>
-    <version>1.0.1604121448.1</version>
+    <version>1.0.1606141419.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>关系映射模型
-IPDMTBase支持DataContract</description>
+PDMDataType增加boolean</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
