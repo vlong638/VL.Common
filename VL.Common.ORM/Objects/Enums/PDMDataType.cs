@@ -7,5 +7,6 @@
         numeric,
         datetime,
         uniqueidentifier,
+        boolean,
     }
 }

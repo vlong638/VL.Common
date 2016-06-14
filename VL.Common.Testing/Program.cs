@@ -8,6 +8,13 @@ using VL.Common.Testing.Configs;
 
 namespace VL.Common.Testing
 {
+    public static class StringEx
+    {
+        public static void ChangeString(this string s)
+        {
+            s = "2";
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -18,8 +25,15 @@ namespace VL.Common.Testing
 
             //0422标准的测试
             //CreateRedisConfig();
-            MemoryCache();
-            RedisCache();
+            //MemoryCache();
+            try
+            {
+                RedisCache();
+            }
+            catch (Exception ex)
+            {
+                string s = "";
+            }
         }
 
         private static void RedisCache()

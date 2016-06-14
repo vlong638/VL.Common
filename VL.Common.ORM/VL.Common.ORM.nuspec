@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>VL.Common.ORM</id>
+    <version>1.0.1604121448.1</version>
+    <authors>SecretV</authors>
+    <owners>SecretV</owners>
+    <description>关系映射模型
+IPDMTBase支持DataContract</description>
+    <copyright>Copyright ©  2016</copyright>
+    <tags></tags>
+  </metadata>
+</package>

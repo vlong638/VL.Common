@@ -19,8 +19,10 @@ namespace VL.Common.Protocol.IService
         public static ProtocolConfig ProtocolConfig { get; set; }
         /// <summary>
         /// 数据库配置
+        /// CARE:如需分布式缓存数据库,也要按照数据库做相应连接配置
         /// </summary>
         public static DbConfigEntity DatabaseConfig { get; set; }
+
 
         #region Self Init()
         /// <summary>

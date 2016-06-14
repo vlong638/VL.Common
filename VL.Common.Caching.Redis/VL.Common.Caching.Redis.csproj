@@ -72,7 +72,9 @@
     <Compile Include="RedisCacheProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Configs\DbConfigEntity.config" />
+    <None Include="Configs\DbConfigEntity.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
