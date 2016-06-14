@@ -23,6 +23,12 @@ namespace VL.Common.Protocol.IService
         /// </summary>
         public static DbConfigEntity DatabaseConfig { get; set; }
 
+        public ServiceContext(DbConfigEntity databaseConfig, ProtocolConfig protocolConfig, ILogger serviceLogger)
+        {
+            DatabaseConfig = databaseConfig;
+            ProtocolConfig = protocolConfig;
+            ServiceLogger = serviceLogger;
+        }
 
         #region Self Init()
         /// <summary>
