@@ -131,7 +131,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         /// </summary>
         public override T Select<T>(DbSession session, IDbQueryBuilder queryBuilder)
         {
-            var selectBuilder = queryBuilder.SelectBuilders.FirstOrDefault();
+            SelectBuilder selectBuilder = queryBuilder.SelectBuilders.FirstOrDefault();
             return Select<T>(session, selectBuilder);
         }
         /// <summary>
@@ -194,8 +194,8 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         /// </summary>
         public override List<T> SelectAll<T>(DbSession session, IDbQueryBuilder queryBuilder)
         {
-            var selectBuilder = queryBuilder.SelectBuilders.First();
-            return SelectAll<T>(session, queryBuilder);
+            SelectBuilder selectBuilder = queryBuilder.SelectBuilders.First();
+            return SelectAll<T>(session, selectBuilder);
         }
         /// <summary>
         /// 失败返回 new List<T>()
