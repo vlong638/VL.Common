@@ -34,7 +34,7 @@ namespace VL.Common.Protocol.IService
             catch (Exception ex)
             {
                 result.ResultCode = EResultCode.Error;
-                result.Message = ex.Message;
+                result.Message = ex.ToString();
             }
             result.LogResult(ServiceContext.ServiceLogger);
             return result;
@@ -72,7 +72,7 @@ namespace VL.Common.Protocol.IService
                 catch (Exception ex)
                 {
                     result.ResultCode = EResultCode.Error;
-                    result.Message = ex.Message;
+                    result.Message = ex.ToString();
                 }
                 if (result.ResultCode == EResultCode.Success)
                 {
@@ -86,7 +86,7 @@ namespace VL.Common.Protocol.IService
             catch (Exception ex)
             {
                 result.ResultCode = EResultCode.Error;
-                result.Message = ex.Message;
+                result.Message = ex.ToString();
             }
             finally
             {

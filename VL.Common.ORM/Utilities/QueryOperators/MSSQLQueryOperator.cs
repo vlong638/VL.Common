@@ -264,7 +264,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             WriteLog(command.CommandText);
             var data = session.ExecuteScalar(command);
             int result;
-            if (int.TryParse(data.ToString(), out result))
+            if (data!=null&&int.TryParse(data.ToString(), out result))
             {
                 return result;
             }
@@ -288,7 +288,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             WriteLog(command.CommandText);
             var data = session.ExecuteScalar(command);
             long result;
-            if (long.TryParse(data.ToString(), out result))
+            if (data != null && long.TryParse(data.ToString(), out result))
             {
                 return result;
             }
@@ -310,7 +310,15 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             command.CommandText = selectBuilder.ToQueryString(session, selectBuilder.TableName);
             selectBuilder.AppendQueryParameter(ref command, session);
             WriteLog(command.CommandText);
-            return session.ExecuteScalar(command).ToString();
+            var data = session.ExecuteScalar(command);
+            if (data!=null)
+            {
+                return data.ToString();
+            }
+            else
+            {
+                return null;
+            }
         }
         /// <summary>
         /// 未查询到数据时返回 null
@@ -327,7 +335,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             WriteLog(command.CommandText);
             var data = session.ExecuteScalar(command);
             DateTime result;
-            if (DateTime.TryParse(data.ToString(), out result))
+            if (data != null && DateTime.TryParse(data.ToString(), out result))
             {
                 return result;
             }

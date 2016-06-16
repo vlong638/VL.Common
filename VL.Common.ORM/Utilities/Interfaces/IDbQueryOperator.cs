@@ -56,6 +56,10 @@ namespace VL.Common.ORM.Utilities.QueryOperators
                 return _filePath;
             }
         }
+        /// <summary>
+        /// 日志锁
+        /// </summary>
+        public static object LogLocker = new object();
 
         /// <summary>
         /// 输出日志
@@ -65,7 +69,10 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         {
             if (IsLogQuery)
             {
-                File.AppendAllText(FilePath, log);
+                lock (LogLocker)
+                {
+                    File.AppendAllText(FilePath, log + System.Environment.NewLine);
+                }
             }
         } 
         #endregion
