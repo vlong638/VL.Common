@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Configurator</id>
-    <version>1.1.1604201107.1</version>
+    <version>1.1.1606151101.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>配置处理工具
-FileConfigEntity补充默认后缀.config</description>
+</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

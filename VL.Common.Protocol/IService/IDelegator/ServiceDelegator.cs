@@ -18,17 +18,18 @@ namespace VL.Common.Protocol.IService
             var result = new T();
             result.MethodName = nameof(HandleEvent);
             result.ResultCode = EResultCode.Success;
-            //模拟开关检测
-            if (isSimulation && !ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
-            {
-                result.ResultCode = EResultCode.Failure;
-                result.Message = "未开启对Simulation的支持";
-                return result;
-            }
+            ////模拟开关检测
+            //if (isSimulation && !ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
+            //{
+            //    result.ResultCode = EResultCode.Failure;
+            //    result.Message = "未开启对Simulation的支持";
+            //    return result;
+            //}
             //业务逻辑处理
             try
             {
-                result.CopyAll(func());
+                result = func();
+                //result.CopyAll(func());
             }
             catch (Exception ex)
             {
@@ -50,13 +51,13 @@ namespace VL.Common.Protocol.IService
             result.MethodName = nameof(HandleSimpleTransactionEvent);
             result.ResultCode = EResultCode.Success;
             DbSession session = null;
-            //模拟开关检测
-            if (isSimulation && !ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
-            {
-                result.ResultCode = EResultCode.Failure;
-                result.Message = "未开启对Simulation的支持";
-                return result;
-            }
+            ////模拟开关检测
+            //if (isSimulation && !ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
+            //{
+            //    result.ResultCode = EResultCode.Failure;
+            //    result.Message = "未开启对Simulation的支持";
+            //    return result;
+            //}
             //业务逻辑处理
             try
             {
@@ -65,7 +66,8 @@ namespace VL.Common.Protocol.IService
                 session.BeginTransaction();
                 try
                 {
-                    result.CopyAll(func(session));
+                    result = func(session);
+                    //result.CopyAll(func(session));
                 }
                 catch (Exception ex)
                 {

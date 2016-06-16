@@ -69,6 +69,13 @@ namespace VL.Common.Protocol.IService
                 ServiceLogger.Error("配置文件不存在,配置文件:" + configEntity.InputFileName);
                 try
                 {
+                    if (configEntity is DbConfigEntity)
+                    {
+                        DbConfigEntity dbConfig = (DbConfigEntity)configEntity;
+                        dbConfig.DbConfigItems.Add(new DbConfigItem("OracleSample") { ConnectingString = "", DbType = DAS.Objects.EDatabaseType.Oracle });
+                        dbConfig.DbConfigItems.Add(new DbConfigItem("MySQLSample") { ConnectingString = "", DbType = DAS.Objects.EDatabaseType.MySQL });
+                        dbConfig.DbConfigItems.Add(new DbConfigItem("MSSQLSample") { ConnectingString = "", DbType = DAS.Objects.EDatabaseType.MSSQL });
+                    }
                     configEntity.Save();
                     ServiceLogger.Error("已创建默认的配置文件,请在配置后重试,文件路径:" + configEntity.InputFilePath);
                 }
@@ -128,6 +135,7 @@ namespace VL.Common.Protocol.IService
         /// <returns></returns>
         public DependencyResult InitForService()
         {
+            ServiceLogger.Info("---------------------服务的依赖项检测--开始---------------------");
             DependencyResult result = new DependencyResult();
             //配置文件依赖检测
             result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(ProtocolConfig));
@@ -164,6 +172,13 @@ namespace VL.Common.Protocol.IService
                 message.AppendLine("配置文件不存在,配置文件:" + configEntity.InputFileName);
                 try
                 {
+                    if (configEntity is DbConfigEntity)
+                    {
+                        DbConfigEntity dbConfig = (DbConfigEntity)configEntity;
+                        dbConfig.DbConfigItems.Add(new DbConfigItem("OracleSample") { ConnectingString = "", DbType = DAS.Objects.EDatabaseType.Oracle });
+                        dbConfig.DbConfigItems.Add(new DbConfigItem("MySQLSample") { ConnectingString = "", DbType = DAS.Objects.EDatabaseType.MySQL });
+                        dbConfig.DbConfigItems.Add(new DbConfigItem("MSSQLSample") { ConnectingString = "", DbType = DAS.Objects.EDatabaseType.MSSQL });
+                    }
                     configEntity.Save();
                     message.AppendLine("已创建默认的配置文件,请在配置后重试,文件路径:" + configEntity.InputFilePath);
                 }

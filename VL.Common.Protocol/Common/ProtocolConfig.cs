@@ -13,7 +13,7 @@ namespace VL.Common.Protocol
         /// </summary>
         public KeyValueConfigItem<bool> IsSimulationAvailable { set; get; } = new KeyValueConfigItem<bool>(nameof(IsSimulationAvailable));
 
-        public ProtocolConfig(string fileName) : base(fileName)
+        public ProtocolConfig(string fileName=nameof(ProtocolConfig)) : base(fileName)
         {
         }
         public ProtocolConfig(string fileName, string directoryPath) : base(fileName, directoryPath)

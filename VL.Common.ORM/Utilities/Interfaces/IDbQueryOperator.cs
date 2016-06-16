@@ -1,18 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using VL.Common.DAS.Objects;
 using VL.Common.ORM.Objects;
 using VL.Common.ORM.Utilities.QueryBuilders;
 
 namespace VL.Common.ORM.Utilities.QueryOperators
 {
+    /// <summary>
+    /// 数据库操作类
+    /// </summary>
     public abstract class IDbQueryOperator
     {
+        #region Log
+        private static string _directoryPath;
+        private static string _filePath;
+
+        /// <summary>
+        /// 是否输出查询字符串
+        /// </summary>
+        public bool IsLogQuery { set; get; } = false;
+        /// <summary>
+        /// 日志输出文件夹
+        /// </summary>
+        public static string DirectoryPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_directoryPath))
+                {
+                    _directoryPath = Path.Combine(Environment.CurrentDirectory, "Logs");
+                    if (!Directory.Exists(_directoryPath))
+                    {
+                        Directory.CreateDirectory(_directoryPath);
+                    }
+                }
+                return _directoryPath;
+            }
+        }
+        /// <summary>
+        /// 日志输出文件
+        /// </summary>
+        public static string FilePath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_filePath))
+                {
+                    _filePath = Path.Combine(DirectoryPath, nameof(ORM) + ".txt");
+                    if (!File.Exists(_filePath))
+                    {
+                        File.Create(_filePath);
+                    }
+                }
+                return _filePath;
+            }
+        }
+
+        /// <summary>
+        /// 输出日志
+        /// </summary>
+        /// <param name="log"></param>
+        public void WriteLog(string log)
+        {
+            if (IsLogQuery)
+            {
+                File.AppendAllText(FilePath, log);
+            }
+        } 
+        #endregion
+
         /// <summary>
         /// 不同的数据库 对应操作的优化 不同
         /// </summary>
-        /// <param name="databaseType"></param>
-        /// <returns></returns>
         public static IDbQueryOperator GetQueryOperator(DbSession session)
         {
             switch (session.DatabaseType)

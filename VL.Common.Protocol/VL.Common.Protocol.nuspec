@@ -2,12 +2,10 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1604141003.1</version>
+    <version>1.0.1606151425.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-IResult的规格修正
-支持CopyAll(),CopyContent()
 </description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
