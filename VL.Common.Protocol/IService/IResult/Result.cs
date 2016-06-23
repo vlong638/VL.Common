@@ -55,16 +55,16 @@ namespace VL.Common.Protocol.IService
         }
 
         [DataMember]
-        public T SubResultCode { set; get; } = default(T);
+        public T Data { set; get; } = default(T);
 
         public void CopyAll(Result<T> result)
         {
-            SubResultCode = result.SubResultCode;
+            Data = result.Data;
             base.CopyAll(result);
         }
         public void CopyContent(Result<T> result)
         {
-            SubResultCode = result.SubResultCode;
+            Data = result.Data;
             base.CopyContent(result);
         }
     }
