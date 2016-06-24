@@ -3,7 +3,7 @@
 namespace VL.Common.Protocol.IService
 {
     /// <summary>
-    /// 依赖项详情
+    /// 依赖项详情 单元组件
     /// </summary>
     [DataContract]
     public class DependencyDetail
