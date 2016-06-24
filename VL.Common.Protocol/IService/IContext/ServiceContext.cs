@@ -37,20 +37,28 @@ namespace VL.Common.Protocol.IService
         /// <returns></returns>
         public bool InitForConsole()
         {
-            bool result = true;
             ServiceLogger.Info("---------------------服务的依赖项检测--开始---------------------");
+            DependencyResult result = new DependencyResult();
             //配置文件依赖检测
-            result = result && CheckAvailabilityOfConfigForConsole(ProtocolConfig);
-            result = result && CheckAvailabilityOfConfigForConsole(DatabaseConfig);
+            result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(ProtocolConfig));
+            result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(DatabaseConfig));
             //数据库依赖检测
             foreach (var dbConfigItem in DatabaseConfig.DbConfigItems)
             {
-                result = result && CheckAvailabilityOfDbSessionForConsole(dbConfigItem);
+                result.DependencyDetails.Add(CheckAvailabilityOfDbSessionForService(dbConfigItem));
             }
             //其他依赖项检测
-            result = result && InitOthers();
+            foreach (var dependencyDetail in InitOthers().DependencyDetails)
+            {
+                result.DependencyDetails.Add(dependencyDetail);
+            }
+            //输出检测项结果
+            foreach (var dependencyDetail in result.DependencyDetails)
+            {
+                Console.WriteLine(dependencyDetail.Message);
+            }
             ServiceLogger.Info("---------------------服务的依赖项检测--结束---------------------");
-            return result;
+            return result.IsAllDependenciesAvailable;
         }
         /// <summary>
         /// 校验配置文件的可用性:加载
@@ -145,8 +153,11 @@ namespace VL.Common.Protocol.IService
             {
                 result.DependencyDetails.Add(CheckAvailabilityOfDbSessionForService(dbConfigItem));
             }
-            ////TODO 其他依赖项检测
-            //result = result && InitOthers();
+            //其他依赖项检测
+            foreach (var dependencyDetail in InitOthers().DependencyDetails)
+            {
+                result.DependencyDetails.Add(dependencyDetail);
+            }
             ServiceLogger.Info("---------------------服务的依赖项检测--结束---------------------");
             return result;
         }
@@ -244,6 +255,6 @@ namespace VL.Common.Protocol.IService
         /// 上下文初始化
         /// </summary>
         /// <returns></returns>
-        protected abstract bool InitOthers();
+        protected abstract DependencyResult InitOthers();
     }
 }

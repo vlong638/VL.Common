@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 
 namespace VL.Common.Protocol.IService
@@ -12,6 +13,12 @@ namespace VL.Common.Protocol.IService
         [DataMember]
         public List<DependencyDetail> DependencyDetails { set; get; } = new List<DependencyDetail>();
         [DataMember]
-        public bool IsAllDependenciesAvailable { set; get; }
+        public bool IsAllDependenciesAvailable
+        {
+            get
+            {
+                return DependencyDetails.Where(c => c.IsDependencyAvailable != true).Count() == 0;
+            }
+        }
     }
 }
