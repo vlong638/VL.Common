@@ -40,6 +40,6 @@ namespace VL.Common.ORM.Objects
         /// <summary>
         /// 获取表名
         /// </summary>
-        public abstract string GetTableName();
+        public abstract string TableName { get; }
     }
 }

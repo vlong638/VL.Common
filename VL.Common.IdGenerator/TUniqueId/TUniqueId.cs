@@ -38,9 +38,12 @@ namespace VL.Common.Entities
                 this.IdentityValue = Convert.ToString(reader[nameof(this.IdentityValue)]);
             }
         }
-        public override string GetTableName()
+        public override string TableName
         {
-            return nameof(TUniqueId);
+            get
+            {
+                return nameof(TUniqueId);
+            }
         }
         #endregion
     }

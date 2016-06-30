@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using VL.Common.Configurator.Objects.ConfigEntities;
 using VL.Common.DAS.Utilities;
@@ -38,7 +39,10 @@ namespace VL.Common.Protocol.IService
         public bool InitForConsole()
         {
             ServiceLogger.Info("---------------------服务的依赖项检测--开始---------------------");
-            DependencyResult result = new DependencyResult();
+            DependencyResult result = new DependencyResult()
+            {
+                UnitName = GetUnitName()
+            };
             //配置文件依赖检测
             result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(ProtocolConfig));
             result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(DatabaseConfig));
@@ -47,22 +51,23 @@ namespace VL.Common.Protocol.IService
             {
                 result.DependencyDetails.Add(CheckAvailabilityOfDbSessionForService(dbConfigItem));
             }
-            //其他依赖项检测
+            //添加其他依赖项检测结果
             foreach (var dependencyResult in InitOthers())
             {
                 result.DependencyResults.Add(dependencyResult);
             }
+
             //输出检测项结果
-            foreach (var dependencyDetail in result.DependencyDetails)
+            foreach (var dependencyDetail in result.DependencyDetails.Where(c=>!c.IsDependencyAvailable))
             {
                 Console.WriteLine(dependencyDetail.Message);
             }
-            foreach (var dependencyResult in result.DependencyResults)
+            foreach (var dependencyResult in result.DependencyResults.Where(c=>!c.IsAllDependenciesAvailable()))
             {
-                Console.WriteLine(dependencyResult.Message);
+                Console.WriteLine(dependencyResult.GetMessage());
             }
             ServiceLogger.Info("---------------------服务的依赖项检测--结束---------------------");
-            return result.IsAllDependenciesAvailable;
+            return result.IsAllDependenciesAvailable();
         }
         /// <summary>
         /// 获取依赖单元名称
@@ -76,7 +81,10 @@ namespace VL.Common.Protocol.IService
         public DependencyResult InitForService()
         {
             ServiceLogger.Info("---------------------服务的依赖项检测--开始---------------------");
-            DependencyResult result = new DependencyResult();
+            DependencyResult result = new DependencyResult()
+            {
+                UnitName = GetUnitName()
+            };
             //配置文件依赖检测
             result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(ProtocolConfig));
             result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(DatabaseConfig));
@@ -89,6 +97,18 @@ namespace VL.Common.Protocol.IService
             foreach (var dependencyResult in InitOthers())
             {
                 result.DependencyResults.Add(dependencyResult);
+            }
+            //记录自身错误
+            if (!result.IsAllDependenciesAvailable())
+            {
+                foreach (var dependencyDetail in result.DependencyDetails.Where(c=>!c.IsDependencyAvailable))
+                {
+                    ServiceLogger.Info(dependencyDetail.Message);
+                }
+                foreach (var dependencyResult in result.DependencyResults.Where(c => !c.IsAllDependenciesAvailable()))
+                {
+                    ServiceLogger.Info(dependencyResult.GetMessage());
+                }
             }
             ServiceLogger.Info("---------------------服务的依赖项检测--结束---------------------");
             return result;
@@ -161,7 +181,6 @@ namespace VL.Common.Protocol.IService
             result.DependencyType = DependencyType.Database;
             result.DependencyName = dbConfigItem.DbName;
             StringBuilder message = new StringBuilder();
-
             try
             {
                 var session = dbConfigItem.GetDbSession();

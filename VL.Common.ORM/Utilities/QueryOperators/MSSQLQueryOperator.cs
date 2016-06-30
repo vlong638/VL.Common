@@ -32,7 +32,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
                 throw new NotImplementedException("缺少有效的" + nameof(InsertBuilder));
             }
             DbCommand command = session.CreateCommand();
-            command.CommandText = insertBuilder.ToQueryString(session, new T().GetTableName());
+            command.CommandText = insertBuilder.ToQueryString(session, new T().TableName);
             insertBuilder.AppendQueryParameter(ref command, session);
             WriteLog(command.CommandText);
             return session.ExecuteNonQuery(command) > 0;
@@ -46,7 +46,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         {
             bool result = true;
             DbCommand command = session.CreateCommand();
-            string tableName = new T().GetTableName();
+            string tableName = new T().TableName;
             foreach (var insertBuilder in queryBuilder.InsertBuilders)
             {
                 command.CommandText = insertBuilder.ToQueryString(session, tableName);
@@ -76,7 +76,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
                 throw new NotImplementedException("缺少有效的" + nameof(DeleteBuilder));
             }
             DbCommand command = session.CreateCommand();
-            command.CommandText = deleteBuilder.ToQueryString(session, new T().GetTableName());
+            command.CommandText = deleteBuilder.ToQueryString(session, new T().TableName);
             deleteBuilder.AppendQueryParameter(ref command, session);
             WriteLog(command.CommandText);
             return session.ExecuteNonQuery(command) > 0;
@@ -101,7 +101,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
                 throw new NotImplementedException("缺少有效的" + nameof(UpdateBuilder));
             }
             DbCommand command = session.CreateCommand();
-            command.CommandText = updateBuilder.ToQueryString(session, new T().GetTableName());
+            command.CommandText = updateBuilder.ToQueryString(session, new T().TableName);
             updateBuilder.AppendQueryParameter(ref command, session);
             WriteLog(command.CommandText);
             return session.ExecuteNonQuery(command) > 0;
@@ -117,7 +117,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             DbCommand command = session.CreateCommand();
             foreach (var updateBuilder in queryBuilder.UpdateBuilders)
             {
-                command.CommandText = updateBuilder.ToQueryString(session, new T().GetTableName());
+                command.CommandText = updateBuilder.ToQueryString(session, new T().TableName);
                 updateBuilder.AppendQueryParameter(ref command, session);
                 WriteLog(command.CommandText);
                 result = result && session.ExecuteNonQuery(command) > 0;
@@ -145,7 +145,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             }
             T result = new T();
             DbCommand command = session.CreateCommand();
-            command.CommandText = selectBuilder.ToQueryString(session, new T().GetTableName());
+            command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AppendQueryParameter(ref command, session);
             WriteLog(command.CommandText);
             using (var reader = session.ExecuteDataReader(command))
@@ -176,7 +176,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         public override List<T> SelectAll<T>(DbSession session)
         {
             List<T> results = new List<T>();
-            var command = session.CreateCommand("select * from {0}", new T().GetTableName());
+            var command = session.CreateCommand("select * from {0}", new T().TableName);
             WriteLog(command.CommandText);
             using (var reader = session.ExecuteDataReader(command))
             {
@@ -208,7 +208,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             }
             List<T> results = new List<T>();
             DbCommand command = session.CreateCommand();
-            command.CommandText = selectBuilder.ToQueryString(session, new T().GetTableName());
+            command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AppendQueryParameter(ref command, session);
             WriteLog(command.CommandText);
             using (var reader = session.ExecuteDataReader(command))
