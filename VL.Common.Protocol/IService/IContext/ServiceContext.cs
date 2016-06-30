@@ -32,43 +32,42 @@ namespace VL.Common.Protocol.IService
             ServiceLogger = serviceLogger;
         }
         
-        /// <summary>
-        /// 上下文初始化
-        /// </summary>
-        /// <returns></returns>
-        public bool InitForConsole()
-        {
-            ServiceLogger.Info("---------------------服务的依赖项检测--开始---------------------");
-            DependencyResult result = new DependencyResult()
-            {
-                UnitName = GetUnitName()
-            };
-            //配置文件依赖检测
-            result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(ProtocolConfig));
-            result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(DatabaseConfig));
-            //数据库依赖检测
-            foreach (var dbConfigItem in DatabaseConfig.DbConfigItems)
-            {
-                result.DependencyDetails.Add(CheckAvailabilityOfDbSessionForService(dbConfigItem));
-            }
-            //添加其他依赖项检测结果
-            foreach (var dependencyResult in InitOthers())
-            {
-                result.DependencyResults.Add(dependencyResult);
-            }
-
-            //输出检测项结果
-            foreach (var dependencyDetail in result.DependencyDetails.Where(c=>!c.IsDependencyAvailable))
-            {
-                Console.WriteLine(dependencyDetail.Message);
-            }
-            foreach (var dependencyResult in result.DependencyResults.Where(c=>!c.IsAllDependenciesAvailable()))
-            {
-                Console.WriteLine(dependencyResult.GetMessage());
-            }
-            ServiceLogger.Info("---------------------服务的依赖项检测--结束---------------------");
-            return result.IsAllDependenciesAvailable();
-        }
+        ///// <summary>
+        ///// 上下文初始化
+        ///// </summary>
+        ///// <returns></returns>
+        //public bool InitForConsole()
+        //{
+        //    ServiceLogger.Info("---------------------服务的依赖项检测--开始---------------------");
+        //    DependencyResult result = new DependencyResult()
+        //    {
+        //        UnitName = GetUnitName()
+        //    };
+        //    //配置文件依赖检测
+        //    result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(ProtocolConfig));
+        //    result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(DatabaseConfig));
+        //    //数据库依赖检测
+        //    foreach (var dbConfigItem in DatabaseConfig.DbConfigItems)
+        //    {
+        //        result.DependencyDetails.Add(CheckAvailabilityOfDbSessionForService(dbConfigItem));
+        //    }
+        //    //添加其他依赖项检测结果
+        //    foreach (var dependencyResult in InitOthers())
+        //    {
+        //        result.DependencyResults.Add(dependencyResult);
+        //    }
+        //    //输出检测项结果
+        //    foreach (var dependencyDetail in result.DependencyDetails.Where(c=>!c.IsDependencyAvailable))
+        //    {
+        //        ServiceLogger.Info(dependencyDetail.Message);
+        //    }
+        //    foreach (var dependencyResult in result.DependencyResults.Where(c=>!c.IsAllDependenciesAvailable()))
+        //    {
+        //        ServiceLogger.Info(dependencyResult.GetMessage());
+        //    }
+        //    ServiceLogger.Info("---------------------服务的依赖项检测--结束---------------------");
+        //    return result.IsAllDependenciesAvailable();
+        //}
         /// <summary>
         /// 获取依赖单元名称
         /// </summary>
@@ -78,7 +77,7 @@ namespace VL.Common.Protocol.IService
         /// 上下文初始化
         /// </summary>
         /// <returns></returns>
-        public DependencyResult InitForService()
+        public DependencyResult Init()
         {
             ServiceLogger.Info("---------------------服务的依赖项检测--开始---------------------");
             DependencyResult result = new DependencyResult()
@@ -99,9 +98,13 @@ namespace VL.Common.Protocol.IService
                 result.DependencyResults.Add(dependencyResult);
             }
             //记录自身错误
-            if (!result.IsAllDependenciesAvailable())
+            if (result.IsAllDependenciesAvailable())
             {
-                foreach (var dependencyDetail in result.DependencyDetails.Where(c=>!c.IsDependencyAvailable))
+                ServiceLogger.Info("依赖项检测通过");
+            }
+            else
+            {
+                foreach (var dependencyDetail in result.DependencyDetails.Where(c => !c.IsDependencyAvailable))
                 {
                     ServiceLogger.Info(dependencyDetail.Message);
                 }
