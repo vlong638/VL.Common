@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1606301428.1</version>
+    <version>1.0.1606301448.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-细节修改</description>
+</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

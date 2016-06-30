@@ -21,12 +21,12 @@ namespace VL.Common.Protocol.IService
         /// <summary>
         /// 依赖单元的自身元素检测
         /// </summary>
-        [DataMember]
+        //[DataMember]
         public List<DependencyDetail> DependencyDetails { set; get; } = new List<DependencyDetail>();
         /// <summary>
         /// 相关的依赖单元的检测
         /// </summary>
-        [DataMember]
+        //[DataMember]
         public List<DependencyResult> DependencyResults { set; get; } = new List<DependencyResult>();
 
         /// <summary>
@@ -37,19 +37,19 @@ namespace VL.Common.Protocol.IService
         /// <summary>
         /// 单元检测结果描述
         /// </summary>
-        public string GetMessage()
+        [DataMember]
+        public string Message { set; get; }
+        [DataMember]
+        public bool IsAllDependenciesAvailable { set; get; }
+
+
+        public void UpdateInfoFromDependencies()
         {
-            return "单元<" + UnitName + ">" + (IsAllDependenciesAvailable() ? "依赖检测通过" : "依赖检测未通过,错误详情:" + System.Environment.NewLine
+            Message = "单元<" + UnitName + ">" + (IsAllDependenciesAvailable ? "依赖检测通过" : "依赖检测未通过,错误详情:" + System.Environment.NewLine
                 + DependencyDetails.Where(c => c.IsDependencyAvailable == false).Select(c => c.Message + System.Environment.NewLine)
-                + DependencyResults.Where(c => c.IsAllDependenciesAvailable() == false).Select(c => c.GetMessage() + System.Environment.NewLine));
-        }
-        /// <summary>
-        /// 单元检测结果
-        /// </summary>
-        public bool IsAllDependenciesAvailable()
-        {
-            return DependencyDetails.Where(c => c.IsDependencyAvailable != true).Count() == 0
-                && DependencyResults.Where(c => c.IsAllDependenciesAvailable() != true).Count() == 0;
+                + DependencyResults.Where(c => c.IsAllDependenciesAvailable == false).Select(c => string.Format("所属单元:{1}{0}错误详情:{2}{0}", System.Environment.NewLine, c.UnitName, c.Message)));
+            IsAllDependenciesAvailable= DependencyDetails.Where(c => c.IsDependencyAvailable != true).Count() == 0
+               && DependencyResults.Where(c => c.IsAllDependenciesAvailable != true).Count() == 0;
         }
     }
 }
