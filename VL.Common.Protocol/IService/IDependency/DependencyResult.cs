@@ -21,7 +21,7 @@ namespace VL.Common.Protocol.IService
         /// <summary>
         /// 依赖单元的自身元素检测
         /// </summary>
-        //[DataMember]
+        [DataMember]
         public List<DependencyDetail> DependencyDetails { set; get; } = new List<DependencyDetail>();
         /// <summary>
         /// 相关的依赖单元的检测
