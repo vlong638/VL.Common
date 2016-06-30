@@ -9,9 +9,9 @@ namespace VL.Common.Protocol
     public class ProtocolConfig : XMLConfigEntity
     {
         /// <summary>
-        /// 是否支持模拟
+        /// 是否支持SQL输出
         /// </summary>
-        public KeyValueConfigItem<bool> IsSimulationAvailable { set; get; } = new KeyValueConfigItem<bool>(nameof(IsSimulationAvailable));
+        public KeyValueConfigItem<bool> IsSQLLogAvailable { set; get; } = new KeyValueConfigItem<bool>(nameof(IsSQLLogAvailable));
 
         public ProtocolConfig(string fileName=nameof(ProtocolConfig)) : base(fileName)
         {
@@ -23,13 +23,13 @@ namespace VL.Common.Protocol
         protected override void Load(XDocument doc)
         {
             var elements = doc.Descendants(nameof(XMLConfigItem));
-            IsSimulationAvailable.SetValue(elements);
+            IsSQLLogAvailable.SetValue(elements);
         }
 
         public override IEnumerable<XElement> GetXElements()
         {
             List<XElement> elements = new List<XElement>();
-            elements.Add(IsSimulationAvailable.ToXElement());
+            elements.Add(IsSQLLogAvailable.ToXElement());
             return elements;
         }
     }

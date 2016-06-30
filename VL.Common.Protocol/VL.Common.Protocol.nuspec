@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1606301520.1</version>
+    <version>1.0.1606301707.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-依赖检测的输出优化</description>
+添加对ORM的支持</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

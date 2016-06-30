@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.ORM</id>
-    <version>1.0.1606301509.1</version>
+    <version>1.0.1606301710.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>关系映射模型
-</description>
+0630调整 将ORM的创建部分添加至Protocol</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

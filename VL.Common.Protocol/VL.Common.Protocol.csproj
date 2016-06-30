@@ -76,6 +76,7 @@
     <Compile Include="IService\IContext\ServiceContext.cs" />
     <Compile Include="IService\IDependency\IWCFServiceNode.cs" />
     <Compile Include="IService\IDelegator\ServiceDelegator.cs" />
+    <Compile Include="IService\IORM\IORMProvider.cs" />
     <Compile Include="IService\ISimulation\ISimulatable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IService\IResult\EResultCode.cs" />
@@ -86,7 +87,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\VL.Common.ORM\VL.Common.ORM.csproj">
+      <Project>{6c5ac894-c902-494c-9743-8a57ba2b637b}</Project>
+      <Name>VL.Common.ORM</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

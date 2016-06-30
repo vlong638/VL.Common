@@ -9,6 +9,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
 {
     /// <summary>
     /// 数据库操作类
+    /// 提供数据库操作类的规范
     /// </summary>
     public abstract class IDbQueryOperator
     {
@@ -77,22 +78,23 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         } 
         #endregion
 
-        /// <summary>
-        /// 不同的数据库 对应操作的优化 不同
-        /// </summary>
-        public static IDbQueryOperator GetQueryOperator(DbSession session)
-        {
-            switch (session.DatabaseType)
-            {
-                case EDatabaseType.MSSQL:
-                    return new MSSQLQueryOperator();
-                case EDatabaseType.Oracle:
-                case EDatabaseType.MySQL:
-                //TODO 未支持多数据库
-                default:
-                    throw new NotImplementedException("未为该类型" + session.DatabaseType + "实现对应的QueryOperator");
-            }
-        }
+        //0630迁移至Protocol
+        ///// <summary>
+        ///// 不同的数据库 对应操作的优化 不同
+        ///// </summary>
+        //public static IDbQueryOperator GetQueryOperator(DbSession session)
+        //{
+        //    switch (session.DatabaseType)
+        //    {
+        //        case EDatabaseType.MSSQL:
+        //            return new MSSQLQueryOperator();
+        //        case EDatabaseType.Oracle:
+        //        case EDatabaseType.MySQL:
+        //        //TODO 未支持多数据库
+        //        default:
+        //            throw new NotImplementedException("未为该类型" + session.DatabaseType + "实现对应的QueryOperator");
+        //    }
+        //}
 
         #region 基于QueryBuilder的查询方法
         /// <summary>

@@ -4,21 +4,25 @@ using VL.Common.DAS.Objects;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {
+    /// <summary>
+    /// 数据库语句构建类
+    /// </summary>
     public abstract class IDbQueryBuilder
     {
-        public static IDbQueryBuilder GetDbQueryBuilder(DbSession session)
-        {
-            switch (session.DatabaseType)
-            {
-                case EDatabaseType.MSSQL:
-                    return new MSSQLQueryBuilder();
-                case EDatabaseType.MySQL:
-                case EDatabaseType.Oracle:
-                //TODO 未支持多数据库
-                default:
-                    throw new NotImplementedException("未实现该类别的QueryBuilder" + session.DatabaseType);
-            }
-        }
+        ////迁移至Protocol 0630
+        //public static IDbQueryBuilder GetDbQueryBuilder(DbSession session)
+        //{
+        //    switch (session.DatabaseType)
+        //    {
+        //        case EDatabaseType.MSSQL:
+        //            return new MSSQLQueryBuilder();
+        //        case EDatabaseType.MySQL:
+        //        case EDatabaseType.Oracle:
+        //        //TODO 未支持多数据库
+        //        default:
+        //            throw new NotImplementedException("未实现该类别的QueryBuilder" + session.DatabaseType);
+        //    }
+        //}
 
         //public string TableName { set; get; }
         private OperateType operateType;
