@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
+using System.Text;
 using VL.Common.DAS.Objects;
 using VL.Common.ORM.Objects;
 using VL.Common.ORM.Utilities.QueryBuilders;
@@ -14,13 +16,10 @@ namespace VL.Common.ORM.Utilities.QueryOperators
     public abstract class IDbQueryOperator
     {
         #region Log
-        private static string _directoryPath;
-        private static string _filePath;
-
         /// <summary>
         /// 是否输出查询字符串
         /// </summary>
-        public bool IsLogQuery { set; get; } = false;
+        public bool IsLogQuery { set; get; } = true;
         /// <summary>
         /// 日志输出文件夹
         /// </summary>
@@ -30,7 +29,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             {
                 if (string.IsNullOrEmpty(_directoryPath))
                 {
-                    _directoryPath = Path.Combine(Environment.CurrentDirectory, "Logs");
+                    _directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
                     if (!Directory.Exists(_directoryPath))
                     {
                         Directory.CreateDirectory(_directoryPath);
@@ -39,6 +38,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
                 return _directoryPath;
             }
         }
+        private static string _directoryPath;
         /// <summary>
         /// 日志输出文件
         /// </summary>
@@ -49,14 +49,15 @@ namespace VL.Common.ORM.Utilities.QueryOperators
                 if (string.IsNullOrEmpty(_filePath))
                 {
                     _filePath = Path.Combine(DirectoryPath, nameof(ORM) + ".txt");
-                    if (!File.Exists(_filePath))
-                    {
-                        File.Create(_filePath);
-                    }
+                    //if (!File.Exists(_filePath))
+                    //{
+                    //    File.Create(_filePath);
+                    //}
                 }
                 return _filePath;
             }
         }
+        private static string _filePath;
         /// <summary>
         /// 日志锁
         /// </summary>
@@ -65,17 +66,24 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         /// <summary>
         /// 输出日志
         /// </summary>
-        /// <param name="log"></param>
-        public void WriteLog(string log)
+        public void WriteQueryLog(DbCommand command)
         {
             if (IsLogQuery)
             {
                 lock (LogLocker)
                 {
-                    File.AppendAllText(FilePath, log + System.Environment.NewLine);
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine("--------------");
+                    sb.AppendLine("执行时间:" + DateTime.Now);
+                    sb.AppendLine("执行语句:"+command.CommandText);
+                    foreach (DbParameter Parameter in command.Parameters)
+                    {
+                        sb.AppendLine(string.Format("参数名:{0}={1}", Parameter.ParameterName, Parameter.Value));
+                    }
+                    File.AppendAllText(FilePath, sb.ToString());
                 }
             }
-        } 
+        }
         #endregion
 
         //0630迁移至Protocol

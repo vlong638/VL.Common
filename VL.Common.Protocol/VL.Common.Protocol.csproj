@@ -56,8 +56,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="VL.Common.Configurator, Version=1.1.5959.19934, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.Configurator.1.1.1606151101.1\lib\net452\VL.Common.Configurator.dll</HintPath>
+    <Reference Include="VL.Common.Configurator, Version=1.1.6026.27142, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VL.Common.Configurator.1.1.1607011505.1\lib\net452\VL.Common.Configurator.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="VL.Common.DAS, Version=1.0.5947.27705, Culture=neutral, processorArchitecture=MSIL">
@@ -66,6 +66,10 @@
     </Reference>
     <Reference Include="VL.Common.Logger, Version=1.0.5946.30246, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\VL.Common.Logger.1.0.1604121655.1\lib\net452\VL.Common.Logger.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="VL.Common.ORM, Version=1.0.6026.25431, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VL.Common.ORM.1.0.1607011407.1\lib\net452\VL.Common.ORM.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -86,12 +90,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\VL.Common.ORM\VL.Common.ORM.csproj">
-      <Project>{6c5ac894-c902-494c-9743-8a57ba2b637b}</Project>
-      <Name>VL.Common.ORM</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

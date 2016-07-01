@@ -6,6 +6,7 @@ using System.Text;
 using VL.Common.Configurator.Objects.ConfigEntities;
 using VL.Common.DAS.Utilities;
 using VL.Common.Logger.Objects;
+using VL.Common.Protocol.IService.IORM;
 
 namespace VL.Common.Protocol.IService
 {
@@ -14,24 +15,31 @@ namespace VL.Common.Protocol.IService
         /// <summary>
         /// 内置日志记录器
         /// </summary>
-        public static ILogger ServiceLogger { set; get; }
+        public ILogger ServiceLogger { set; get; }
         /// <summary>
         /// 总协议配置
         /// </summary>
-        public static ProtocolConfig ProtocolConfig { get; set; }
+        public ProtocolConfig ProtocolConfig { get; set; }
         /// <summary>
         /// 数据库配置
         /// CARE:如需分布式缓存数据库,也要按照数据库做相应连接配置
         /// </summary>
-        public static DbConfigEntity DatabaseConfig { get; set; }
+        public DbConfigEntity DatabaseConfig { get; set; }
+        /// <summary>
+        /// 事务代理类
+        /// </summary>
+        public ServiceDelegator ServiceDelegator { set; get; } 
+
 
         public ServiceContext(DbConfigEntity databaseConfig, ProtocolConfig protocolConfig, ILogger serviceLogger)
         {
             DatabaseConfig = databaseConfig;
             ProtocolConfig = protocolConfig;
             ServiceLogger = serviceLogger;
+            ServiceDelegator = new ServiceDelegator(this);
+            IORMProvider.ServiceContext = this;
         }
-        
+
         ///// <summary>
         ///// 上下文初始化
         ///// </summary>

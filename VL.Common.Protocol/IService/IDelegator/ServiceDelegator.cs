@@ -8,23 +8,23 @@ namespace VL.Common.Protocol.IService
     /// </summary>
     public class ServiceDelegator
     {
+        public ServiceContext ServiceContext { set; get; }
+
+        public ServiceDelegator(ServiceContext serviceContext)
+        {
+            ServiceContext = serviceContext;
+        }
+
         /// <summary>
         /// 整体异常处理
         /// ,日志处理
         /// .模拟
         /// </summary>
-        public static T HandleEvent<T>(Func<T> func, bool isSimulation = false) where T : Result, new()
+        public T HandleEvent<T>(Func<T> func, bool isSimulation = false) where T : Result, new()
         {
             var result = new T();
             result.MethodName = nameof(HandleEvent);
             result.ResultCode = EResultCode.Success;
-            ////模拟开关检测
-            //if (isSimulation && !ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
-            //{
-            //    result.ResultCode = EResultCode.Failure;
-            //    result.Message = "未开启对Simulation的支持";
-            //    return result;
-            //}
             //业务逻辑处理
             try
             {
@@ -45,19 +45,12 @@ namespace VL.Common.Protocol.IService
         /// .单一会话+简单事务
         /// .模拟
         /// </summary>
-        public static T HandleSimpleTransactionEvent<T>(string dbName, Func<DbSession, T> func, bool isSimulation = false) where T : Result, new()
+        public T HandleSimpleTransactionEvent<T>(string dbName, Func<DbSession, T> func, bool isSimulation = false) where T : Result, new()
         {
             var result = new T();
             result.MethodName = nameof(HandleSimpleTransactionEvent);
             result.ResultCode = EResultCode.Success;
             DbSession session = null;
-            ////模拟开关检测
-            //if (isSimulation && !ServiceContext.ProtocolConfig.IsSimulationAvailable.Value)
-            //{
-            //    result.ResultCode = EResultCode.Failure;
-            //    result.Message = "未开启对Simulation的支持";
-            //    return result;
-            //}
             //业务逻辑处理
             try
             {

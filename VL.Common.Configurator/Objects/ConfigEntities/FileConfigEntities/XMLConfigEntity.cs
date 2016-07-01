@@ -57,14 +57,14 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
             Value = t;
         }
 
-        public T SetValue(IEnumerable<XElement> elements)
+        public void SetValue(IEnumerable<XElement> elements)
         {
             var element = elements.FirstOrDefault(c => c.Attribute(nameof(Key)).Value == Key);
             if (element == null)
             {
                 throw new NotImplementedException("缺少关于" + Key + "的配置");
             }
-            return (T)Convert.ChangeType(element.Attribute(nameof(Value)).Value, Value.GetType());
+            Value= (T)Convert.ChangeType(element.Attribute(nameof(Value)).Value, Value.GetType());
         }
         public XElement ToXElement()
         {

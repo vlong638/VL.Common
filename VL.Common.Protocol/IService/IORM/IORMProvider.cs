@@ -5,8 +5,16 @@ using VL.Common.ORM.Utilities.QueryOperators;
 
 namespace VL.Common.Protocol.IService.IORM
 {
+    /// <summary>
+    /// ORM服务提供器
+    /// </summary>
     public class IORMProvider
     {
+        /// <summary>
+        /// 依赖于ServiceContext的配置
+        /// </summary>
+        public static ServiceContext ServiceContext { set; get; }
+
         /// <summary>
         /// 提供对应数据库的操作类
         /// </summary>

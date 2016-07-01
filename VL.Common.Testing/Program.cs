@@ -4,6 +4,7 @@ using System.Runtime.Caching;
 using VL.Common.Caching.MemoryCache;
 using VL.Common.Caching.Redis;
 using VL.Common.Logger.Utilities;
+using VL.Common.Protocol;
 using VL.Common.Testing.Configs;
 
 namespace VL.Common.Testing
@@ -19,6 +20,17 @@ namespace VL.Common.Testing
     {
         static void Main(string[] args)
         {
+            ProtocolConfig protocol = new ProtocolConfig("ProtocolConfig.config");
+            protocol.IsSQLLogAvailable.Value = true;
+            protocol.Save();
+            protocol.IsSQLLogAvailable.Value = false;
+            protocol.Load();
+            //var isSimulationAvailable = ProtocolConfig.IsSimulationAvailable;
+
+
+
+
+
             //var isSimulationAvailable = ProtocolConfig.IsSimulationAvailable;
             //TestCreateConfig();
             //TestLogger();
