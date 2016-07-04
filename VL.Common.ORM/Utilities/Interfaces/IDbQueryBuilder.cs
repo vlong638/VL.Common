@@ -25,7 +25,10 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         //}
 
         //public string TableName { set; get; }
-        private OperateType operateType;
+
+        /// <summary>
+        /// 操作类型
+        /// </summary>
         public OperateType OperateType
         {
             set
@@ -54,10 +57,10 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 return operateType;
             }
         }
-        private List<InsertBuilder> insertBuilders;
-        private List<SelectBuilder> selectBuilders;
-        private List<UpdateBuilder> updateBuilders;
-        private DeleteBuilder deleteBuilder;
+        private OperateType operateType;
+        /// <summary>
+        /// Insert语句构建器
+        /// </summary>
         public List<InsertBuilder> InsertBuilders
         {
             get
@@ -74,6 +77,10 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 insertBuilders = value;
             }
         }
+        private List<InsertBuilder> insertBuilders;
+        /// <summary>
+        /// Select语句构建器
+        /// </summary>
         public List<SelectBuilder> SelectBuilders
         {
             get
@@ -90,6 +97,10 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 selectBuilders = value;
             }
         }
+        private List<SelectBuilder> selectBuilders;
+        /// <summary>
+        /// Update语句构建器
+        /// </summary>
         public List<UpdateBuilder> UpdateBuilders
         {
             get
@@ -106,6 +117,10 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 updateBuilders = value;
             }
         }
+        private List<UpdateBuilder> updateBuilders;
+        /// <summary>
+        /// Delete语句构建器
+        /// </summary>
         public DeleteBuilder DeleteBuilder
         {
             get
@@ -122,8 +137,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 deleteBuilder = value;
             }
         }
-
-        //public abstract DbCommand GetCommand(DbSession session);
+        private DeleteBuilder deleteBuilder;
     }
 
     /// <summary>
@@ -131,9 +145,21 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public enum OperateType
     {
+        /// <summary>
+        /// 增
+        /// </summary>
         Insert,
-        Select,
-        Update,
+        /// <summary>
+        /// 删
+        /// </summary>
         Delete,
+        /// <summary>
+        /// 改
+        /// </summary>
+        Update,
+        /// <summary>
+        /// 查
+        /// </summary>
+        Select,
     }
 }

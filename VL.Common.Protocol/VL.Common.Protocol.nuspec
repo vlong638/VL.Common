@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1607011506.1</version>
+    <version>1.0.1607041029.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-0701增加ORM构建的Query的输出</description>
+</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
