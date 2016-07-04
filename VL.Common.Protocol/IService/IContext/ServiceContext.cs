@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using VL.Common.Configurator.Objects.ConfigEntities;
+using VL.Common.DAS.Objects;
 using VL.Common.DAS.Utilities;
 using VL.Common.Logger.Objects;
 using VL.Common.Protocol.IService.IORM;
@@ -20,11 +21,20 @@ namespace VL.Common.Protocol.IService
         /// 总协议配置
         /// </summary>
         public ProtocolConfig ProtocolConfig { get; set; }
+        #region 数据库配置及其操作
         /// <summary>
         /// 数据库配置
         /// CARE:如需分布式缓存数据库,也要按照数据库做相应连接配置
         /// </summary>
         public DbConfigEntity DatabaseConfig { get; set; }
+        /// <summary>
+        /// 通过名称获取数据库连接
+        /// </summary>
+        public DbSession GetDbSession(string dbName)
+        {
+            return DatabaseConfig.GetDbConfigItem(dbName).GetDbSession();
+        }
+        #endregion
         /// <summary>
         /// 事务代理类
         /// </summary>
