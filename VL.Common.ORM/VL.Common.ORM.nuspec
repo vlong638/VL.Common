@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.ORM</id>
-    <version>1.0.1607011407.1</version>
+    <version>1.0.1607121424.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>关系映射模型
-0701增加ORM构建的Query的输出</description>
+ORM.IDbQueryBuilder增加对CURD的单项构建器</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
