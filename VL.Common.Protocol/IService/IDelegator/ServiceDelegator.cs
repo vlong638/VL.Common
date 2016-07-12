@@ -61,7 +61,6 @@ namespace VL.Common.Protocol.IService
                 try
                 {
                     result = func(session);
-                    //result.CopyAll(func(session));
                 }
                 catch (Exception ex)
                 {

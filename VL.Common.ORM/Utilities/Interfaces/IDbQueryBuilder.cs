@@ -79,6 +79,26 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         }
         private List<InsertBuilder> insertBuilders;
         /// <summary>
+        /// Insert语句构建器
+        /// </summary>
+        public InsertBuilder InsertBuilder
+        {
+            get
+            {
+                if (insertBuilder == null)
+                {
+                    insertBuilder = new InsertBuilder();
+                }
+                return insertBuilder;
+            }
+            set
+            {
+                operateType = OperateType.Insert;
+                insertBuilder = value;
+            }
+        }
+        private InsertBuilder insertBuilder;
+        /// <summary>
         /// Select语句构建器
         /// </summary>
         public List<SelectBuilder> SelectBuilders
@@ -99,6 +119,26 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         }
         private List<SelectBuilder> selectBuilders;
         /// <summary>
+        /// Select语句构建器
+        /// </summary>
+        public SelectBuilder SelectBuilder
+        {
+            get
+            {
+                if (selectBuilder == null)
+                {
+                    selectBuilder = new SelectBuilder();
+                }
+                return selectBuilder;
+            }
+            set
+            {
+                operateType = OperateType.Select;
+                selectBuilder = value;
+            }
+        }
+        private SelectBuilder selectBuilder;
+        /// <summary>
         /// Update语句构建器
         /// </summary>
         public List<UpdateBuilder> UpdateBuilders
@@ -118,6 +158,26 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             }
         }
         private List<UpdateBuilder> updateBuilders;
+        /// <summary>
+        /// Update语句构建器
+        /// </summary>
+        public UpdateBuilder UpdateBuilder
+        {
+            get
+            {
+                if (updateBuilder == null)
+                {
+                    updateBuilder = new UpdateBuilder();
+                }
+                return updateBuilder;
+            }
+            set
+            {
+                operateType = OperateType.Update;
+                updateBuilder = value;
+            }
+        }
+        private UpdateBuilder updateBuilder;
         /// <summary>
         /// Delete语句构建器
         /// </summary>
