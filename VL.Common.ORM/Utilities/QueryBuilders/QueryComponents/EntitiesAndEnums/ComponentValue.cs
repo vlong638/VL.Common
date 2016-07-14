@@ -14,7 +14,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             Values = new List<PDMDbPropertyValue>();
         }
 
-        public List<PDMDbPropertyValue> Values { set; get; } 
+        public List<PDMDbPropertyValue> Values { set; get; }
 
 
         public string ToQueryComponentOfFields()
@@ -23,11 +23,11 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         }
         public string ToQueryComponentOfValues(DbSession session)
         {
-            return string.Join(",", Values.Select(c => session.GetParameterPrefix() + c.Property.Title));
+            return string.Join(",", Values.Select(c => c.GetParameterName(session)));
         }
         public string ToQueryComponentOfSets(DbSession session)
         {
-            return string.Join(",", Values.Select(c => c.Property.Title + OperatorType.Equal.ToQueryString() + session.GetParameterPrefix() + c.Property.Title));
+            return string.Join(",", Values.Select(c => c.Property.Title + OperatorType.Equal.ToQueryString() + c.GetParameterName(session)));
         }
     }
 }

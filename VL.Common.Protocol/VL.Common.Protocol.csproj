@@ -68,8 +68,8 @@
       <HintPath>..\packages\VL.Common.Logger.1.0.1604121655.1\lib\net452\VL.Common.Logger.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="VL.Common.ORM, Version=1.0.6037.25911, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.ORM.1.0.1607121424.1\lib\net452\VL.Common.ORM.dll</HintPath>
+    <Reference Include="VL.Common.ORM, Version=1.0.6039.16335, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VL.Common.ORM.1.0.1607140906.1\lib\net452\VL.Common.ORM.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1607121425.1</version>
+    <version>1.0.1607140907.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-ORM.IDbQueryBuilder增加对CURD的单项构建器</description>
+修正ORM的SelectAsXXX()的处理</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

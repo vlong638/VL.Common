@@ -40,20 +40,16 @@ namespace VL.Common.ORM.Utilities
         /// <summary>
         /// 获取对应数据库的参数对象
         /// </summary>
-        /// <param name="property"></param>
-        /// <param name="session"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static DbParameter GetDbParameter(this PDMDbProperty property, DbSession session, object value)
+        public static DbParameter GetDbParameter(this PDMDbProperty property, DbSession session, object value,string nickName)//TODO =null
         {
             switch (session.DatabaseType)
             {
                 case EDatabaseType.MSSQL:
-                    return new SqlParameter(property.Title, value);
+                    return new SqlParameter(nickName??property.Title, value);
                 case EDatabaseType.Oracle:
-                    return new OracleParameter(property.Title, value);
+                    return new OracleParameter(nickName ?? property.Title, value);
                 case EDatabaseType.MySQL:
-                    return new MySqlParameter(property.Title, value);
+                    return new MySqlParameter(nickName ?? property.Title, value);
                 default:
                     throw new NotImplementedException("未支持该类型数据库的参数生成" + session.DatabaseType.ToString());
             }

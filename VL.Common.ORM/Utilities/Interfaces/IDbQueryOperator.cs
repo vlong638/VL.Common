@@ -172,19 +172,19 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
-        public abstract int? SelectAsInt(DbSession session, SelectBuilder selectBuilder);
+        public abstract int? SelectAsInt<T>(DbSession session, SelectBuilder selectBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
-        public abstract long? SelectAsLong(DbSession session, SelectBuilder selectBuilder);
+        public abstract long? SelectAsLong<T>(DbSession session, SelectBuilder selectBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
-        public abstract string SelectAsString(DbSession session, SelectBuilder selectBuilder);
+        public abstract string SelectAsString<T>(DbSession session, SelectBuilder selectBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
-        public abstract DateTime? SelectAsDateTime(DbSession session, SelectBuilder selectBuilder);
+        public abstract DateTime? SelectAsDateTime<T>(DbSession session, SelectBuilder selectBuilder) where T : IPDMTBase, new();
         #endregion
     }
 }

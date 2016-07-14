@@ -252,14 +252,14 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
-        public override int? SelectAsInt(DbSession session, SelectBuilder selectBuilder)
+        public override int? SelectAsInt<T>(DbSession session, SelectBuilder selectBuilder)
         {
             if (selectBuilder == null)
             {
                 throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
             }
             DbCommand command = session.CreateCommand();
-            command.CommandText = selectBuilder.ToQueryString(session, selectBuilder.TableName);
+            command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AppendQueryParameter(ref command, session);
             WriteQueryLog(command);
             var data = session.ExecuteScalar(command);
@@ -276,14 +276,14 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
-        public override long? SelectAsLong(DbSession session, SelectBuilder selectBuilder)
+        public override long? SelectAsLong<T>(DbSession session, SelectBuilder selectBuilder)
         {
             if (selectBuilder == null)
             {
                 throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
             }
             DbCommand command = session.CreateCommand();
-            command.CommandText = selectBuilder.ToQueryString(session, selectBuilder.TableName);
+            command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AppendQueryParameter(ref command, session);
             WriteQueryLog(command);
             var data = session.ExecuteScalar(command);
@@ -300,14 +300,14 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
-        public override string SelectAsString(DbSession session, SelectBuilder selectBuilder)
+        public override string SelectAsString<T>(DbSession session, SelectBuilder selectBuilder)
         {
             if (selectBuilder == null)
             {
                 throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
             }
             DbCommand command = session.CreateCommand();
-            command.CommandText = selectBuilder.ToQueryString(session, selectBuilder.TableName);
+            command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AppendQueryParameter(ref command, session);
             WriteQueryLog(command);
             var data = session.ExecuteScalar(command);
@@ -323,14 +323,14 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
-        public override DateTime? SelectAsDateTime(DbSession session, SelectBuilder selectBuilder)
+        public override DateTime? SelectAsDateTime<T>(DbSession session, SelectBuilder selectBuilder)
         {
             if (selectBuilder == null)
             {
                 throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
             }
             DbCommand command = session.CreateCommand();
-            command.CommandText = selectBuilder.ToQueryString(session, selectBuilder.TableName);
+            command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AppendQueryParameter(ref command, session);
             WriteQueryLog(command);
             var data = session.ExecuteScalar(command);

@@ -23,8 +23,17 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             //TODO 对于Oracle支持(FieldA,FieldB) in ((ValueA1,ValueB1),(ValueA2,ValueB2)) 但是MSSQL不支持 需针对数据库优化
             //TODO 条件过长时应支持Split()操作,将一条语句的处理分散成多个处理 阶次拆分1表示一次二分,2表两次二分,依次类推
             StringBuilder whereCondition = new StringBuilder();
+            bool isFirst = true;
             foreach (var where in Wheres)
             {
+                if (!isFirst)
+                {
+                    whereCondition.Append(" and ");
+                }
+                else
+                {
+                    isFirst = false;
+                }
                 //Fields
                 if (where.IsMultipleProperties)
                 {
@@ -43,19 +52,20 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                     {
                         case OperatorType.Equal:
                         case OperatorType.NotEqual:
-                            whereCondition.Append(session.GetParameterPrefix() + where.Property.Title);
+                            whereCondition.Append(where.GetParameterName(session));
                             break;
                         case OperatorType.In:
                         case OperatorType.NotIn:
                             whereCondition.Append("(");
-                            if (where.IsMultipleProperties)
-                            {
-                                whereCondition.Append(session.GetParameterPrefix() + string.Join("", where.Properties.Select(c => c.Title)));
-                            }
-                            else
-                            {
-                                whereCondition.Append(session.GetParameterPrefix() + where.Property.Title);
-                            }
+                            whereCondition.Append(where.GetParameterName(session));
+                            //if (where.IsMultipleProperties)
+                            //{
+                            //    whereCondition.Append(session.GetParameterPrefix() + string.Join("", where.Properties.Select(c => c.Title)));
+                            //}
+                            //else
+                            //{
+                            //    whereCondition.Append(session.GetParameterPrefix() + where.Property.Title);
+                            //}
                             whereCondition.Append(")");
                             break;
                         default:

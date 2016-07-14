@@ -72,6 +72,7 @@
     <Compile Include="Utilities\DbTranslateHelper.cs" />
     <Compile Include="Utilities\Interfaces\IDbQueryBuilder.cs" />
     <Compile Include="Utilities\Interfaces\IDbQueryOperator.cs" />
+    <Compile Include="Utilities\Interfaces\IParameterizable.cs" />
     <Compile Include="Utilities\Interfaces\IQueryFetcher.cs" />
     <Compile Include="Utilities\ITOperator.cs" />
     <Compile Include="Utilities\QueryBuilders\MSSQLQueryBuilder.cs" />
@@ -96,6 +97,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="备注\多表查询.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

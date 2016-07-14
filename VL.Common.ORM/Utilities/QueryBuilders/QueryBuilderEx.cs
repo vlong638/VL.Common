@@ -10,6 +10,12 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
 {
     public static class QueryBuilderEx
     {
+        /// <summary>
+        /// 基于(属性,操作,值)添加参数
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="session"></param>
+        /// <param name="where"></param>
         public static void AddParameter(this DbCommand command, DbSession session, PDMDbPropertyOperateValue where)
         {
             //包含子查询
@@ -33,17 +39,17 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                     {
                         case OperatorType.Equal:
                         case OperatorType.NotEqual:
-                            command.Parameters.Add(where.Property.GetDbParameter(session, where.Value));
+                            command.Parameters.Add(where.Property.GetDbParameter(session, where.Value, where.NickName));
                             break;
                         case OperatorType.In:
                         case OperatorType.NotIn:
                             if (where.IsMultipleProperties)
                             {
-                                command.Parameters.Add(DbTranslateHelper.GetDbParameter(session, session.GetParameterPrefix() + string.Join("", where.Properties.Select(c => c.Title)), where.Value));
+                                command.Parameters.Add(DbTranslateHelper.GetDbParameter(session, where.GetParameterName(session), where.Value));
                             }
                             else
                             {
-                                var parameterPlaceholder = session.GetParameterPrefix() + where.Property.Title;
+                                var parameterPlaceholder = where.GetParameterName(session);
                                 switch (where.Property.Type)
                                 {
                                     case PDMDataType.varchar:
@@ -138,7 +144,12 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
 
             return values;
         }
-
+        /// <summary>
+        /// 基于(属性,操作,值)的集合添加参数
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="session"></param>
+        /// <param name="pdmDbPropertyOperateValues"></param>
         public static void AddParameter(this DbCommand command, DbSession session, List<PDMDbPropertyOperateValue> pdmDbPropertyOperateValues)
         {
             //增加Parameter
@@ -147,10 +158,22 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 command.AddParameter(session, pdmDbPropertyOperateValue);
             }
         }
+        /// <summary>
+        /// 基于(属性,值)添加参数
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="session"></param>
+        /// <param name="pdmDbPropertyValue"></param>
         public static void AddParameter(this DbCommand command, DbSession session, PDMDbPropertyValue pdmDbPropertyValue)
         {
-            command.Parameters.Add(pdmDbPropertyValue.Property.GetDbParameter(session, pdmDbPropertyValue.Value));
+            command.Parameters.Add(pdmDbPropertyValue.Property.GetDbParameter(session, pdmDbPropertyValue.Value, pdmDbPropertyValue.NickName));
         }
+        /// <summary>
+        /// 基于(属性,值)的集合添加参数
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="session"></param>
+        /// <param name="pdmDbPropertyValues"></param>
         public static void AddParameter(this DbCommand command, DbSession session, List<PDMDbPropertyValue> pdmDbPropertyValues)
         {
             foreach (var pdmDbPropertyValue in pdmDbPropertyValues)
