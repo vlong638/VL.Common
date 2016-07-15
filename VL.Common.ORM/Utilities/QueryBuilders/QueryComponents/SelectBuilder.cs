@@ -7,7 +7,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// Select只能由内部设置进行操作,不能通过外部传递参数
     /// 内部直接拼接字符串
     /// </summary>
-    public class SelectBuilder: IQueryBuilder
+    public class SelectBuilder : IQueryBuilder
     {
         private ComponentFieldAliases componentFieldAliases;
         private ComponentWhere componentWhere;
@@ -33,7 +33,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         {
             get
             {
-                if (componentWhere==null)
+                if (componentWhere == null)
                 {
                     componentWhere = new ComponentWhere(this);
                 }
@@ -63,7 +63,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
 
         public override string ToQueryString(DbSession session, string tableName)
         {
-            return string.Format("select {0} from {1}{2}{3}", ComponentFieldAliases.ToQueryComponentOfFieldAliases(), tableName
+            return string.Format("select {0} from {1}{2}{3}", ComponentFieldAliases.ToQueryComponentOfFieldAliases(), TableName ?? tableName
                 , ComponentWhere.Wheres.Count > 0 ? " where " + ComponentWhere.ToQueryComponentOfWheres(session) : ""
                 , ComponentOrder.Orders.Count > 0 ? " order by " + ComponentOrder.ToQueryComponentOfOrders() : "");
         }

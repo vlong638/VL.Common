@@ -44,7 +44,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
 
         public override string ToQueryString(DbSession session, string tableName)
         {
-            return string.Format("update {0} set {1}{2}", tableName, ComponentValue.ToQueryComponentOfSets(session)
+            return string.Format("update {0} set {1}{2}", TableName ?? tableName, ComponentValue.ToQueryComponentOfSets(session)
                 , ComponentWhere.Wheres.Count > 0 ? " where " + ComponentWhere.ToQueryComponentOfWheres(session) : "");
         }
 

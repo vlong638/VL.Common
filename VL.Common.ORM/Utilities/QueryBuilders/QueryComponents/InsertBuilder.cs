@@ -34,7 +34,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
 
         public override string ToQueryString(DbSession session, string tableName)
         {
-            return string.Format("insert into {0}({1}) values({2})", tableName, ComponentValue.ToQueryComponentOfFields(), ComponentValue.ToQueryComponentOfValues(session));
+            return string.Format("insert into {0}({1}) values({2})", TableName ?? tableName, ComponentValue.ToQueryComponentOfFields(), ComponentValue.ToQueryComponentOfValues(session));
         }
     }
 }

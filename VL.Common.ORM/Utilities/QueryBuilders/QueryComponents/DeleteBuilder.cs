@@ -33,7 +33,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
 
         public override string ToQueryString(DbSession session, string tableName)
         {
-            return string.Format("delete from {0}{1}", tableName
+            return string.Format("delete from {0}{1}", TableName ?? tableName
                 , ComponentWhere.Wheres.Count > 0 ? " where " + ComponentWhere.ToQueryComponentOfWheres(session) : "");
         }
     }
