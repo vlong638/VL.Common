@@ -1,0 +1,4 @@
+E:\NugetPackages\NuGet.exe pack @ProjectName.csproj
+
+E:\NugetPackages\NuGet.exe push E:\NugetPackages\log4net.2.0.5.nupkg -s 
+http://localhost:88/nuget 70CEF7B0-870F-4169-A241-00DCA9F27DDE
