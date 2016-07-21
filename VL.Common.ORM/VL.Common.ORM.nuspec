@@ -2,11 +2,10 @@
 <package>
   <metadata>
     <id>VL.Common.ORM</id>
-    <version>1.0.1607151445.1</version>
+    <version>1.0.1607211147.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
-    <description>关系映射模型
-ORM优化 TableName优先以指定的为准</description>
+    <description>关系映射模型</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

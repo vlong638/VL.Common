@@ -38,14 +38,14 @@ namespace VL.Common.Testing
             //0422标准的测试
             //CreateRedisConfig();
             //MemoryCache();
-            try
-            {
-                RedisCache();
-            }
-            catch (Exception ex)
-            {
-                string s = "";
-            }
+            //try
+            //{
+            //    RedisCache();
+            //}
+            //catch (Exception ex)
+            //{
+            //    string s = "";
+            //}
         }
 
         private static void RedisCache()
