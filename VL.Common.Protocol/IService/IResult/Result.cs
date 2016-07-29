@@ -68,4 +68,32 @@ namespace VL.Common.Protocol.IService
             base.CopyContent(result);
         }
     }
+    [DataContract]
+    public class Result<T1,T2> : Result
+    {
+        public Result()
+        {
+        }
+        public Result(string methodName) : base(methodName)
+        {
+        }
+
+        [DataMember]
+        public T1 Data1 { set; get; } = default(T1);
+        [DataMember]
+        public T2 Data2 { set; get; } = default(T2);
+
+        public void CopyAll(Result<T1,T2> result)
+        {
+            Data1 = result.Data1;
+            Data2 = result.Data2;
+            base.CopyAll(result);
+        }
+        public void CopyContent(Result<T1, T2> result)
+        {
+            Data1 = result.Data1;
+            Data2 = result.Data2;
+            base.CopyContent(result);
+        }
+    }
 }

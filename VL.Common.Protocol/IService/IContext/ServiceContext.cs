@@ -38,16 +38,32 @@ namespace VL.Common.Protocol.IService
         /// <summary>
         /// 事务代理类
         /// </summary>
-        public ServiceDelegator ServiceDelegator { set; get; } 
+        public ServiceDelegator ServiceDelegator { set; get; }
 
 
+        public ServiceContext()
+        {
+            DatabaseConfig = GetDefaultDatabaseConfig();
+            ProtocolConfig = GetDefaultProtocolConfig();
+            ServiceLogger = GetDefaultServiceLogger();
+            ServiceDelegator = new ServiceDelegator(this);
+            IORMProvider.ServiceContext = this;
+        }
         public ServiceContext(DbConfigEntity databaseConfig, ProtocolConfig protocolConfig, ILogger serviceLogger)
+        {
+            InitServiceContent(databaseConfig, protocolConfig, serviceLogger);
+            ServiceDelegator = new ServiceDelegator(this);
+            IORMProvider.ServiceContext = this;
+        }
+
+        protected abstract DbConfigEntity GetDefaultDatabaseConfig();
+        protected abstract ProtocolConfig GetDefaultProtocolConfig();
+        protected abstract ILogger GetDefaultServiceLogger();
+        private void InitServiceContent(DbConfigEntity databaseConfig, ProtocolConfig protocolConfig, ILogger serviceLogger)
         {
             DatabaseConfig = databaseConfig;
             ProtocolConfig = protocolConfig;
             ServiceLogger = serviceLogger;
-            ServiceDelegator = new ServiceDelegator(this);
-            IORMProvider.ServiceContext = this;
         }
 
         ///// <summary>
