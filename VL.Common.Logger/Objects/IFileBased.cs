@@ -1,6 +1,6 @@
 ﻿namespace VL.Common.Logger.Objects
 {
-    public interface IFileLogger : ILogger
+    public interface IFileBased : ILogger
     {
         string FileName { set; get; }
         string DirectoryName { set; get; }

@@ -55,7 +55,7 @@ namespace VL.Common.ORM.Objects
             switch (Type)
             {
                 case PDMDataType.varchar:
-                    return CSharpDataType.String;
+                    return CSharpDataType.@string;
                 case PDMDataType.numeric:
                     if (Precision > 0)
                     {

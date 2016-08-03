@@ -58,8 +58,8 @@
       <HintPath>..\packages\VL.Common.DAS.1.0.1604131525.1\lib\net452\VL.Common.DAS.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="VL.Common.ORM, Version=1.0.6040.26533, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.ORM.1.0.1607151445.1\lib\net452\VL.Common.ORM.dll</HintPath>
+    <Reference Include="VL.Common.ORM, Version=1.0.6059.20364, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VL.Common.ORM.1.0.1608031119.1\lib\net452\VL.Common.ORM.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

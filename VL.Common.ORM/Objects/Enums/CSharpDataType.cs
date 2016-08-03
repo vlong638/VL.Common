@@ -2,7 +2,7 @@
 {
     public enum CSharpDataType
     {
-        String,
+        @string,
         Decimal,
         Int64,
         Int32,

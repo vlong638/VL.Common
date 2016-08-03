@@ -8,15 +8,15 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public class DeleteBuilder : IQueryBuilder
     {
-        private ComponentWhere componentWhere;
+        private ComponentOfWhere componentWhere;
 
-        public ComponentWhere ComponentWhere
+        public ComponentOfWhere ComponentWhere
         {
             get
             {
                 if (componentWhere == null)
                 {
-                    componentWhere = new ComponentWhere(this);
+                    componentWhere = new ComponentOfWhere(this);
                 }
                 return componentWhere;
             }
@@ -28,13 +28,13 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
 
         public override void AppendQueryParameter(ref DbCommand command, DbSession session)
         {
-            command.AddParameter(session, ComponentWhere.Wheres);
+            ComponentWhere.Wheres.AddParameter(session, command);
         }
 
-        public override string ToQueryString(DbSession session, string tableName)
+        public override string ToQueryString(DbSession session)
         {
-            return string.Format("delete from {0}{1}", TableName ?? tableName
-                , ComponentWhere.Wheres.Count > 0 ? " where " + ComponentWhere.ToQueryComponentOfWheres(session) : "");
+            return string.Format("delete from {0}{1}", TableName
+                , ComponentWhere.Wheres.Count > 0 ? ComponentWhere.ToQueryString(session) : "");
         }
     }
 }

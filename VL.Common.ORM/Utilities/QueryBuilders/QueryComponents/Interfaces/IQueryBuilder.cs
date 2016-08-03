@@ -1,12 +1,19 @@
-﻿using System.Data.Common;
+﻿using System;
+using System.Data.Common;
 using VL.Common.DAS.Objects;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {
-    public abstract class IQueryBuilder
+    public abstract class IQueryBuilder: IQueriable
     {
         public string TableName { get; set; }
-        public abstract string ToQueryString(DbSession session,string tableName);
+        public string ToQueryString(DbSession session, string tableName)
+        {
+            TableName = tableName;
+            return ToQueryString(session);
+        }
         public abstract void AppendQueryParameter(ref DbCommand command, DbSession session);
+
+        public abstract string ToQueryString(DbSession session);
     }
 }

@@ -152,13 +152,13 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             {
                 if (reader.Read())
                 {
-                    if (selectBuilder.ComponentFieldAliases.FieldAliases.Count == 0)
+                    if (selectBuilder.ComponentSelect.Values.Count == 0)
                     {
                         result.Init(reader);
                     }
                     else
                     {
-                        result.Init(reader, selectBuilder.ComponentFieldAliases.FieldAliases.Select(c => c.FieldName).ToList());
+                        result.Init(reader, selectBuilder.ComponentSelect.Values.Select(c => c.FieldName).ToList());
                     }
                     return result;
                 }
@@ -213,7 +213,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             WriteQueryLog(command);
             using (var reader = session.ExecuteDataReader(command))
             {
-                if (selectBuilder.ComponentFieldAliases.FieldAliases.Count == 0)
+                if (selectBuilder.ComponentSelect.Values.Count == 0)
                 {
                     while (reader.Read())
                     {
@@ -224,7 +224,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
                 }
                 else
                 {
-                    var initFields = selectBuilder.ComponentFieldAliases.FieldAliases.Select(c => c.FieldName).ToList();
+                    var initFields = selectBuilder.ComponentSelect.Values.Select(c => c.FieldName).ToList();
                     while (reader.Read())
                     {
                         T result = new T();

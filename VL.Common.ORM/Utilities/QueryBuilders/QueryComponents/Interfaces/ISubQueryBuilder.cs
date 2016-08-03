@@ -1,12 +1,18 @@
-﻿namespace VL.Common.ORM.Utilities.QueryBuilders
+﻿using VL.Common.DAS.Objects;
+
+namespace VL.Common.ORM.Utilities.QueryBuilders
 {
-    public abstract class ISubQueryBuilder
+    public abstract class IComponentBuilder
     {
-        public ISubQueryBuilder(IQueryBuilder queryBuilder)
+        public IComponentBuilder(IQueryBuilder queryBuilder)
         {
             Parent = queryBuilder;
         }
 
         public IQueryBuilder Parent { set; get; }
+    }
+    public interface IQueriable
+    {
+        string ToQueryString(DbSession session);
     }
 }

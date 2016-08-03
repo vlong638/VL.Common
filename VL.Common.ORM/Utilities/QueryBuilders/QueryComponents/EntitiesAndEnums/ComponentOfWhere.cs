@@ -9,20 +9,21 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// <summary>
     /// 属性,操作,值
     /// </summary>
-    public class ComponentWhere : ISubQueryBuilder
+    public class ComponentOfWhere : IComponentBuilder, IQueriable
     {
-        public ComponentWhere(IQueryBuilder queryBuilder) : base(queryBuilder)
+        public ComponentOfWhere(IQueryBuilder queryBuilder) : base(queryBuilder)
         {
-            Wheres = new List<PDMDbPropertyOperateValue>();
+            Wheres = new List<ComponentValueOfWhere>();
         }
 
-        public List<PDMDbPropertyOperateValue> Wheres { get; set; }
+        public List<ComponentValueOfWhere> Wheres { get; set; }
 
-        public string ToQueryComponentOfWheres(DbSession session)
+        public string ToQueryString(DbSession session)
         {
             //TODO 对于Oracle支持(FieldA,FieldB) in ((ValueA1,ValueB1),(ValueA2,ValueB2)) 但是MSSQL不支持 需针对数据库优化
             //TODO 条件过长时应支持Split()操作,将一条语句的处理分散成多个处理 阶次拆分1表示一次二分,2表两次二分,依次类推
             StringBuilder whereCondition = new StringBuilder();
+            whereCondition.Append(" where ");
             bool isFirst = true;
             foreach (var where in Wheres)
             {
@@ -50,12 +51,12 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 {
                     switch (where.Operator)
                     {
-                        case OperatorType.Equal:
-                        case OperatorType.NotEqual:
+                        case LocateType.Equal:
+                        case LocateType.NotEqual:
                             whereCondition.Append(where.GetParameterName(session));
                             break;
-                        case OperatorType.In:
-                        case OperatorType.NotIn:
+                        case LocateType.In:
+                        case LocateType.NotIn:
                             whereCondition.Append("(");
                             whereCondition.Append(where.GetParameterName(session));
                             //if (where.IsMultipleProperties)

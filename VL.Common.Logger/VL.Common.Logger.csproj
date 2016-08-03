@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\IFileLogger.cs" />
+    <Compile Include="Objects\IFileBased.cs" />
     <Compile Include="Objects\ILogger.cs" />
     <Compile Include="Objects\Log4netLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

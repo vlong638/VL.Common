@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System;
+using System.Data.Common;
 using VL.Common.DAS.Objects;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
@@ -9,33 +10,33 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public class SelectBuilder : IQueryBuilder
     {
-        private ComponentFieldAliases componentFieldAliases;
-        private ComponentWhere componentWhere;
-        private ComponentOrder componentOrder;
+        private ComponentOfSelect componentSelectField;
+        private ComponentOfWhere componentWhere;
+        private ComponentOfOrder componentOrder;
 
-        public ComponentFieldAliases ComponentFieldAliases
+        public ComponentOfSelect ComponentSelect
         {
             get
             {
-                if (componentFieldAliases == null)
+                if (componentSelectField == null)
                 {
-                    componentFieldAliases = new ComponentFieldAliases(this);
+                    componentSelectField = new ComponentOfSelect(this);
                 }
-                return componentFieldAliases;
+                return componentSelectField;
             }
 
             set
             {
-                componentFieldAliases = value;
+                componentSelectField = value;
             }
         }
-        public ComponentWhere ComponentWhere
+        public ComponentOfWhere ComponentWhere
         {
             get
             {
                 if (componentWhere == null)
                 {
-                    componentWhere = new ComponentWhere(this);
+                    componentWhere = new ComponentOfWhere(this);
                 }
                 return componentWhere;
             }
@@ -44,13 +45,13 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 componentWhere = value;
             }
         }
-        public ComponentOrder ComponentOrder
+        public ComponentOfOrder ComponentOrder
         {
             get
             {
                 if (componentOrder == null)
                 {
-                    componentOrder = new ComponentOrder(this);
+                    componentOrder = new ComponentOfOrder(this);
                 }
                 return componentOrder;
             }
@@ -61,16 +62,16 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             }
         }
 
-        public override string ToQueryString(DbSession session, string tableName)
+        public override string ToQueryString(DbSession session)
         {
-            return string.Format("select {0} from {1}{2}{3}", ComponentFieldAliases.ToQueryComponentOfFieldAliases(), TableName ?? tableName
-                , ComponentWhere.Wheres.Count > 0 ? " where " + ComponentWhere.ToQueryComponentOfWheres(session) : ""
-                , ComponentOrder.Orders.Count > 0 ? " order by " + ComponentOrder.ToQueryComponentOfOrders() : "");
+            return string.Format("{0} from {1}{2}{3}", ComponentSelect.ToQueryString(session), TableName
+                , ComponentWhere.Wheres.Count > 0 ? ComponentWhere.ToQueryString(session) : ""
+                , ComponentOrder.Orders.Count > 0 ?  ComponentOrder.ToQueryString(session) : "");
         }
 
         public override void AppendQueryParameter(ref DbCommand command, DbSession session)
         {
-            command.AddParameter(session, ComponentWhere.Wheres);
+            ComponentWhere.Wheres.AddParameter(session, command);
         }
     }
 }

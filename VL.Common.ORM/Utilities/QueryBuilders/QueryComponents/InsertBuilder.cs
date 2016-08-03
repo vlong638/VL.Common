@@ -8,33 +8,33 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public class InsertBuilder : IQueryBuilder
     {
-        private ComponentValue componentValue;
+        private ComponentOfInsert componentInsert;
 
-        public ComponentValue ComponentValue
+        public ComponentOfInsert ComponentInsert
         {
             get
             {
-                if (componentValue == null)
+                if (componentInsert == null)
                 {
-                    componentValue = new ComponentValue(this);
+                    componentInsert = new ComponentOfInsert(this);
                 }
-                return componentValue;
+                return componentInsert;
             }
 
             set
             {
-                componentValue = value;
+                componentInsert = value;
             }
         }
 
         public override void AppendQueryParameter(ref DbCommand command, DbSession session)
         {
-            command.AddParameter(session, ComponentValue.Values);
+            ComponentInsert.Values.AddParameter(session, command);
         }
 
-        public override string ToQueryString(DbSession session, string tableName)
+        public override string ToQueryString(DbSession session)
         {
-            return string.Format("insert into {0}({1}) values({2})", TableName ?? tableName, ComponentValue.ToQueryComponentOfFields(), ComponentValue.ToQueryComponentOfValues(session));
+            return string.Format("insert into {0}{1}", TableName , ComponentInsert.ToQueryString(session));
         }
     }
 }

@@ -8,16 +8,16 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
 {
     public class UpdateBuilder: IQueryBuilder
     {
-        private ComponentWhere componentWhere;
-        private ComponentValue componentValue;
+        private ComponentOfWhere componentWhere;
+        private ComponentOfSet componentSet;
 
-        public ComponentWhere ComponentWhere
+        public ComponentOfWhere ComponentWhere
         {
             get
             {
                 if (componentWhere==null)
                 {
-                    componentWhere = new ComponentWhere(this);
+                    componentWhere = new ComponentOfWhere(this);
                 }
                 return componentWhere;
             }
@@ -26,32 +26,31 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 componentWhere = value;
             }
         }
-        public ComponentValue ComponentValue
+        public ComponentOfSet ComponentSet
         {
             get
             {
-                if (componentValue == null)
+                if (componentSet == null)
                 {
-                    componentValue = new ComponentValue(this);
+                    componentSet = new ComponentOfSet(this);
                 }
-                return componentValue;
+                return componentSet;
             }
             set
             {
-                componentValue = value;
+                componentSet = value;
             }
         }
 
-        public override string ToQueryString(DbSession session, string tableName)
+        public override string ToQueryString(DbSession session)
         {
-            return string.Format("update {0} set {1}{2}", TableName ?? tableName, ComponentValue.ToQueryComponentOfSets(session)
-                , ComponentWhere.Wheres.Count > 0 ? " where " + ComponentWhere.ToQueryComponentOfWheres(session) : "");
+            return string.Format("update {0}{1}{2}", TableName, ComponentSet.ToQueryString(session)
+                , ComponentWhere.Wheres.Count > 0 ? ComponentWhere.ToQueryString(session) : "");
         }
-
         public override void AppendQueryParameter(ref DbCommand command, DbSession session)
         {
-            command.AddParameter(session, ComponentWhere.Wheres);
-            command.AddParameter(session, ComponentValue.Values);
+            ComponentWhere.Wheres.AddParameter(session, command);
+            ComponentSet.Values.AddParameter(session, command);
         }
     }
 }

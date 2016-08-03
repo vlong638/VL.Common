@@ -20,6 +20,8 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         /// 是否输出查询字符串
         /// </summary>
         public bool IsLogQuery { set; get; } = true;
+        ///TODO 其实ORM的Operator对日志记录的需求需要对外界的日志记录工具产生一个依赖
+        ///可以依赖于ServiceContext的某一个日志记录工具
         /// <summary>
         /// 日志输出文件夹
         /// </summary>

@@ -23,7 +23,7 @@ namespace VL.Common.ORM.Utilities
         /// <param name="name"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static DbParameter GetDbParameter(DbSession session,string name, object value)
+        public static DbParameter GetDbParameter(DbSession session, string name, object value)
         {
             switch (session.DatabaseType)
             {
@@ -40,16 +40,16 @@ namespace VL.Common.ORM.Utilities
         /// <summary>
         /// 获取对应数据库的参数对象
         /// </summary>
-        public static DbParameter GetDbParameter(this PDMDbProperty property, DbSession session, object value,string nickName)//TODO =null
+        public static DbParameter GetDbParameter(this PDMDbProperty property, DbSession session, object value, string nickName)//TODO =null
         {
             switch (session.DatabaseType)
             {
                 case EDatabaseType.MSSQL:
-                    return new SqlParameter(nickName??property.Title, value);
+                    return new SqlParameter(nickName ?? property.Title, value);
                 case EDatabaseType.Oracle:
-                    return new OracleParameter(nickName ?? property.Title, value);
+                    return new OracleParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value);
                 case EDatabaseType.MySQL:
-                    return new MySqlParameter(nickName ?? property.Title, value);
+                    return new MySqlParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value);
                 default:
                     throw new NotImplementedException("未支持该类型数据库的参数生成" + session.DatabaseType.ToString());
             }
@@ -57,22 +57,35 @@ namespace VL.Common.ORM.Utilities
         /// <summary>
         /// 转译为对应数据库的查询语句
         /// </summary>
-        /// <param name="operatorType"></param>
-        /// <returns></returns>
-        public static string ToQueryString(this OperatorType operatorType)
+        public static string ToQueryString(this LocateType operatorType)
         {
             switch (operatorType)
             {
-                case OperatorType.Equal:
+                case LocateType.Equal:
                     return "=";
-                case OperatorType.NotEqual:
+                case LocateType.NotEqual:
                     return "!=";
-                case OperatorType.In:
+                case LocateType.In:
                     return "in";
-                case OperatorType.NotIn:
+                case LocateType.NotIn:
                     return "not in";
                 default:
                     throw new NotImplementedException("未支持该类型的操作符" + operatorType.ToString());
+            }
+        }
+        /// <summary>
+        /// 转译为对应数据库的查询语句
+        /// </summary>
+        public static string ToQueryString(this UpdateType updateType)
+        {
+            switch (updateType)
+            {
+                case UpdateType.SetValue:
+                    return "=";
+                case UpdateType.IncreaseByValue:
+                    return "+=";
+                default:
+                    throw new NotImplementedException("未支持该类型的操作符" + updateType.ToString());
             }
         }
         /// <summary>
@@ -80,7 +93,7 @@ namespace VL.Common.ORM.Utilities
         /// </summary>
         /// <param name="fieldAliases"></param>
         /// <returns></returns>
-        public static string ToSQLString(this List<FieldAlias> fieldAliases)
+        public static string ToSQLString(this List<ComponentValueOfSelect> fieldAliases)
         {
             StringBuilder sb = new StringBuilder();
             foreach (var fieldAlias in fieldAliases)
@@ -101,7 +114,7 @@ namespace VL.Common.ORM.Utilities
         /// </summary>
         /// <param name="fieldAlias"></param>
         /// <returns></returns>
-        public static string ToSQLString(this FieldAlias fieldAlias)
+        public static string ToSQLString(this ComponentValueOfSelect fieldAlias)
         {
             if (string.IsNullOrEmpty(fieldAlias.Alias))
             {

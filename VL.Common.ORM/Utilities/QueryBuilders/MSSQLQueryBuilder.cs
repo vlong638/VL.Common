@@ -15,7 +15,7 @@
         //    }
         //    return whereCondition.ToString();
         //}
-        //private static void AppendQuery(StringBuilder whereCondition, DbSession session, PDMDbPropertyOperateValue where)
+        //private static void AppendQuery(StringBuilder whereCondition, DbSession session, PDMDbPropertyLocateValue where)
         //{
         //    if (where.IsMultipleProperties)
         //    {

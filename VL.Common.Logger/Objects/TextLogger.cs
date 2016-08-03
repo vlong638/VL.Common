@@ -2,7 +2,7 @@
 
 namespace VL.Common.Logger.Objects
 {
-    public class TextLogger : IFileLogger
+    public class TextLogger : IFileBased
     {
         #region Properties
         static object LogLocker = new object();
