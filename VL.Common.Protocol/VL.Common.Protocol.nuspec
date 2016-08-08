@@ -2,11 +2,12 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1608081453.1</version>
+    <version>1.0.1608081724.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-XMLConfigItem增加行为: void LoadXElement(XElement element);</description>
+XMLConfigItem增加行为: void LoadXElement(XElement element);
+增加空构造函数,允许不基于element创建对象</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

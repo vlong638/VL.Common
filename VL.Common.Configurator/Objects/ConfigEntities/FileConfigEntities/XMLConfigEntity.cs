@@ -43,6 +43,9 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
 
     public abstract class XMLConfigItem
     {
+        public XMLConfigItem()
+        {
+        }
         public XMLConfigItem(XElement element)
         {
             LoadXElement(element);
