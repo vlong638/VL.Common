@@ -21,7 +21,7 @@ namespace VL.Common.DAS.Utilities
         }
 
         protected abstract List<DbConfigItem> GetDbConfigItems();
-        public override IEnumerable<XElement> GetXElements()
+        public override IEnumerable<XElement> ToXElements()
         {
             return DbConfigItems.Select(c => c.ToXElement());
         }

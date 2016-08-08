@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
 using VL.Common.Caching.Redis.Configs;
 
 namespace VL.Common.Testing.Configs
@@ -9,11 +11,14 @@ namespace VL.Common.Testing.Configs
         {
         }
 
+        public override IEnumerable<XElement> ToXElements()
+        {
+            throw new NotImplementedException();
+        }
+
         protected override List<DbConfigItem> GetDbConfigItems()
         {
-            return new List<DbConfigItem>() {
-                new DbConfigItem("Default")
-            };
+            throw new NotImplementedException();
         }
     }
 }

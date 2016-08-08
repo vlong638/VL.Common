@@ -31,19 +31,20 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
                 Directory.CreateDirectory(OutputDirectoryPath);
             }
             XElement root = new XElement("configuration");
-            foreach (var element in GetXElements())
+            foreach (var element in ToXElements())
             {
                 root.Add(element);
             }
             root.Save(OutputFilePath);
         }
-        public abstract IEnumerable<XElement> GetXElements();
+        public abstract IEnumerable<XElement> ToXElements();
         protected abstract void Load(XDocument doc);
     }
 
     public interface XMLConfigItem
     {
         XElement ToXElement();
+        void LoadXElement(XElement element);
     }
 
     public class KeyValueConfigItem<T> : XMLConfigItem where T : IConvertible//struct,
@@ -57,6 +58,10 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
             Value = t;
         }
 
+        public void LoadXElement(XElement element)
+        {
+            Value = (T)Convert.ChangeType(element.Attribute(nameof(Value)).Value, Value.GetType());
+        }
         public void SetValue(IEnumerable<XElement> elements)
         {
             var element = elements.FirstOrDefault(c => c.Attribute(nameof(Key)).Value == Key);
@@ -64,7 +69,7 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
             {
                 throw new NotImplementedException("缺少关于" + Key + "的配置");
             }
-            Value= (T)Convert.ChangeType(element.Attribute(nameof(Value)).Value, Value.GetType());
+            LoadXElement(element);
         }
         public XElement ToXElement()
         {
