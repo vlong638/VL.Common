@@ -26,7 +26,7 @@ namespace VL.Common.Protocol
             IsSQLLogAvailable.SetValue(elements);
         }
 
-        public override IEnumerable<XElement> GetXElements()
+        public override IEnumerable<XElement> ToXElements()
         {
             List<XElement> elements = new List<XElement>();
             elements.Add(IsSQLLogAvailable.ToXElement());

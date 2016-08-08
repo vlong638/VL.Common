@@ -2,14 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1608031120.1</version>
+    <version>1.0.1608081453.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-模型统一整理为
-ComponentOfxxx
-ComponentValueOfxxx
-修正nickName的取值</description>
+XMLConfigItem增加行为: void LoadXElement(XElement element);</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
