@@ -41,13 +41,18 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
         protected abstract void Load(XDocument doc);
     }
 
-    public interface XMLConfigItem
+    public abstract class XMLConfigItem
     {
-        XElement ToXElement();
-        void LoadXElement(XElement element);
+        public XMLConfigItem(XElement element)
+        {
+            LoadXElement(element);
+        }
+
+        public abstract XElement ToXElement();
+        public abstract void LoadXElement(XElement element);
     }
 
-    public class KeyValueConfigItem<T> : XMLConfigItem where T : IConvertible//struct,
+    public class KeyValueConfigItem<T>  where T : IConvertible//struct,
     {
         public string Key { set; get; }
         public T Value { set; get; }
@@ -58,10 +63,6 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
             Value = t;
         }
 
-        public void LoadXElement(XElement element)
-        {
-            Value = (T)Convert.ChangeType(element.Attribute(nameof(Value)).Value, Value.GetType());
-        }
         public void SetValue(IEnumerable<XElement> elements)
         {
             var element = elements.FirstOrDefault(c => c.Attribute(nameof(Key)).Value == Key);
@@ -70,6 +71,10 @@ namespace VL.Common.Configurator.Objects.ConfigEntities
                 throw new NotImplementedException("缺少关于" + Key + "的配置");
             }
             LoadXElement(element);
+        }
+        public void LoadXElement(XElement element)
+        {
+            Value = (T)Convert.ChangeType(element.Attribute(nameof(Value)).Value, Value.GetType());
         }
         public XElement ToXElement()
         {
