@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VL.Common.ORM.Utilities.QueryBuilders;
 
 namespace VL.Common.ORM.Objects
 {
@@ -84,6 +85,14 @@ namespace VL.Common.ORM.Objects
                 default:
                     throw new NotImplementedException("该PDM字段类型未设置对应的C#类型");
             }
+        }
+    }
+
+    public static class PDMDbPropertyEx
+    {
+        public static ComponentValueOfSelect ToComponentValueOfSelect(this PDMDbProperty property)
+        {
+            return new ComponentValueOfSelect(property.Title);
         }
     }
 }

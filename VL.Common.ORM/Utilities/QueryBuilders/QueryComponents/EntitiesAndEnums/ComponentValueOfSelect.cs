@@ -12,17 +12,6 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public class ComponentValueOfSelects : List<ComponentValueOfSelect>
     {
-        public void Add(PDMDbProperty property)
-        {
-            this.Add(new ComponentValueOfSelect(property.Title));
-        }
-        public void AddRange(List<PDMDbProperty> properties)
-        {
-            foreach (var property in properties)
-            {
-                this.Add(new ComponentValueOfSelect(property.Title));
-            }
-        }
     }
     /// <summary>
     /// 字段

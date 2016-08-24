@@ -2,14 +2,12 @@
 <package>
   <metadata>
     <id>VL.Common.ORM</id>
-    <version>1.0.1608031119.1</version>
+    <version>1.0.1608241508.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>关系映射模型
-模型统一整理为
-ComponentOfxxx
-ComponentValueOfxxx
-修正nickName的取值</description>
+PDMDbProperty增加到ComponentValueOfSelect的转换
+ComponentValueOfSelects移除直接增加PDMDbProperty的支持</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
