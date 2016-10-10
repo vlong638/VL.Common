@@ -45,11 +45,11 @@ namespace VL.Common.ORM.Utilities
             switch (session.DatabaseType)
             {
                 case EDatabaseType.MSSQL:
-                    return new SqlParameter(nickName ?? property.Title, value);
+                    return new SqlParameter(nickName ?? property.Title, value.GetType().IsEnum ? (int)value : value);
                 case EDatabaseType.Oracle:
-                    return new OracleParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value);
+                    return new OracleParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value.GetType().IsEnum ? (int)value : value);
                 case EDatabaseType.MySQL:
-                    return new MySqlParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value);
+                    return new MySqlParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value.GetType().IsEnum ? (int)value : value);
                 default:
                     throw new NotImplementedException("未支持该类型数据库的参数生成" + session.DatabaseType.ToString());
             }
