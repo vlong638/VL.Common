@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using VL.Common.DAS.Objects;
+using VL.Common.ORM.Utilities.Interfaces;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {
@@ -10,7 +10,9 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     {
         private ComponentOfWhere componentWhere;
         private ComponentOfSet componentSet;
-
+        /// <summary>
+        /// Where部件
+        /// </summary>
         public ComponentOfWhere ComponentWhere
         {
             get
@@ -26,6 +28,9 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 componentWhere = value;
             }
         }
+        /// <summary>
+        /// Set部件
+        /// </summary>
         public ComponentOfSet ComponentSet
         {
             get
@@ -42,15 +47,25 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             }
         }
 
+        /// <summary>
+        /// 构建query
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
         public override string ToQueryString(DbSession session)
         {
             return string.Format("update {0}{1}{2}", TableName, ComponentSet.ToQueryString(session)
-                , ComponentWhere.Wheres.Count > 0 ? ComponentWhere.ToQueryString(session) : "");
+                , ComponentWhere.ToQueryString(session));
         }
-        public override void AppendQueryParameter(ref DbCommand command, DbSession session)
+        /// <summary>
+        ///  添加query语句所对应的参数
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="session"></param>
+        public override void AddParameter(DbCommand command, DbSession session)
         {
-            ComponentWhere.Wheres.AddParameter(session, command);
-            ComponentSet.Values.AddParameter(session, command);
+            ComponentWhere.AddParameter(command, session);
+            ComponentSet.AddParameter(command, session);
         }
     }
 }

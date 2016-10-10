@@ -8,20 +8,20 @@ using VL.Common.DAS.Objects;
 
 namespace VL.Common.ORM.Utilities.Interfaces
 {
+
     /// <summary>
-    /// 可参数化
+    /// Query元素
+    /// 定义了query的字符串转换
+    /// 定义了query的参数构建
     /// </summary>
-    public interface IParameterizable
+    public interface IQueriable
     {
         /// <summary>
-        /// 辅助名称适用于参数重复
+        /// 转Query
         /// </summary>
-        string NickName { set; get; }
-        /// <summary>
-        /// 获取参数名
-        /// </summary>
+        /// <param name="session"></param>
         /// <returns></returns>
-        string GetParameterName(DbSession session);
+        string ToQueryString(DbSession session);
         /// <summary>
         /// 基于(属性,值)添加参数
         /// </summary>

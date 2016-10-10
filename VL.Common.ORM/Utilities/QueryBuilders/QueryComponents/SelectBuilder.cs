@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Common;
 using VL.Common.DAS.Objects;
+using VL.Common.ORM.Utilities.Interfaces;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {
@@ -10,26 +11,66 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public class SelectBuilder : IQueryBuilder
     {
-        private ComponentOfSelect componentSelectField;
+        private ComponentOfSelect componentSelect;
         private ComponentOfWhere componentWhere;
         private ComponentOfOrder componentOrder;
+        ////TODO
+        //private ComponentOfPager componentOfPager;
+        ///// <summary>
+        ///// 属性,操作,值
+        ///// </summary>
+        //public class ComponentOfPager : IComponentBuilder, IQueriable
+        //{
+        //    /// <summary>
+        //    /// 分页大小
+        //    /// </summary>
+        //    public int PageSize { set; get; } = 1;
+        //    /// <summary>
+        //    /// 分页页码,从1开始
+        //    /// </summary>
+        //    public int PageIndex { set; get; } = 1;
 
+        //    /// <summary>
+        //    /// 构造函数,实现上下级链
+        //    /// </summary>
+        //    /// <param name="queryBuilder"></param>
+        //    public ComponentOfPager(IQueryBuilder queryBuilder) : base(queryBuilder)
+        //    {
+        //    }
+
+        //    /// <summary>
+        //    /// 所有的支持IQuerable的元素都可以转换为query
+        //    /// </summary>
+        //    /// <param name="session"></param>
+        //    /// <returns></returns>
+        //    public string ToQueryString(DbSession session)
+        //    {
+        //        throw new NotImplementedException();
+        //    }
+        //}
+
+        /// <summary>
+        /// Select部分
+        /// </summary>
         public ComponentOfSelect ComponentSelect
         {
             get
             {
-                if (componentSelectField == null)
+                if (componentSelect == null)
                 {
-                    componentSelectField = new ComponentOfSelect(this);
+                    componentSelect = new ComponentOfSelect(this);
                 }
-                return componentSelectField;
+                return componentSelect;
             }
 
             set
             {
-                componentSelectField = value;
+                componentSelect = value;
             }
         }
+        /// <summary>
+        /// Where部分
+        /// </summary>
         public ComponentOfWhere ComponentWhere
         {
             get
@@ -45,6 +86,9 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 componentWhere = value;
             }
         }
+        /// <summary>
+        /// Order部分
+        /// </summary>
         public ComponentOfOrder ComponentOrder
         {
             get
@@ -62,16 +106,25 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             }
         }
 
+        /// <summary>
+        /// 构建query
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
         public override string ToQueryString(DbSession session)
         {
             return string.Format("{0} from {1}{2}{3}", ComponentSelect.ToQueryString(session), TableName
-                , ComponentWhere.Wheres.Count > 0 ? ComponentWhere.ToQueryString(session) : ""
-                , ComponentOrder.Orders.Count > 0 ?  ComponentOrder.ToQueryString(session) : "");
+                , ComponentWhere.ToQueryString(session)
+                , ComponentOrder.ToQueryString(session));
         }
-
-        public override void AppendQueryParameter(ref DbCommand command, DbSession session)
+        /// <summary>
+        /// 添加query语句所对应的参数
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="session"></param>
+        public override void AddParameter(DbCommand command, DbSession session)
         {
-            ComponentWhere.Wheres.AddParameter(session, command);
+            ComponentWhere.AddParameter(command, session);
         }
     }
 }

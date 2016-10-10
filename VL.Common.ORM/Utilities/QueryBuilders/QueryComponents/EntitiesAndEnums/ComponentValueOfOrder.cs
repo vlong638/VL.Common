@@ -12,12 +12,25 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public class ComponentValueOfOrder
     {
-        public ComponentValueOfOrder()
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <param name="orderType"></param>
+        public ComponentValueOfOrder(string fieldName, OrderType orderType = OrderType.asc)
         {
-            OrderType = OrderType.asc;
+            OrderType = orderType;
+            FieldName = fieldName;
         }
-        public string FieldName { set; get; }
-        public OrderType OrderType { set; get; }
+
+        /// <summary>
+        /// 字段名
+        /// </summary>
+        public string FieldName { private set; get; }
+        /// <summary>
+        /// 排序方式
+        /// </summary>
+        public OrderType OrderType { private set; get; }
     }
     /// <summary>
     /// 排序方式

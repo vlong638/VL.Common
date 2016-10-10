@@ -19,6 +19,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         public List<PDMDbProperty> Properties { set; get; }
         public LocateType Operator { set; get; }
         public object Value { set; get; }
+        public string NickName { set; get; }
 
         public ComponentValueOfWhere(PDMDbProperty property, SelectBuilder subSelect, LocateType operatorType, string nickName = null)
         {
@@ -45,7 +46,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             this.NickName = nickName;
         }
 
-        public override string GetParameterName(DbSession session)
+        public string GetParameterName(DbSession session)
         {
             if (IsMultipleProperties)
             {
@@ -56,20 +57,22 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 return session.GetParameterPrefix() + (!string.IsNullOrEmpty(NickName)?NickName : Property.Title);
             }
         }
-        public override void AddParameter(DbSession session, DbCommand command)
+        public void AddParameter(DbCommand command, DbSession session)
         {
             //包含子查询
-            if (this.SubSelect != null && this.SubSelect.ComponentWhere.Wheres.Count > 0)
+            if (this.SubSelect != null)// && this.SubSelect.ComponentWhere.Wheres.Count > 0)
             {
-                foreach (var subWhere in this.SubSelect.ComponentWhere.Wheres)
-                {
-                    subWhere.AddParameter(session, command);
-                }
+                throw new NotImplementedException("未实现子查询处理");
+                //foreach (var subWhere in this.SubSelect.ComponentWhere.Wheres)
+                //{
+                //    subWhere.AddParameter(session, command);
+                //}
             }
             else//不包含子查询
             {
                 if (this.IsMultipleProperties)
                 {
+                    throw new NotImplementedException("未实现多属性处理");
                     //TODO 多值化处理
                     //whereCondition.AppendFormat("({0})", this.SubSelect.ToQueryString(session));
                 }
@@ -201,7 +204,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             //增加Parameter
             foreach (var pdmDbPropertyOperateValue in pdmDbPropertyOperateValues)
             {
-                pdmDbPropertyOperateValue.AddParameter(session, command);
+                pdmDbPropertyOperateValue.AddParameter(command, session);
             }
         }
     }

@@ -91,6 +91,10 @@ namespace VL.Common.Protocol.IService
         #endregion
 
         #region 0708事务处理标准化方法
+        /// <summary>
+        /// 封装了事务处理的方法
+        /// 只需专注于业务逻辑的实现
+        /// </summary>
         public T HandleTransactionEvent<T>(DbSession session1, Func<DbSession, T> func) where T : Result, new()
         {
             var result = new T();
@@ -134,6 +138,10 @@ namespace VL.Common.Protocol.IService
             result.LogResult(ServiceContext.ServiceLogger);
             return result;
         }
+        /// <summary>
+        /// 封装了事务处理的方法
+        /// 只需专注于业务逻辑的实现
+        /// </summary>HandleTransactionEvent
         public T HandleTransactionEvent<T>(DbSession session1, DbSession session2, Func<DbSession, DbSession, T> func) where T : Result, new()
         {
             var result = new T();
@@ -185,6 +193,10 @@ namespace VL.Common.Protocol.IService
             result.LogResult(ServiceContext.ServiceLogger);
             return result;
         }
+        /// <summary>
+        /// 封装了事务处理的方法
+        /// 只需专注于业务逻辑的实现
+        /// </summary>
         public T HandleTransactionEvent<T>(string session1Name, Func<DbSession, T> func) where T : Result, new()
         {
             var result = new T();
@@ -230,6 +242,10 @@ namespace VL.Common.Protocol.IService
             result.LogResult(ServiceContext.ServiceLogger);
             return result;
         }
+        /// <summary>
+        /// 封装了事务处理的方法
+        /// 只需专注于业务逻辑的实现
+        /// </summary>
         public T HandleTransactionEvent<T>(string session1Name, string session2Name, Func<DbSession, DbSession, T> func) where T : Result, new()
         {
             var result = new T();

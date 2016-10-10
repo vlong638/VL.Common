@@ -12,15 +12,40 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public class ComponentValueOfSet : IParameterizable, IQueriable
     {
+        /// <summary>
+        /// 目标属性
+        /// </summary>
         public PDMDbProperty Property { set; get; }
+        /// <summary>
+        /// 值
+        /// </summary>
         public object Value { set; get; }
-        public string NickName { set; get; }
+        /// <summary>
+        /// 操作符
+        /// </summary>
         public UpdateType Operator { set; get; }
+        /// <summary>
+        /// 辅助名称适用于参数重复
+        /// </summary>
+        public string NickName { set; get; }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="value"></param>
+        /// <param name="nickName"></param>
         public ComponentValueOfSet(PDMDbProperty property, object value, string nickName = null)
         {
             init(property, UpdateType.SetValue, value, !string.IsNullOrEmpty(nickName) ? nickName : property.Title);
         }
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="value"></param>
+        /// <param name="updateType"></param>
+        /// <param name="nickName"></param>
         public ComponentValueOfSet(PDMDbProperty property, object value, UpdateType updateType, string nickName = null)
         {
             init(property, updateType, value, !string.IsNullOrEmpty(nickName) ? nickName : property.Title);
@@ -43,11 +68,21 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         //    this.NickName = nickName;
         //}
 
-        public override string GetParameterName(DbSession session)
+        /// <summary>
+        /// 获取参数名
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
+        public string GetParameterName(DbSession session)
         {
             return session.GetParameterPrefix() + NickName;
         }
-        public override void AddParameter(DbSession session, DbCommand command)
+        /// <summary>
+        /// 添加参数
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="session"></param>
+        public void AddParameter(DbCommand command, DbSession session)
         {
             switch (Operator)
             {
@@ -59,7 +94,11 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                     throw new NotImplementedException("Error08030917-暂未支持该操作符的处理" + Operator.ToString());
             }
         }
-
+        /// <summary>
+        /// 转query
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
         public string ToQueryString(DbSession session)
         {
             switch (Operator)
@@ -85,7 +124,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             //增加Parameter
             foreach (var pdmDbPropertyUpdateValue in pdmDbPropertyUpdateValues)
             {
-                pdmDbPropertyUpdateValue.AddParameter(session, command);
+                pdmDbPropertyUpdateValue.AddParameter(command, session);
             }
         }
     }
@@ -94,7 +133,13 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public enum UpdateType
     {
+        /// <summary>
+        /// 设值
+        /// </summary>
         SetValue,
+        /// <summary>
+        /// 增长
+        /// </summary>
         IncreaseByValue,
     }
 }

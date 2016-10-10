@@ -10,7 +10,7 @@ namespace VL.Common.ORM.Objects
     /// <summary>
     /// 由pdm解析的列字段
     /// </summary>
-    public class PDMDbProperty
+    public class PDMDbProperty : ComponentValueOfSelect
     {
         #region Properties
         public string Title { get; set; }
@@ -37,7 +37,7 @@ namespace VL.Common.ORM.Objects
         /// <param name="nullable"></param>
         /// <param name="defaultValue"></param>
         public PDMDbProperty(string title, string code, string comment
-            , bool isPrimaryKey, PDMDataType type, int length, int precision, bool nullable, string defaultValue = null)
+            , bool isPrimaryKey, PDMDataType type, int length, int precision, bool nullable, string defaultValue = null) : base(title, null)
         {
             this.Title = title;
             this.Code = code;
@@ -88,11 +88,11 @@ namespace VL.Common.ORM.Objects
         }
     }
 
-    public static class PDMDbPropertyEx
-    {
-        public static ComponentValueOfSelect ToComponentValueOfSelect(this PDMDbProperty property)
-        {
-            return new ComponentValueOfSelect(property.Title);
-        }
-    }
+    //public static class PDMDbPropertyEx
+    //{
+    //    public static ComponentValueOfSelect ToComponentValueOfSelect(this PDMDbProperty property)
+    //    {
+    //        return new ComponentValueOfSelect(property.Title);
+    //    }
+    //}
 }

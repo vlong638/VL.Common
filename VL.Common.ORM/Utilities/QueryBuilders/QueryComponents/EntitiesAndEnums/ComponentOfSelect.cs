@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using VL.Common.DAS.Objects;
-using VL.Common.ORM.Objects;
+using VL.Common.ORM.Utilities.Interfaces;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {
@@ -11,22 +12,70 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public class ComponentOfSelect : IComponentBuilder, IQueriable
     {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="queryBuilder"></param>
         public ComponentOfSelect(IQueryBuilder queryBuilder) : base(queryBuilder)
         {
-            Values = new ComponentValueOfSelects();
+            Selects = new ComponentValueOfSelects();
         }
 
-        public ComponentValueOfSelects Values { set; get; }
-
+        ComponentValueOfSelects Selects { set; get; }
+        /// <summary>
+        /// 新增查询项
+        /// </summary>
+        /// <param name="select"></param>
+        public void Add(ComponentValueOfSelect select)
+        {
+            Selects.Add(select);
+        }
+        /// <summary>
+        /// 新增查询项
+        /// </summary>
+        public void Add(string fieldName, string alias = null)
+        {
+            Selects.Add(new ComponentValueOfSelect(fieldName, alias));
+        }
+        /// <summary>
+        /// 添加参数,Select不需要参数传值
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="session"></param>
+        public void AddParameter(DbCommand command, DbSession session)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 转换为Query
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
         public string ToQueryString(DbSession session)
         {
-            if (Values.Count == 0)
+            if (Selects.Count == 0)
             {
                 return "select *";
             }
             else
             {
-                return "select " + string.Join(",", Values.Select(c => string.IsNullOrEmpty(c.Alias) ? c.FieldName : c.Alias));
+                return "select " + string.Join(",", Selects.Select(c => string.IsNullOrEmpty(c.Alias) ? c.FieldName : c.Alias));
+            }
+        }
+        /// <summary>
+        /// 实际select的字段列表
+        /// 无数据时为空列表
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetSelectFields()
+        {
+            if (Selects.Count()==0)
+            {
+                return new List<string>();
+            }
+            else
+            {
+                return Selects.Select(c => string.IsNullOrEmpty(c.Alias) ? c.FieldName : c.Alias).ToList();
             }
         }
     }

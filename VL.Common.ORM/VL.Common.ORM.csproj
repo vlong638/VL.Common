@@ -70,9 +70,12 @@
     <Compile Include="Objects\Entities\PDMDbProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DbTranslateHelper.cs" />
+    <Compile Include="Utilities\Interfaces\IComponentBuilder.cs" />
     <Compile Include="Utilities\Interfaces\IDbQueryBuilder.cs" />
     <Compile Include="Utilities\Interfaces\IDbQueryOperator.cs" />
     <Compile Include="Utilities\Interfaces\IParameterizable.cs" />
+    <Compile Include="Utilities\Interfaces\IQueriable.cs" />
+    <Compile Include="Utilities\Interfaces\IQueryBuilder.cs" />
     <Compile Include="Utilities\Interfaces\IQueryFetcher.cs" />
     <Compile Include="Utilities\ITOperator.cs" />
     <Compile Include="Utilities\QueryBuilders\MSSQLQueryBuilder.cs" />
@@ -89,9 +92,6 @@
     <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentValueOfSet.cs" />
     <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentValueOfInsert.cs" />
     <Compile Include="Utilities\QueryBuilders\QueryComponents\InsertBuilder.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\Interfaces\IQueryBuilder.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\Interfaces\IQueryCondition.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\Interfaces\ISubQueryBuilder.cs" />
     <Compile Include="Utilities\QueryBuilders\QueryComponents\SelectBuilder.cs" />
     <Compile Include="Utilities\QueryBuilders\QueryComponents\UpdateBuilder.cs" />
     <Compile Include="Utilities\QueryOperators\MSSQLQueryOperator.cs" />

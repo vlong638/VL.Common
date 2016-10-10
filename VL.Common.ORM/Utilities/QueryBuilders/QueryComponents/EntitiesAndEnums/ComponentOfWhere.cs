@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using VL.Common.DAS.Objects;
+using VL.Common.ORM.Objects;
+using VL.Common.ORM.Utilities.Interfaces;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {
@@ -11,15 +14,68 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// </summary>
     public class ComponentOfWhere : IComponentBuilder, IQueriable
     {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="queryBuilder"></param>
         public ComponentOfWhere(IQueryBuilder queryBuilder) : base(queryBuilder)
         {
             Wheres = new List<ComponentValueOfWhere>();
         }
 
-        public List<ComponentValueOfWhere> Wheres { get; set; }
-
+        List<ComponentValueOfWhere> Wheres { get; set; }
+        /// <summary>
+        /// 新增条件项
+        /// </summary>
+        public void Add(ComponentValueOfWhere where)
+        {
+            Wheres.Add(where);
+        }
+        /// <summary>
+        /// 新增条件项
+        /// </summary>
+        public void Add(PDMDbProperty property, SelectBuilder subSelect, LocateType operatorType, string nickName = null)
+        {
+            Wheres.Add(new ComponentValueOfWhere(property, subSelect, operatorType, nickName));
+        }
+        /// <summary>
+        /// 新增条件项
+        /// </summary>
+        public void Add(PDMDbProperty property, object value, LocateType operatorType, string nickName = null)
+        {
+            Wheres.Add(new ComponentValueOfWhere(property, value, operatorType, nickName));
+        }
+        /// <summary>
+        /// 新增条件项
+        /// </summary>
+        public void Add(List<PDMDbProperty> Properties, object value, LocateType operatorType, string nickName)
+        {
+            Wheres.Add(new ComponentValueOfWhere(Properties, value, operatorType, nickName));
+        }
+        /// <summary>
+        /// 添加参数
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="session"></param>
+        public void AddParameter(DbCommand command, DbSession session)
+        {
+            foreach (var Where in Wheres)
+            {
+                Where.AddParameter(command, session);
+            }
+        }
+        /// <summary>
+        /// 转换为Query
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
         public string ToQueryString(DbSession session)
         {
+            if (Wheres.Count()==0)
+            {
+                return "";
+            }
+
             //TODO 对于Oracle支持(FieldA,FieldB) in ((ValueA1,ValueB1),(ValueA2,ValueB2)) 但是MSSQL不支持 需针对数据库优化
             //TODO 条件过长时应支持Split()操作,将一条语句的处理分散成多个处理 阶次拆分1表示一次二分,2表两次二分,依次类推
             StringBuilder whereCondition = new StringBuilder();
