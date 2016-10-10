@@ -2,14 +2,14 @@
 <package>
   <metadata>
     <id>VL.Common.ORM</id>
-    <version>1.0.1608241708.1</version>
+    <version>1.0.1610101703.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>关系映射模型
-PDMDbProperty增加到ComponentValueOfSelect的转换
-ComponentValueOfSelects移除直接增加PDMDbProperty的支持
-移除转换方法
-增加PDMDbProperty于ComponentValueOfSelect的派生</description>
+暂不对VL.ORM增加lambda解析
+优化Builder的组织方法
+
+增加参数对enum的检测</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

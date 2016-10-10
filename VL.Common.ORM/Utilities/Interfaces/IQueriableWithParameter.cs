@@ -14,13 +14,13 @@ namespace VL.Common.ORM.Utilities.Interfaces
     /// 定义了query的字符串转换
     /// 定义了query的参数构建
     /// </summary>
-    public interface IQueriable
+    public interface IQueriableWithParameter:IQueriable
     {
         /// <summary>
-        /// 转Query
+        /// 基于(属性,值)添加参数
         /// </summary>
+        /// <param name="command"></param>
         /// <param name="session"></param>
-        /// <returns></returns>
-        string ToQueryString(DbSession session);
+        void AddParameter(DbCommand command, DbSession session);
     }
 }

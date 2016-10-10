@@ -74,6 +74,7 @@
     <Compile Include="Utilities\Interfaces\IDbQueryBuilder.cs" />
     <Compile Include="Utilities\Interfaces\IDbQueryOperator.cs" />
     <Compile Include="Utilities\Interfaces\IParameterizable.cs" />
+    <Compile Include="Utilities\Interfaces\IQueriableWithParameter.cs" />
     <Compile Include="Utilities\Interfaces\IQueriable.cs" />
     <Compile Include="Utilities\Interfaces\IQueryBuilder.cs" />
     <Compile Include="Utilities\Interfaces\IQueryFetcher.cs" />

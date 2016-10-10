@@ -64,7 +64,18 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         /// <returns></returns>
         public string ToQueryString(DbSession session)
         {
-            return " set " + string.Join(",", Sets.Select(c => c.ToQueryString(session)));
+            return " set " + string.Join(",", Sets.Select(c =>
+            {
+                switch (c.Operator)
+                {
+                    case UpdateType.SetValue:
+                        return c.Property.Title + c.Operator.ToQueryString() + c.GetParameterName(session);
+                    case UpdateType.IncreaseByValue:
+                        return c.Property.Title + UpdateType.SetValue.ToQueryString() + c.Property.Title + c.GetParameterName(session);
+                    default:
+                        throw new NotImplementedException("Error08030915-暂未支持该操作符的处理" + c.Operator.ToString());
+                }
+            }));
         }
     }
 }

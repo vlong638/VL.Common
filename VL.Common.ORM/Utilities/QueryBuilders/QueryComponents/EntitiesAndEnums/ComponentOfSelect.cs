@@ -38,15 +38,6 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             Selects.Add(new ComponentValueOfSelect(fieldName, alias));
         }
         /// <summary>
-        /// 添加参数,Select不需要参数传值
-        /// </summary>
-        /// <param name="command"></param>
-        /// <param name="session"></param>
-        public void AddParameter(DbCommand command, DbSession session)
-        {
-            throw new NotImplementedException();
-        }
-        /// <summary>
         /// 转换为Query
         /// </summary>
         /// <param name="session"></param>

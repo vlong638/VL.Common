@@ -11,7 +11,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// <summary>
     /// 属性,操作,值
     /// </summary>
-    public class ComponentOfInsert : IComponentBuilder, IQueriable
+    public class ComponentOfInsert : IComponentBuilder, IQueriableWithParameter
     {
         /// <summary>
         /// 构造函数

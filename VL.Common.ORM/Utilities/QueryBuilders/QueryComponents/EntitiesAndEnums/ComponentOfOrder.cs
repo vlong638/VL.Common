@@ -38,15 +38,6 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             Orders.Add(new ComponentValueOfOrder(fieldName, orderType));
         }
         /// <summary>
-        /// 添加参数,Order不需要参数传值
-        /// </summary>
-        /// <param name="command"></param>
-        /// <param name="session"></param>
-        public void AddParameter(DbCommand command, DbSession session)
-        {
-            throw new NotImplementedException();
-        }
-        /// <summary>
         /// 转换为Query
         /// </summary>
         /// <param name="session"></param>

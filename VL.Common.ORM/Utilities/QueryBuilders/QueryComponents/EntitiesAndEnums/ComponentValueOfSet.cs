@@ -59,15 +59,6 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             this.NickName = nickName;
         }
 
-        //public SelectBuilder SubSelect { set; get; }
-        //public PDMDbPropertyUpdateValue(PDMDbProperty property, UpdateType updateType, SelectBuilder select, string nickName = null)
-        //{
-        //    this.Property = property;
-        //    this.Operator = updateType;
-        //    this.SubSelect = select;
-        //    this.NickName = nickName;
-        //}
-
         /// <summary>
         /// 获取参数名
         /// </summary>
@@ -104,8 +95,9 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             switch (Operator)
             {
                 case UpdateType.SetValue:
-                case UpdateType.IncreaseByValue:
                     return Property.Title + Operator.ToQueryString() + GetParameterName(session);
+                case UpdateType.IncreaseByValue:
+                    return Property.Title + UpdateType.SetValue.ToQueryString() + Property.Title + GetParameterName(session);
                 default:
                     throw new NotImplementedException("Error08030915-暂未支持该操作符的处理" + Operator.ToString());
             }

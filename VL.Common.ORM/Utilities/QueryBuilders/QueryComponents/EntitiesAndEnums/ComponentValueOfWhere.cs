@@ -11,7 +11,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// <summary>
     /// 属性,操作,值
     /// </summary>
-    public class ComponentValueOfWhere : IParameterizable, IQueriable
+    public class ComponentValueOfWhere : IParameterizable
     {
         public SelectBuilder SubSelect { set; get; }
         public bool IsMultipleProperties { set; get; }
@@ -184,11 +184,6 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
                 throw new NotImplementedException("参数需为IEnumerable<" + typeof(T) + ">规格");
             }
             return values;
-        }
-
-        public string ToQueryString(DbSession session)
-        {
-            throw new NotImplementedException();
         }
     }
     /// <summary>
