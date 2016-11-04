@@ -6,12 +6,15 @@ using VL.Common.ORM.Utilities.Interfaces;
 
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {
+    /// <summary>
+    /// Update 语句构建器
+    /// </summary>
     public class UpdateBuilder: IQueryBuilder
     {
         private ComponentOfWhere componentWhere;
         private ComponentOfSet componentSet;
         /// <summary>
-        /// Where部件
+        /// Where 语法段
         /// </summary>
         public ComponentOfWhere ComponentWhere
         {
@@ -29,7 +32,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             }
         }
         /// <summary>
-        /// Set部件
+        /// Set 语法段
         /// </summary>
         public ComponentOfSet ComponentSet
         {

@@ -81,20 +81,20 @@
     <Compile Include="Utilities\ITOperator.cs" />
     <Compile Include="Utilities\QueryBuilders\MSSQLQueryBuilder.cs" />
     <Compile Include="Utilities\QueryBuilders\QueryBuilderEx.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\DeleteBuilder.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentOfSelect.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentOfOrder.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentOfSet.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentOfInsert.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentValueOfSelect.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentValueOfOrder.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentOfWhere.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentValueOfWhere.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentValueOfSet.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\EntitiesAndEnums\ComponentValueOfInsert.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\InsertBuilder.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\SelectBuilder.cs" />
-    <Compile Include="Utilities\QueryBuilders\QueryComponents\UpdateBuilder.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\Builders\DeleteBuilder.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\Components\ComponentOfSelect.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\Components\ComponentOfOrder.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\Components\ComponentOfSet.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\Components\ComponentOfInsert.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\ComponentValues\ComponentValueOfSelect.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\ComponentValues\ComponentValueOfOrder.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\Components\ComponentOfWhere.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\ComponentValues\ComponentValueOfWhere.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\ComponentValues\ComponentValueOfSet.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\ComponentValues\ComponentValueOfInsert.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\Builders\InsertBuilder.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\Builders\SelectBuilder.cs" />
+    <Compile Include="Utilities\QueryBuilders\QueryComponents\Builders\UpdateBuilder.cs" />
     <Compile Include="Utilities\QueryOperators\MSSQLQueryOperator.cs" />
   </ItemGroup>
   <ItemGroup>

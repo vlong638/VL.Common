@@ -6,8 +6,7 @@ using VL.Common.ORM.Utilities.Interfaces;
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {
     /// <summary>
-    /// Select只能由内部设置进行操作,不能通过外部传递参数
-    /// 内部直接拼接字符串
+    /// Select 语句构建器
     /// </summary>
     public class SelectBuilder : IQueryBuilder
     {
@@ -50,7 +49,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         //}
 
         /// <summary>
-        /// Select部分
+        /// Select 语法段
         /// </summary>
         public ComponentOfSelect ComponentSelect
         {
@@ -69,7 +68,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             }
         }
         /// <summary>
-        /// Where部分
+        /// Where 语法段
         /// </summary>
         public ComponentOfWhere ComponentWhere
         {
@@ -87,7 +86,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
             }
         }
         /// <summary>
-        /// Order部分
+        /// Order 语法段
         /// </summary>
         public ComponentOfOrder ComponentOrder
         {

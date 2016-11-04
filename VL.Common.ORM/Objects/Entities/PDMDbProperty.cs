@@ -13,14 +13,41 @@ namespace VL.Common.ORM.Objects
     public class PDMDbProperty : ComponentValueOfSelect
     {
         #region Properties
+        /// <summary>
+        /// 字段名称
+        /// </summary>
         public string Title { get; set; }
+        /// <summary>
+        /// 字段编码
+        /// </summary>
         public string Code { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
         public string Comment { get; set; }
+        /// <summary>
+        /// 是否是主键
+        /// </summary>
         public bool IsPrimaryKey { get; set; }
+        /// <summary>
+        /// pdm字段类型
+        /// </summary>
         public PDMDataType Type { get; set; }
+        /// <summary>
+        /// 字段长度
+        /// </summary>
         public int Length { get; set; }
+        /// <summary>
+        /// 字段精度
+        /// </summary>
         public int Precision { get; set; }
+        /// <summary>
+        /// 是否允许空值
+        /// </summary>
         public bool Nullable { get; set; }
+        /// <summary>
+        /// 默认值
+        /// </summary>
         public string DefaultValue { get; set; }
         #endregion
 
@@ -51,6 +78,10 @@ namespace VL.Common.ORM.Objects
             this.DefaultValue = defaultValue;
         }
 
+        /// <summary>
+        /// CSharp数据类型
+        /// </summary>
+        /// <returns></returns>
         public CSharpDataType GetCSharpDataType()
         {
             switch (Type)
@@ -87,12 +118,4 @@ namespace VL.Common.ORM.Objects
             }
         }
     }
-
-    //public static class PDMDbPropertyEx
-    //{
-    //    public static ComponentValueOfSelect ToComponentValueOfSelect(this PDMDbProperty property)
-    //    {
-    //        return new ComponentValueOfSelect(property.Title);
-    //    }
-    //}
 }

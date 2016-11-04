@@ -10,12 +10,6 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
     /// <summary>
     /// 字段
     /// </summary>
-    public class ComponentValueOfSelects : List<ComponentValueOfSelect>
-    {
-    }
-    /// <summary>
-    /// 字段
-    /// </summary>
     public class ComponentValueOfSelect
     {
         /// <summary>

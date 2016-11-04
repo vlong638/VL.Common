@@ -6,26 +6,27 @@ using VL.Common.ORM.Utilities.Interfaces;
 namespace VL.Common.ORM.Utilities.QueryBuilders
 {
     /// <summary>
-    /// Insert Values
+    /// Delete 语句构建器
     /// </summary>
-    public class InsertBuilder : IQueryBuilder
+    public class DeleteBuilder : IQueryBuilder
     {
-        private ComponentOfInsert componentInsert;
-
-        public ComponentOfInsert ComponentInsert
+        private ComponentOfWhere componentWhere;
+        /// <summary>
+        /// Where 语法段
+        /// </summary>
+        public ComponentOfWhere ComponentWhere
         {
             get
             {
-                if (componentInsert == null)
+                if (componentWhere == null)
                 {
-                    componentInsert = new ComponentOfInsert(this);
+                    componentWhere = new ComponentOfWhere(this);
                 }
-                return componentInsert;
+                return componentWhere;
             }
-
             set
             {
-                componentInsert = value;
+                componentWhere = value;
             }
         }
 
@@ -36,7 +37,7 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         /// <param name="session"></param>
         public override void AddParameter(DbCommand command, DbSession session)
         {
-            ComponentInsert.AddParameter(command, session);
+            ComponentWhere.AddParameter(command, session);
         }
         /// <summary>
         /// 构建query
@@ -45,7 +46,8 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         /// <returns></returns>
         public override string ToQueryString(DbSession session)
         {
-            return string.Format("insert into {0}{1}", TableName , ComponentInsert.ToQueryString(session));
+            return string.Format("delete from {0}{1}", TableName
+                , ComponentWhere.ToQueryString(session));
         }
     }
 }

@@ -18,10 +18,10 @@ namespace VL.Common.ORM.Utilities.QueryBuilders
         /// <param name="queryBuilder"></param>
         public ComponentOfSelect(IQueryBuilder queryBuilder) : base(queryBuilder)
         {
-            Selects = new ComponentValueOfSelects();
+            Selects = new List<ComponentValueOfSelect>();
         }
 
-        ComponentValueOfSelects Selects { set; get; }
+        List<ComponentValueOfSelect> Selects { set; get; }
         /// <summary>
         /// 新增查询项
         /// </summary>

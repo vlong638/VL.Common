@@ -69,8 +69,8 @@
       <HintPath>..\packages\VL.Common.Logger.1.0.1604121655.1\lib\net452\VL.Common.Logger.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="VL.Common.ORM, Version=1.0.6059.20364, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.ORM.1.0.1608031119.1\lib\net452\VL.Common.ORM.dll</HintPath>
+    <Reference Include="VL.Common.ORM, Version=1.0.6127.29448, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VL.Common.ORM.1.0.1610101703.1\lib\net452\VL.Common.ORM.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -82,10 +82,10 @@
     <Compile Include="IService\IDependency\IWCFServiceNode.cs" />
     <Compile Include="IService\IDelegator\ServiceDelegator.cs" />
     <Compile Include="IService\IORM\IORMProvider.cs" />
+    <Compile Include="IService\IResult\IValidate.cs" />
     <Compile Include="IService\ISimulation\ISimulatable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IService\IResult\EResultCode.cs" />
-    <Compile Include="IService\IResult\Result.cs" />
+    <Compile Include="IService\IResult\Report.cs" />
     <Compile Include="Common\ProtocolConfig.cs" />
   </ItemGroup>
   <ItemGroup>
