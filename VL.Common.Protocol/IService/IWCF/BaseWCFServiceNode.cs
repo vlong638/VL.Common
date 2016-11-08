@@ -8,11 +8,11 @@ namespace VL.Common.Protocol.IService//.IWCF
     /// 服务节点规范
     /// 服务依赖建设
     /// </summary>
-    public class BaseWCFServiceNode<T> where T: ServiceContext
+    public class BaseWCFServiceNode<T> where T: ServiceContext,new()
     {
-        static T _serviceContext;
-        static Object ServiceLock = new object();
-        protected static T ServiceContext
+        T _serviceContext;
+        Object ServiceLock = new object();
+        public T ServiceContext
         {
             get
             {
@@ -22,16 +22,16 @@ namespace VL.Common.Protocol.IService//.IWCF
                     {
                         if (_serviceContext == null)
                         {
-                            _serviceContext = default(T);
+                            _serviceContext = new T();
                         }
                     }
                 }
                 return _serviceContext;
             }
         }
-        static DependencyResult _dependencyResult;
-        static Object DependencyLock = new object();
-        static DependencyResult DependencyResult
+        DependencyResult _dependencyResult;
+        Object DependencyLock = new object();
+        DependencyResult DependencyResult
         {
             get
             {
