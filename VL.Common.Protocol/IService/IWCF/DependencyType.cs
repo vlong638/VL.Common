@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace VL.Common.Protocol.IService
+namespace VL.Common.Protocol.IService//.IWCF
 {
     /// <summary>
     /// 依赖项类别

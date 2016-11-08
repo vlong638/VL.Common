@@ -2,17 +2,13 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1611041625.1</version>
+    <version>1.0.1611081712.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-调整了Result=>Report
-移除对message的硬性要求
-增加Locator字段负责错误的定位
-Code的职责调整为输出方法的执行状态
-移除MethodReportHelper
-CodeOfSuccess,CodeOfError改为常量
-修正ServiceDelegator对数据库名称的支持</description>
+IService调整为IWCF
+增加BaseWCFServiceNode用于基础数据初始化
+修正命名空间</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

@@ -3,7 +3,7 @@ using VL.Common.DAS.Objects;
 using VL.Common.ORM.Utilities.QueryBuilders;
 using VL.Common.ORM.Utilities.QueryOperators;
 
-namespace VL.Common.Protocol.IService.IORM
+namespace VL.Common.Protocol.IService//.IORM
 {
     /// <summary>
     /// ORM服务提供器

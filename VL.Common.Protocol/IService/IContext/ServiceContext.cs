@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using VL.Common.Configurator.Objects.ConfigEntities;
 using VL.Common.DAS.Objects;
 using VL.Common.DAS.Utilities;
 using VL.Common.Logger.Objects;
-using VL.Common.Protocol.IService.IORM;
 
-namespace VL.Common.Protocol.IService
+namespace VL.Common.Protocol.IService//.IContext
 {
     public abstract class ServiceContext
     {

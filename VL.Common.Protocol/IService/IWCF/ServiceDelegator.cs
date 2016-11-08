@@ -1,7 +1,7 @@
 ﻿using System;
 using VL.Common.DAS.Objects;
 
-namespace VL.Common.Protocol.IService
+namespace VL.Common.Protocol.IService//.IWCF
 {
     /// <summary>
     /// 用于规范服务的方法外框架(以隔离核心处理逻辑)

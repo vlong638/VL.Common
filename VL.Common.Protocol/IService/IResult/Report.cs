@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace VL.Common.Protocol.IService
+namespace VL.Common.Protocol.IService//.IResult
 {
     public class ModuleReportHelper
     {
