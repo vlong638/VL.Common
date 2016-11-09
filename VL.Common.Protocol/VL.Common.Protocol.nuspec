@@ -2,15 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1611081745.1</version>
+    <version>1.0.1611091439.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-IService调整为IWCF
-增加BaseWCFServiceNode用于基础数据初始化
-修正命名空间
-修正BaseWCFServiceNode{T}的T的初始化过程
-修正BaseWCFServiceNode{T}的存在形态,调整为使用方对象,而非上级接口(由于这通常是一个独立的静态量,多方的)</description>
+message改为messages</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
