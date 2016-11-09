@@ -132,22 +132,6 @@ namespace VL.Common.Protocol.IService//.IContext
             //更新并记录自身错误
             result.UpdateInfoFromDependencies();
             ServiceLogger.Info(result.Message);
-
-            //if (result.IsAllDependenciesAvailable)
-            //{
-            //    ServiceLogger.Info("依赖项检测通过");
-            //}
-            //else
-            //{
-            //    foreach (var dependencyDetail in result.DependencyDetails.Where(c => !c.IsDependencyAvailable))
-            //    {
-            //        ServiceLogger.Info(dependencyDetail.Message);
-            //    }
-            //    foreach (var dependencyResult in result.DependencyResults.Where(c => !c.IsAllDependenciesAvailable))
-            //    {
-            //        ServiceLogger.Info(dependencyResult.GetMessage());
-            //    }
-            //}
             ServiceLogger.Info("---------------------服务的依赖项检测--结束---------------------");
             return result;
         }

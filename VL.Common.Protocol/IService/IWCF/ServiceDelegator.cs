@@ -120,6 +120,7 @@ namespace VL.Common.Protocol.IService//.IWCF
                 {
                     session1.RollBackTransaction();
                 }
+                session1.Close();
                 return result;
             }
             catch (Exception ex)
@@ -178,6 +179,8 @@ namespace VL.Common.Protocol.IService//.IWCF
                     session1.RollBackTransaction();
                     session2.RollBackTransaction();
                 }
+                session1.Close();
+                session2.Close();
                 return result;
             }
             catch (Exception ex)
