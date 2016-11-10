@@ -36,7 +36,7 @@ namespace VL.Common.Protocol.IService//.IContext
         /// <summary>
         /// 事务代理类
         /// </summary>
-        public ServiceDelegator ServiceDelegator { set; get; }
+        public TransactionDelegator ServiceDelegator { set; get; }
 
 
         public ServiceContext()
@@ -44,13 +44,13 @@ namespace VL.Common.Protocol.IService//.IContext
             DatabaseConfig = GetDefaultDatabaseConfig();
             ProtocolConfig = GetDefaultProtocolConfig();
             ServiceLogger = GetDefaultServiceLogger();
-            ServiceDelegator = new ServiceDelegator(this);
+            ServiceDelegator = new TransactionDelegator(this);
             IORMProvider.ServiceContext = this;
         }
         public ServiceContext(DbConfigEntity databaseConfig, ProtocolConfig protocolConfig, ILogger serviceLogger)
         {
             InitServiceContent(databaseConfig, protocolConfig, serviceLogger);
-            ServiceDelegator = new ServiceDelegator(this);
+            ServiceDelegator = new TransactionDelegator(this);
             IORMProvider.ServiceContext = this;
         }
 

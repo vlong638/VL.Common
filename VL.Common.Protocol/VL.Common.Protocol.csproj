@@ -81,9 +81,10 @@
     <Compile Include="IService\IContext\ServiceContext.cs" />
     <Compile Include="IService\IWCF\BaseWCFServiceNode.cs" />
     <Compile Include="IService\IWCF\IWCFServiceNode.cs" />
-    <Compile Include="IService\IWCF\ServiceDelegator.cs" />
+    <Compile Include="IService\IWCF\TransactionDelegator.cs" />
     <Compile Include="IService\IORM\IORMProvider.cs" />
     <Compile Include="IService\IResult\IValidate.cs" />
+    <Compile Include="IService\IWCF\Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IService\IResult\Report.cs" />
     <Compile Include="Common\ProtocolConfig.cs" />

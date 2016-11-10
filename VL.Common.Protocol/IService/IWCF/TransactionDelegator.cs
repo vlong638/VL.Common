@@ -6,92 +6,17 @@ namespace VL.Common.Protocol.IService//.IWCF
     /// <summary>
     /// 用于规范服务的方法外框架(以隔离核心处理逻辑)
     /// </summary>
-    public class ServiceDelegator
+    public class TransactionDelegator
     {
-        public static ClassReportHelper ReportHelper = new ClassReportHelper(nameof(VL.Common.Protocol), nameof(ServiceDelegator));
+        public static ClassReportHelper ReportHelper = new ClassReportHelper(nameof(VL.Common.Protocol), nameof(TransactionDelegator));
 
-        public ServiceDelegator(ServiceContext serviceContext)
+        public TransactionDelegator(ServiceContext serviceContext)
         {
             ServiceContext = serviceContext;
         }
         public ServiceContext ServiceContext { set; get; }
 
-        #region 0708之前的事务封装方法
-        ///// <summary>
-        ///// 整体异常处理
-        ///// ,日志处理
-        ///// .模拟
-        ///// </summary>
-        //public T HandleEvent<T>(Func<T> func, bool isSimulation = false) where T : Report, new()
-        //{
-        //    var result = new T();
-        //    result.MethodName = nameof(HandleEvent);
-        //    result.ResultCode = EResultCode.Success;
-        //    //业务逻辑处理
-        //    try
-        //    {
-        //        result = func();
-        //        //result.CopyAll(func());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        result.ResultCode = EResultCode.Error;
-        //        result.Message = ex.ToString();
-        //    }
-        //    result.LogResult(ServiceContext.ServiceLogger);
-        //    return result;
-        //}
-        ///// <summary>
-        ///// 整体异常处理
-        ///// ,日志处理
-        ///// .单一会话+简单事务
-        ///// .模拟
-        ///// </summary>
-        //public T HandleSimpleTransactionEvent<T>(string dbName, Func<DbSession, T> func, bool isSimulation = false) where T : Report, new()
-        //{
-        //    var result = new T();
-        //    result.MethodName = nameof(HandleSimpleTransactionEvent);
-        //    result.ResultCode = EResultCode.Success;
-        //    DbSession session = null;
-        //    //业务逻辑处理
-        //    try
-        //    {
-        //        session = ServiceContext.DatabaseConfig.GetDbConfigItem(dbName).GetDbSession();
-        //        session.Open();
-        //        session.BeginTransaction();
-        //        try
-        //        {
-        //            result = func(session);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            result.ResultCode = EResultCode.Error;
-        //            result.Message = ex.ToString();
-        //        }
-        //        if (result.ResultCode == EResultCode.Success)
-        //        {
-        //            session.CommitTransaction();
-        //        }
-        //        else
-        //        {
-        //            session.RollBackTransaction();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        result.ResultCode = EResultCode.Error;
-        //        result.Message = ex.ToString();
-        //    }
-        //    finally
-        //    {
-        //        session.Close();
-        //    }
-        //    result.LogResult(ServiceContext.ServiceLogger);
-        //    return result;
-        //}
-        #endregion
-
-        #region 0708事务处理标准化方法
+        #region 事务处理_标准化
         /// <summary>
         /// 封装了事务处理的方法
         /// 只需专注于业务逻辑的实现

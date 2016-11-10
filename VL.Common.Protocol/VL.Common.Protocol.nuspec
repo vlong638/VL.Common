@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1611091743.1</version>
+    <version>1.0.1611101515.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-修正Delegator对Session.Close()的处理</description>
+事务处理更新</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
