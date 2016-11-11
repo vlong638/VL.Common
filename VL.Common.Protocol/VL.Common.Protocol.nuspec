@@ -2,11 +2,12 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1611101515.1</version>
+    <version>1.0.1611111628.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-事务处理更新</description>
+DbSession增加会话的日志记录字段
+IORMProvider改为扩展方法IORMExtensions</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

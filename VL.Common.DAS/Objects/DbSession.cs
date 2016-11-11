@@ -17,6 +17,10 @@ namespace VL.Common.DAS.Objects
         /// 数据提供器
         /// </summary>
         public EDatabaseType DatabaseType { set; get; }
+        /// <summary>
+        /// 是否输出文件日志
+        /// </summary>
+        public bool IsLogQuery { set; get; } = false;
         #endregion
 
         #region Parameter
@@ -34,7 +38,6 @@ namespace VL.Common.DAS.Objects
             }
         }
         #endregion
-
 
         #region Constructors
         protected DbSession()

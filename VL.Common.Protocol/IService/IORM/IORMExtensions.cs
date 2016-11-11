@@ -5,22 +5,14 @@ using VL.Common.ORM.Utilities.QueryOperators;
 
 namespace VL.Common.Protocol.IService//.IORM
 {
-    /// <summary>
-    /// ORM服务提供器
-    /// </summary>
-    public class IORMProvider
+    public static class IORMExtensions
     {
-        /// <summary>
-        /// 依赖于ServiceContext的配置
-        /// </summary>
-        public static ServiceContext ServiceContext { set; get; }
-
         /// <summary>
         /// 提供对应数据库的数据库语句构建类
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
-        public static IDbQueryBuilder GetDbQueryBuilder(DbSession session)
+        public static IDbQueryBuilder GetDbQueryBuilder(this DbSession session)
         {
             IDbQueryBuilder result;
             switch (session.DatabaseType)
@@ -39,7 +31,7 @@ namespace VL.Common.Protocol.IService//.IORM
         /// <summary>
         /// 提供对应数据库的操作类
         /// </summary>
-        public static IDbQueryOperator GetQueryOperator(DbSession session)
+        public static IDbQueryOperator GetQueryOperator(this DbSession session)
         {
             IDbQueryOperator result;
             switch (session.DatabaseType)
@@ -53,7 +45,6 @@ namespace VL.Common.Protocol.IService//.IORM
                 default:
                     throw new NotImplementedException("未为该类型" + session.DatabaseType + "实现对应的QueryOperator");
             }
-            result.IsLogQuery = ServiceContext.ProtocolConfig.IsSQLLogAvailable.Value;
             return result;
         }
     }

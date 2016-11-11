@@ -19,7 +19,6 @@ namespace VL.Common.Protocol.IService//.IContext
         /// 总协议配置
         /// </summary>
         public ProtocolConfig ProtocolConfig { get; set; }
-        #region 数据库配置及其操作
         /// <summary>
         /// 数据库配置
         /// CARE:如需分布式缓存数据库,也要按照数据库做相应连接配置
@@ -30,9 +29,10 @@ namespace VL.Common.Protocol.IService//.IContext
         /// </summary>
         public DbSession GetDbSession(string dbName)
         {
-            return DatabaseConfig.GetDbConfigItem(dbName).GetDbSession();
+            var session = DatabaseConfig.GetDbConfigItem(dbName).GetDbSession();
+            session.IsLogQuery = ProtocolConfig.IsSQLLogAvailable.Value;
+            return session;
         }
-        #endregion
         /// <summary>
         /// 事务代理类
         /// </summary>
@@ -45,13 +45,11 @@ namespace VL.Common.Protocol.IService//.IContext
             ProtocolConfig = GetDefaultProtocolConfig();
             ServiceLogger = GetDefaultServiceLogger();
             ServiceDelegator = new TransactionDelegator(this);
-            IORMProvider.ServiceContext = this;
         }
         public ServiceContext(DbConfigEntity databaseConfig, ProtocolConfig protocolConfig, ILogger serviceLogger)
         {
             InitServiceContent(databaseConfig, protocolConfig, serviceLogger);
             ServiceDelegator = new TransactionDelegator(this);
-            IORMProvider.ServiceContext = this;
         }
 
         protected abstract DbConfigEntity GetDefaultDatabaseConfig();

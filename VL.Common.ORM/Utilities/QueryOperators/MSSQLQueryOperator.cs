@@ -34,7 +34,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             DbCommand command = session.CreateCommand();
             command.CommandText = insertBuilder.ToQueryString(session, new T().TableName);
             insertBuilder.AddParameter(command, session);
-            WriteQueryLog(command);
+            WriteQueryLog(command,session);
             return session.ExecuteNonQuery(command) > 0;
         }
         #endregion
@@ -51,7 +51,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             {
                 command.CommandText = insertBuilder.ToQueryString(session, tableName);
                 insertBuilder.AddParameter(command, session);
-                WriteQueryLog(command);
+                WriteQueryLog(command,session);
                 result = result && session.ExecuteNonQuery(command) > 0;
             }
             return result;
@@ -78,7 +78,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             DbCommand command = session.CreateCommand();
             command.CommandText = deleteBuilder.ToQueryString(session, new T().TableName);
             deleteBuilder.AddParameter(command, session);
-            WriteQueryLog(command);
+            WriteQueryLog(command,session);
             return session.ExecuteNonQuery(command) > 0;
         }
         #endregion
@@ -103,7 +103,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             DbCommand command = session.CreateCommand();
             command.CommandText = updateBuilder.ToQueryString(session, new T().TableName);
             updateBuilder.AddParameter(command, session);
-            WriteQueryLog(command);
+            WriteQueryLog(command,session);
             return session.ExecuteNonQuery(command) > 0;
         }
         #endregion
@@ -119,7 +119,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             {
                 command.CommandText = updateBuilder.ToQueryString(session, new T().TableName);
                 updateBuilder.AddParameter(command, session);
-                WriteQueryLog(command);
+                WriteQueryLog(command,session);
                 result = result && session.ExecuteNonQuery(command) > 0;
             }
             return result;
@@ -147,7 +147,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             DbCommand command = session.CreateCommand();
             command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AddParameter(command, session);
-            WriteQueryLog(command);
+            WriteQueryLog(command,session);
             using (var reader = session.ExecuteDataReader(command))
             {
                 if (reader.Read())
@@ -178,7 +178,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         {
             List<T> results = new List<T>();
             var command = session.CreateCommand("select * from {0}", new T().TableName);
-            WriteQueryLog(command);
+            WriteQueryLog(command,session);
             using (var reader = session.ExecuteDataReader(command))
             {
                 while (reader.Read())
@@ -211,7 +211,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             DbCommand command = session.CreateCommand();
             command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AddParameter(command, session);
-            WriteQueryLog(command);
+            WriteQueryLog(command,session);
             using (var reader = session.ExecuteDataReader(command))
             {
                 var fields = selectBuilder.ComponentSelect.GetSelectFields();
@@ -262,7 +262,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             DbCommand command = session.CreateCommand();
             command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AddParameter(command, session);
-            WriteQueryLog(command);
+            WriteQueryLog(command,session);
             var data = session.ExecuteScalar(command);
             int result;
             if (data!=null&&int.TryParse(data.ToString(), out result))
@@ -286,7 +286,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             DbCommand command = session.CreateCommand();
             command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AddParameter(command, session);
-            WriteQueryLog(command);
+            WriteQueryLog(command,session);
             var data = session.ExecuteScalar(command);
             long result;
             if (data != null && long.TryParse(data.ToString(), out result))
@@ -310,7 +310,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             DbCommand command = session.CreateCommand();
             command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AddParameter(command, session);
-            WriteQueryLog(command);
+            WriteQueryLog(command,session);
             var data = session.ExecuteScalar(command);
             if (data!=null)
             {
@@ -333,7 +333,7 @@ namespace VL.Common.ORM.Utilities.QueryOperators
             DbCommand command = session.CreateCommand();
             command.CommandText = selectBuilder.ToQueryString(session, new T().TableName);
             selectBuilder.AddParameter(command, session);
-            WriteQueryLog(command);
+            WriteQueryLog(command,session);
             var data = session.ExecuteScalar(command);
             DateTime result;
             if (data != null && DateTime.TryParse(data.ToString(), out result))

@@ -58,10 +58,6 @@
       <HintPath>..\packages\VL.Common.Configurator.1.1.1608081701.1\lib\net452\VL.Common.Configurator.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="VL.Common.DAS, Version=1.0.6064.26264, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.DAS.1.0.1608081438.1\lib\net452\VL.Common.DAS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Objects\Enums\CSharpDataType.cs" />
@@ -105,6 +101,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="备注\多表查询.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VL.Common.DAS\VL.Common.DAS.csproj">
+      <Project>{1af58dc2-559c-46da-b27c-2c9a7cf10af1}</Project>
+      <Name>VL.Common.DAS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

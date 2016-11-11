@@ -61,16 +61,8 @@
       <HintPath>..\packages\VL.Common.Configurator.1.1.1608081701.1\lib\net452\VL.Common.Configurator.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="VL.Common.DAS, Version=1.0.6064.26264, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.DAS.1.0.1608081438.1\lib\net452\VL.Common.DAS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="VL.Common.Logger, Version=1.0.5946.30246, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\VL.Common.Logger.1.0.1604121655.1\lib\net452\VL.Common.Logger.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="VL.Common.ORM, Version=1.0.6127.29448, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VL.Common.ORM.1.0.1610101703.1\lib\net452\VL.Common.ORM.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -82,7 +74,7 @@
     <Compile Include="IService\IWCF\BaseWCFServiceNode.cs" />
     <Compile Include="IService\IWCF\IWCFServiceNode.cs" />
     <Compile Include="IService\IWCF\TransactionDelegator.cs" />
-    <Compile Include="IService\IORM\IORMProvider.cs" />
+    <Compile Include="IService\IORM\IORMExtensions.cs" />
     <Compile Include="IService\IResult\IValidate.cs" />
     <Compile Include="IService\IWCF\Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,9 +87,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IService\备注.txt" />
-    <Content Include="备注\多表查询.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\VL.Common.DAS\VL.Common.DAS.csproj">
+      <Project>{1af58dc2-559c-46da-b27c-2c9a7cf10af1}</Project>
+      <Name>VL.Common.DAS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VL.Common.ORM\VL.Common.ORM.csproj">
+      <Project>{6c5ac894-c902-494c-9743-8a57ba2b637b}</Project>
+      <Name>VL.Common.ORM</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

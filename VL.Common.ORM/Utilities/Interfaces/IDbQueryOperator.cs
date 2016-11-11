@@ -16,10 +16,6 @@ namespace VL.Common.ORM.Utilities.QueryOperators
     public abstract class IDbQueryOperator
     {
         #region Log
-        /// <summary>
-        /// 是否输出查询字符串
-        /// </summary>
-        public bool IsLogQuery { set; get; } = true;
         ///TODO 其实ORM的Operator对日志记录的需求需要对外界的日志记录工具产生一个依赖
         ///可以依赖于ServiceContext的某一个日志记录工具
         /// <summary>
@@ -68,16 +64,16 @@ namespace VL.Common.ORM.Utilities.QueryOperators
         /// <summary>
         /// 输出日志
         /// </summary>
-        public void WriteQueryLog(DbCommand command)
+        public void WriteQueryLog(DbCommand command, DbSession session)
         {
-            if (IsLogQuery)
+            if (session.IsLogQuery)
             {
                 lock (LogLocker)
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.AppendLine("--------------");
                     sb.AppendLine("执行时间:" + DateTime.Now);
-                    sb.AppendLine("执行语句:"+command.CommandText);
+                    sb.AppendLine("执行语句:" + command.CommandText);
                     foreach (DbParameter Parameter in command.Parameters)
                     {
                         sb.AppendLine(string.Format("参数名:{0}={1}", Parameter.ParameterName, Parameter.Value));
