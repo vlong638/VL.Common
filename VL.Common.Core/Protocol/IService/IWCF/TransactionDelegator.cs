@@ -1,4 +1,5 @@
 ﻿using System;
+using VL.Common.Constraints;
 using VL.Common.DAS;
 
 namespace VL.Common.Protocol//.IService.IWCF
@@ -35,9 +36,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 }
                 catch (Exception ex)
                 {
-                    return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), Report.CodeOfError, ex.ToString());
+                    return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
                 }
-                if (result.Code == Report.CodeOfSuccess)
+                if (result.Code == ProtocolConstraits.CodeOfSuccess)
                 {
                     session1.CommitTransaction();
                 }
@@ -54,7 +55,7 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session1.Close();
                 }
-                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), Report.CodeOfError, ex.ToString());
+                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
             }
         }
         /// <summary>
@@ -69,7 +70,7 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             { 
-                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), Report.CodeOfError, ex.ToString());
+                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
             }    
         }
         /// <summary>
@@ -92,9 +93,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 }
                 catch (Exception ex)
                 {
-                    return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), Report.CodeOfError, ex.ToString());
+                    return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
                 }
-                if (result.Code == Report.CodeOfSuccess)
+                if (result.Code == ProtocolConstraits.CodeOfSuccess)
                 {
                     session1.CommitTransaction();
                     session2.CommitTransaction();
@@ -118,7 +119,7 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session2.Close();
                 }
-                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), Report.CodeOfError, ex.ToString());
+                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
             }
         }
         /// <summary>
@@ -133,7 +134,7 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             {
-                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), Report.CodeOfError, ex.ToString());
+                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
             }
         }
         #endregion

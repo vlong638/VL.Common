@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backup", "Backup", "{B8073F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TODO", "TODO", "{2B8F8E84-9BF8-49A1-8450-C22E849285E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Common.Constraints", "VL.Common.Constraints\VL.Common.Constraints.csproj", "{2116047F-3043-4FA9-AEDC-DD4A189EBB4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{CF00B1AE-9365-44CC-A055-BC8ECD3E2166}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF00B1AE-9365-44CC-A055-BC8ECD3E2166}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF00B1AE-9365-44CC-A055-BC8ECD3E2166}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2116047F-3043-4FA9-AEDC-DD4A189EBB4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2116047F-3043-4FA9-AEDC-DD4A189EBB4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2116047F-3043-4FA9-AEDC-DD4A189EBB4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2116047F-3043-4FA9-AEDC-DD4A189EBB4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

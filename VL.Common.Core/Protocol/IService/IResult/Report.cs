@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using VL.Common.Constraints;
 
 namespace VL.Common.Protocol//.IService.IResult
 {
@@ -36,16 +37,12 @@ namespace VL.Common.Protocol//.IService.IResult
     [DataContract]
     public class Report
     {
-        public const int CodeOfSuccess = 1;
-        public const int CodeOfError = 2;
-        public const int CodeOfManualStart = 3;
-
         public Report()
         {
-            Code = CodeOfError;
+            Code = ProtocolConstraits.CodeOfError;
             Messages.Add("未执行处理");
         }
-        public Report(int code = CodeOfError,params string[] messages)
+        public Report(int code = ProtocolConstraits.CodeOfError,params string[] messages)
         {
             Code = code;
             Messages.AddRange(messages);
@@ -63,7 +60,7 @@ namespace VL.Common.Protocol//.IService.IResult
         public Report():base()
         {
         }
-        public Report(T data, int code= CodeOfError, params string[] messages) : base(code, messages)
+        public Report(T data, int code= ProtocolConstraits.CodeOfError, params string[] messages) : base(code, messages)
         {
             Data = data;
         }
@@ -77,7 +74,7 @@ namespace VL.Common.Protocol//.IService.IResult
         public Report() : base()
         {
         }
-        public Report(T1 data1, T2 data2, int code = CodeOfError, params string[] messages) : base(code, messages)
+        public Report(T1 data1, T2 data2, int code = ProtocolConstraits.CodeOfError, params string[] messages) : base(code, messages)
         {
             Data1 = data1;
             Data2 = data2;

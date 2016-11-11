@@ -56,6 +56,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="VL.Common.Constraints, Version=1.0.6159.31950, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VL.Common.Constraints.1.0.1611111745.1\lib\net452\VL.Common.Constraints.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurator\ConfigEntities\ConfigEntity.cs" />
