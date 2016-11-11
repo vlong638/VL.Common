@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CF00B1AE-9365-44CC-A055-BC8ECD3E2166}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VL.Common.Core</RootNamespace>
+    <AssemblyName>VL.Common.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.2400\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configurator\ConfigEntities\ConfigEntity.cs" />
+    <Compile Include="Configurator\ConfigEntities\FileConfigEntities\TextConfigEntity.cs" />
+    <Compile Include="Configurator\ConfigEntities\FileConfigEntities\XMLConfigEntity.cs" />
+    <Compile Include="Configurator\ConfigEntities\FileConfigEntity.cs" />
+    <Compile Include="DAS\Objects\DbSession.cs" />
+    <Compile Include="DAS\Objects\EDatabaseType.cs" />
+    <Compile Include="DAS\Utilities\DbConfigEntity.cs" />
+    <Compile Include="DAS\Utilities\DbConfigItem.cs" />
+    <Compile Include="Logger\Objects\IFileBased.cs" />
+    <Compile Include="Logger\Objects\ILogger.cs" />
+    <Compile Include="Logger\Objects\Log4netLogger.cs" />
+    <Compile Include="Logger\Objects\TextLogger.cs" />
+    <Compile Include="Logger\Utilities\LoggerProvider.cs" />
+    <Compile Include="ORM\Objects\Entities\IPDMTBase.cs" />
+    <Compile Include="ORM\Objects\Entities\PDMDbProperty.cs" />
+    <Compile Include="ORM\Objects\Enums\CSharpDataType.cs" />
+    <Compile Include="ORM\Objects\Enums\PDMDataType.cs" />
+    <Compile Include="ORM\Utilities\DbTranslateHelper.cs" />
+    <Compile Include="ORM\Utilities\Interfaces\IComponentBuilder.cs" />
+    <Compile Include="ORM\Utilities\Interfaces\IDbQueryBuilder.cs" />
+    <Compile Include="ORM\Utilities\Interfaces\IDbQueryOperator.cs" />
+    <Compile Include="ORM\Utilities\Interfaces\IParameterizable.cs" />
+    <Compile Include="ORM\Utilities\Interfaces\IQueriable.cs" />
+    <Compile Include="ORM\Utilities\Interfaces\IQueriableWithParameter.cs" />
+    <Compile Include="ORM\Utilities\Interfaces\IQueryBuilder.cs" />
+    <Compile Include="ORM\Utilities\Interfaces\IQueryFetcher.cs" />
+    <Compile Include="ORM\Utilities\ITOperator.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\MSSQLQueryBuilder.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryBuilderEx.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\Builders\DeleteBuilder.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\Builders\InsertBuilder.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\Builders\SelectBuilder.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\Builders\UpdateBuilder.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\Components\ComponentOfInsert.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\Components\ComponentOfOrder.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\Components\ComponentOfSelect.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\Components\ComponentOfSet.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\Components\ComponentOfWhere.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\ComponentValues\ComponentValueOfInsert.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\ComponentValues\ComponentValueOfOrder.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\ComponentValues\ComponentValueOfSelect.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\ComponentValues\ComponentValueOfSet.cs" />
+    <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\ComponentValues\ComponentValueOfWhere.cs" />
+    <Compile Include="ORM\Utilities\QueryOperators\MSSQLQueryOperator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocol\Common\ProtocolConfig.cs" />
+    <Compile Include="Protocol\IService\IContext\ServiceContext.cs" />
+    <Compile Include="Protocol\IService\IORM\IORMExtensions.cs" />
+    <Compile Include="Protocol\IService\IResult\IValidate.cs" />
+    <Compile Include="Protocol\IService\IResult\Report.cs" />
+    <Compile Include="Protocol\IService\IWCF\BaseWCFServiceNode.cs" />
+    <Compile Include="Protocol\IService\IWCF\DependencyDetail.cs" />
+    <Compile Include="Protocol\IService\IWCF\DependencyResult.cs" />
+    <Compile Include="Protocol\IService\IWCF\DependencyType.cs" />
+    <Compile Include="Protocol\IService\IWCF\IWCFServiceNode.cs" />
+    <Compile Include="Protocol\IService\IWCF\TransactionDelegator.cs" />
+    <Compile Include="Protocol\IService\IWCF\Validator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DAS\Additions\DbConnections.config" />
+    <None Include="Logger\Additions\App.config" />
+    <None Include="Logger\Additions\log4net.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Protocol\IService\备注.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

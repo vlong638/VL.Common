@@ -16,3 +16,5 @@ D:\GitProjects\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.Configurator.dll
 D:\GitProjects\VL.Common\VL.Common.DAS\bin\Debug\Newtonsoft.Json.xml
 D:\GitProjects\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.dll
 D:\GitProjects\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.pdb
+D:\GitProjects\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.Configurator.pdb
+D:\GitProjects\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.csprojResolveAssemblyReference.cache
