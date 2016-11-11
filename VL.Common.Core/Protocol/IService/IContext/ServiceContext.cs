@@ -6,7 +6,7 @@ using VL.Common.Configurator;
 using VL.Common.DAS;
 using VL.Common.Logger;
 
-namespace VL.Common.Protocol.IService//.IContext
+namespace VL.Common.Protocol//.IService.IContext
 {
     public abstract class ServiceContext
     {

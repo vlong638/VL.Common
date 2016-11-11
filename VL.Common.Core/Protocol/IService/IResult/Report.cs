@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace VL.Common.Protocol.IService//.IResult
+namespace VL.Common.Protocol//.IService.IResult
 {
     public class ModuleReportHelper
     {

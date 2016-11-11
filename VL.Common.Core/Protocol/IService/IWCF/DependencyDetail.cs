@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace VL.Common.Protocol.IService//.IWCF
+namespace VL.Common.Protocol//.IService.IWCF
 {
     /// <summary>
     /// 依赖项详情 单元组件

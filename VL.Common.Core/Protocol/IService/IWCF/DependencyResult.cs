@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace VL.Common.Protocol.IService//.IWCF
+namespace VL.Common.Protocol//.IService.IWCF
 {
     ///0609注意事项
     ///如果A类包含B类的集合

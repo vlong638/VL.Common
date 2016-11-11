@@ -2,7 +2,7 @@
 using VL.Common.DAS;
 using VL.Common.ORM;
 
-namespace VL.Common.Protocol.IService//.IORM
+namespace VL.Common.Protocol//.IService.IORM
 {
     public static class IORMExtensions
     {
