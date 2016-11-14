@@ -1,9 +1,12 @@
 ﻿namespace VL.Common.Constraints
 {
-    public class ProtocolConstraits
+    public static class ProtocolConstraits
     {
-        public const int CodeOfSuccess = 1;
-        public const int CodeOfError = 2;
-        public const int CodeOfManualStart = 3;
+        public static class ReportConstraits
+        {
+            public const int CodeOfSuccess = 1;
+            public const int CodeOfError = 2;
+            public const int CodeOfManualStart = 3;
+        }
     }
 }

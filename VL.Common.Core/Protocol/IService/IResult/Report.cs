@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using VL.Common.Constraints;
 
@@ -27,11 +28,29 @@ namespace VL.Common.Protocol//.IService.IResult
 
         public string ClassName { set; get; }
 
-        public Report GetReport(string methodName, int operationType, string message="")
+        public Report GetReport(string methodName, int operationType, params string[] messages)
         {
-            var code = operationType;
-            var locator = ModuleName + "_" + ClassName + "_" + methodName + "_" + operationType;
-            return new Report(code, message) { Locator = locator };
+            return new Report(operationType, messages) { Locator = GetLocator(methodName, operationType) };
+        }
+        //public Report<T> GetReport<T>(string methodName, int operationType, params string[] messages)
+        //{
+        //    return new Report<T>(operationType, messages) { Locator = GetLocator(methodName, operationType) };
+        //}
+        public Report<T> GetReport<T>(T data, string methodName, int operationType, params string[] messages)
+        {
+            return new Report<T>(data, operationType, messages) { Locator = GetLocator(methodName, operationType) };
+        }
+        //public Report<T1, T2> GetReport<T1, T2>(string methodName, int operationType, params string[] messages)
+        //{
+        //    return new Report<T1, T2>(operationType, messages) { Locator = GetLocator(methodName, operationType) };
+        //}
+        public Report<T1, T2> GetReport<T1, T2>(T1 data1, T2 data2, string methodName, int operationType, params string[] messages)
+        {
+            return new Report<T1, T2>(data1, data2, operationType, messages) { Locator = GetLocator(methodName, operationType) };
+        }
+        private string GetLocator(string methodName, int operationType)
+        {
+            return ModuleName + "_" + ClassName + "_" + methodName + "_" + operationType;
         }
     }
     [DataContract]
@@ -40,7 +59,6 @@ namespace VL.Common.Protocol//.IService.IResult
         public Report()
         {
             Code = ProtocolConstraits.CodeOfError;
-            Messages.Add("未执行处理");
         }
         public Report(int code = ProtocolConstraits.CodeOfError,params string[] messages)
         {
@@ -60,6 +78,9 @@ namespace VL.Common.Protocol//.IService.IResult
         public Report():base()
         {
         }
+        public Report(int code = ProtocolConstraits.CodeOfError, params string[] messages) : base(code, messages)
+        {
+        }
         public Report(T data, int code= ProtocolConstraits.CodeOfError, params string[] messages) : base(code, messages)
         {
             Data = data;
@@ -72,6 +93,9 @@ namespace VL.Common.Protocol//.IService.IResult
     public class Report<T1, T2> : Report
     {
         public Report() : base()
+        {
+        }
+        public Report(int code = ProtocolConstraits.CodeOfError, params string[] messages) : base(code, messages)
         {
         }
         public Report(T1 data1, T2 data2, int code = ProtocolConstraits.CodeOfError, params string[] messages) : base(code, messages)

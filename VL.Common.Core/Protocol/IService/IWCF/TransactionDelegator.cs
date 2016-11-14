@@ -17,26 +17,26 @@ namespace VL.Common.Protocol//.IService.IWCF
         }
         public ServiceContext ServiceContext { set; get; }
 
-        #region 事务处理_标准化
+        #region 事务处理_标准化 无T
         /// <summary>
         /// 封装了事务处理的方法
         /// 只需专注于业务逻辑的实现
         /// </summary>
-        public T HandleTransactionEvent<T>(DbSession session1, Func<DbSession, T> func) where T : Report, new()
+        public Report HandleTransactionEvent(DbSession session1, Func<DbSession, Report> func)
         {
             //业务逻辑处理
             try
             {
                 session1.Open();
                 session1.BeginTransaction();
-                T result;
+                Report result;
                 try
                 {
                     result = func(session1);
                 }
                 catch (Exception ex)
                 {
-                    return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                    return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
                 }
                 if (result.Code == ProtocolConstraits.CodeOfSuccess)
                 {
@@ -55,29 +55,29 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session1.Close();
                 }
-                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
             }
         }
         /// <summary>
         /// 封装了事务处理的方法
         /// 只需专注于业务逻辑的实现
         /// </summary>
-        public T HandleTransactionEvent<T>(string session1Name, Func<DbSession, T> func) where T : Report, new()
+        public Report HandleTransactionEvent(string session1Name, Func<DbSession, Report> func)
         {
             try
             {
                 return HandleTransactionEvent(ServiceContext.GetDbSession(session1Name), func);
             }
             catch (Exception ex)
-            { 
-                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
-            }    
+            {
+                return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+            }
         }
         /// <summary>
         /// 封装了事务处理的方法
         /// 只需专注于业务逻辑的实现
         /// </summary>HandleTransactionEvent
-        public T HandleTransactionEvent<T>(DbSession session1, DbSession session2, Func<DbSession, DbSession, T> func) where T : Report, new()
+        public Report HandleTransactionEvent(DbSession session1, DbSession session2, Func<DbSession, DbSession, Report> func)
         {
             //业务逻辑处理
             try
@@ -86,14 +86,14 @@ namespace VL.Common.Protocol//.IService.IWCF
                 session2.Open();
                 session1.BeginTransaction();
                 session2.BeginTransaction();
-                T result;
+                Report result;
                 try
                 {
                     result = func(session1, session2);
                 }
                 catch (Exception ex)
                 {
-                    return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                    return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
                 }
                 if (result.Code == ProtocolConstraits.CodeOfSuccess)
                 {
@@ -119,14 +119,14 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session2.Close();
                 }
-                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
             }
         }
         /// <summary>
         /// 封装了事务处理的方法
         /// 只需专注于业务逻辑的实现
         /// </summary>HandleTransactionEvent
-        public T HandleTransactionEvent<T>(string session1Name, string session2Name, Func<DbSession, DbSession, T> func) where T : Report, new()
+        public Report HandleTransactionEvent<T>(string session1Name, string session2Name, Func<DbSession, DbSession, Report> func)
         {
             try
             {
@@ -134,7 +134,128 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             {
-                return (T)ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+            }
+        }
+        #endregion
+        #region 事务处理_标准化 T
+        /// <summary>
+        /// 封装了事务处理的方法
+        /// 只需专注于业务逻辑的实现
+        /// </summary>
+        public Report<T> HandleTransactionEvent<T>(DbSession session1, Func<DbSession, Report<T>> func)
+        {
+            //业务逻辑处理
+            try
+            {
+                session1.Open();
+                session1.BeginTransaction();
+                Report<T> result;
+                try
+                {
+                    result = func(session1);
+                }
+                catch (Exception ex)
+                {
+                    return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                }
+                if (result.Code == ProtocolConstraits.CodeOfSuccess)
+                {
+                    session1.CommitTransaction();
+                }
+                else
+                {
+                    session1.RollBackTransaction();
+                }
+                session1.Close();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                if (session1 != null && session1.Connection.State == System.Data.ConnectionState.Open)
+                {
+                    session1.Close();
+                }
+                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+            }
+        }
+        /// <summary>
+        /// 封装了事务处理的方法
+        /// 只需专注于业务逻辑的实现
+        /// </summary>
+        public Report<T> HandleTransactionEvent<T>(string session1Name, Func<DbSession, Report<T>> func)
+        {
+            try
+            {
+                return HandleTransactionEvent(ServiceContext.GetDbSession(session1Name), func);
+            }
+            catch (Exception ex)
+            {
+                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+            }
+        }
+        /// <summary>
+        /// 封装了事务处理的方法
+        /// 只需专注于业务逻辑的实现
+        /// </summary>HandleTransactionEvent
+        public Report<T> HandleTransactionEvent<T>(DbSession session1, DbSession session2, Func<DbSession, DbSession, Report<T>> func)
+        {
+            //业务逻辑处理
+            try
+            {
+                session1.Open();
+                session2.Open();
+                session1.BeginTransaction();
+                session2.BeginTransaction();
+                Report<T> result;
+                try
+                {
+                    result = func(session1, session2);
+                }
+                catch (Exception ex)
+                {
+                    return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                }
+                if (result.Code == ProtocolConstraits.CodeOfSuccess)
+                {
+                    session1.CommitTransaction();
+                    session2.CommitTransaction();
+                }
+                else
+                {
+                    session1.RollBackTransaction();
+                    session2.RollBackTransaction();
+                }
+                session1.Close();
+                session2.Close();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                if (session1 != null && session1.Connection.State == System.Data.ConnectionState.Open)
+                {
+                    session1.Close();
+                }
+                if (session2 != null && session2.Connection.State == System.Data.ConnectionState.Open)
+                {
+                    session2.Close();
+                }
+                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+            }
+        }
+        /// <summary>
+        /// 封装了事务处理的方法
+        /// 只需专注于业务逻辑的实现
+        /// </summary>HandleTransactionEvent
+        public Report<T> HandleTransactionEvent<T>(string session1Name, string session2Name, Func<DbSession, DbSession, Report<T>> func)
+        {
+            try
+            {
+                return HandleTransactionEvent(ServiceContext.GetDbSession(session1Name), ServiceContext.GetDbSession(session2Name), func);
+            }
+            catch (Exception ex)
+            {
+                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
             }
         }
         #endregion
