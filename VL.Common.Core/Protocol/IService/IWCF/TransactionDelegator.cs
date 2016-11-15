@@ -36,9 +36,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 }
                 catch (Exception ex)
                 {
-                    return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                    return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
                 }
-                if (result.Code == ProtocolConstraits.CodeOfSuccess)
+                if (result.Code == CProtocol.CReport.CSuccess)
                 {
                     session1.CommitTransaction();
                 }
@@ -55,7 +55,7 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session1.Close();
                 }
-                return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
             }
         }
         /// <summary>
@@ -70,7 +70,7 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             {
-                return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
             }
         }
         /// <summary>
@@ -93,9 +93,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 }
                 catch (Exception ex)
                 {
-                    return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                    return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
                 }
-                if (result.Code == ProtocolConstraits.CodeOfSuccess)
+                if (result.Code == CProtocol.CReport.CSuccess)
                 {
                     session1.CommitTransaction();
                     session2.CommitTransaction();
@@ -119,7 +119,7 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session2.Close();
                 }
-                return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
             }
         }
         /// <summary>
@@ -134,7 +134,7 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             {
-                return ReportHelper.GetReport(nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
             }
         }
         #endregion
@@ -157,9 +157,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 }
                 catch (Exception ex)
                 {
-                    return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                    return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
                 }
-                if (result.Code == ProtocolConstraits.CodeOfSuccess)
+                if (result.Code == CProtocol.CReport.CSuccess)
                 {
                     session1.CommitTransaction();
                 }
@@ -176,7 +176,7 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session1.Close();
                 }
-                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
             }
         }
         /// <summary>
@@ -191,7 +191,7 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             {
-                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
             }
         }
         /// <summary>
@@ -214,9 +214,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 }
                 catch (Exception ex)
                 {
-                    return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                    return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
                 }
-                if (result.Code == ProtocolConstraits.CodeOfSuccess)
+                if (result.Code == CProtocol.CReport.CSuccess)
                 {
                     session1.CommitTransaction();
                     session2.CommitTransaction();
@@ -240,7 +240,7 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session2.Close();
                 }
-                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
             }
         }
         /// <summary>
@@ -255,7 +255,7 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             {
-                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), ProtocolConstraits.CodeOfError, ex.ToString());
+                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
             }
         }
         #endregion

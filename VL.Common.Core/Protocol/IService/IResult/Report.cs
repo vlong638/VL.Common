@@ -54,13 +54,13 @@ namespace VL.Common.Protocol//.IService.IResult
         }
     }
     [DataContract]
-    public class Report
+    public partial class Report
     {
         public Report()
         {
-            Code = ProtocolConstraits.CodeOfError;
+            Code = CProtocol.CReport.CError;
         }
-        public Report(int code = ProtocolConstraits.CodeOfError,params string[] messages)
+        public Report(int code = CProtocol.CReport.CError,params string[] messages)
         {
             Code = code;
             Messages.AddRange(messages);
@@ -78,10 +78,10 @@ namespace VL.Common.Protocol//.IService.IResult
         public Report():base()
         {
         }
-        public Report(int code = ProtocolConstraits.CodeOfError, params string[] messages) : base(code, messages)
+        public Report(int code = CProtocol.CReport.CError, params string[] messages) : base(code, messages)
         {
         }
-        public Report(T data, int code= ProtocolConstraits.CodeOfError, params string[] messages) : base(code, messages)
+        public Report(T data, int code= CProtocol.CReport.CError, params string[] messages) : base(code, messages)
         {
             Data = data;
         }
@@ -95,10 +95,10 @@ namespace VL.Common.Protocol//.IService.IResult
         public Report() : base()
         {
         }
-        public Report(int code = ProtocolConstraits.CodeOfError, params string[] messages) : base(code, messages)
+        public Report(int code = CProtocol.CReport.CError, params string[] messages) : base(code, messages)
         {
         }
-        public Report(T1 data1, T2 data2, int code = ProtocolConstraits.CodeOfError, params string[] messages) : base(code, messages)
+        public Report(T1 data1, T2 data2, int code = CProtocol.CReport.CError, params string[] messages) : base(code, messages)
         {
             Data1 = data1;
             Data2 = data2;

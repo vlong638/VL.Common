@@ -2,11 +2,12 @@
 <package>
   <metadata>
     <id>VL.Common.Constraints</id>
-    <version>1.0.1611111747.1</version>
+    <version>1.0.1611151133.1</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
     <description>常量集合
-增加VL.Common.Constraints项目用以简化服务的语义区分</description>
+-VL.Common.Constraints增加Report常量基类希望借以简化常量的处理
++简化命名为C开头表示Constraint</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
