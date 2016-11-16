@@ -2,12 +2,12 @@
 <package>
   <metadata>
     <id>VL.Common.Core</id>
-    <version>1.0.1611151135.1</version>
+    <version>1.0.1611161505.1</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
     <description>
--VL.Common.Constraints增加Report常量基类希望借以简化常量的处理
-+简化命名为C开头表示Constraint</description>
+移除多余的内容-备注
+补充配置文件log4net.config</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
