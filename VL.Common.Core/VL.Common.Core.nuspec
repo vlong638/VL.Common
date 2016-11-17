@@ -2,15 +2,15 @@
 <package>
   <metadata>
     <id>VL.Common.Core</id>
-    <version>1.0.1611170905.1</version>
+    <version>1.0.1611171634.1</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
     <description>
-Dependency修正,上一版未成功提交</description>
+更改Core对Constraints的依赖为对Object的依赖</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
   <files>
-      <file src="lib\net452\System.Runtime.Serialization.dll"  target="lib\net452"/>
+      <file src="lib\net452\System.ServiceModel.dll"  target="lib\net452"/>
   </files>
 </package>

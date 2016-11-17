@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using VL.Common.Object.ORM;
 using VL.Common.DAS;
-using VL.Common.ORM;
 
 
 namespace VL.Common.ORM//.Utilities.QueryBuilders

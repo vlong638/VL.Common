@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VL.Common.Object.ORM;
 using VL.Common.ORM;
 
 namespace VL.Common.ORM//.Utilities.QueryBuilders

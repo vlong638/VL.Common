@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\VL.Common.Constraints.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,14 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ORM\CSharpDataType.cs" />
+    <Compile Include="ORM\IPDMTBase.cs" />
+    <Compile Include="ORM\PDMDataType.cs" />
+    <Compile Include="ORM\PDMDbProperty.cs" />
     <Compile Include="Protocol\CProtocol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocol\DependencyDetail.cs" />
     <Compile Include="Protocol\DependencyResult.cs" />
     <Compile Include="Protocol\DependencyType.cs" />
+    <Compile Include="Protocol\Report.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\net452\System.Runtime.Serialization.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="VL.User\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

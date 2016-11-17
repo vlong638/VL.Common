@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
+using VL.Common.Object.ORM;
 using VL.Common.DAS;
 
 
@@ -35,7 +36,15 @@ namespace VL.Common.ORM//.Utilities.QueryBuilders
         /// </summary>
         public void Add(string fieldName, string alias = null)
         {
-            Selects.Add(new ComponentValueOfSelect(fieldName, alias));
+            this.Add(new ComponentValueOfSelect(fieldName, alias));
+        }
+        /// <summary>
+        /// 新增查询项
+        /// </summary>
+        /// <param name="select"></param>
+        public void Add(PDMDbProperty property)
+        {
+            this.Add(property.Title);
         }
         /// <summary>
         /// 转换为Query

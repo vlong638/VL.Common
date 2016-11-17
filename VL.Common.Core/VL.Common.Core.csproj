@@ -48,7 +48,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -116,19 +115,19 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="DAS\Additions\DbConnections.config" />
+    <Content Include="lib\net452\System.ServiceModel.dll" />
     <Content Include="log4net.config" />
     <None Include="Logger\Additions\App.config" />
     <None Include="Logger\Additions\log4net.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\net452\System.Runtime.Serialization.dll" />
     <None Include="Protocol\IService\备注.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VL.Common.Constraints\VL.Common.Constraints.csproj">
-      <Project>{2116047f-3043-4fa9-aedc-dd4a189ebb4d}</Project>
-      <Name>VL.Common.Constraints</Name>
+    <ProjectReference Include="..\VL.Common.Object\VL.Common.Object.csproj">
+      <Project>{939d06d1-e570-4b85-9677-8a6f9648349f}</Project>
+      <Name>VL.Common.Object</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

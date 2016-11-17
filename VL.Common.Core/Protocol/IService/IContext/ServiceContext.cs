@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using VL.Common.Configurator;
-using VL.Common.Constraints.Protocol;
+using VL.Common.Object.Protocol;
 using VL.Common.DAS;
 using VL.Common.Logger;
 
@@ -118,9 +118,12 @@ namespace VL.Common.Protocol//.IService.IContext
             result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(ProtocolConfig));
             result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(DatabaseConfig));
             //数据库依赖检测
-            foreach (var dbConfigItem in DatabaseConfig.DbConfigItems)
+            if (result.IsAllDependenciesAvailable)
             {
-                result.DependencyDetails.Add(CheckAvailabilityOfDbSessionForService(dbConfigItem));
+                foreach (var dbConfigItem in DatabaseConfig.DbConfigItems)
+                {
+                    result.DependencyDetails.Add(CheckAvailabilityOfDbSessionForService(dbConfigItem));
+                }
             }
             //其他依赖项检测
             foreach (var dependencyResult in InitOthers())

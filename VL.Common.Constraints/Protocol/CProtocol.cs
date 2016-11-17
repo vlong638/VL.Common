@@ -1,7 +1,22 @@
 ﻿namespace VL.Common.Constraints.Protocol
 {
+    /// <summary>
+    /// Protocol下的常量集合
+    /// </summary>
     public static class CProtocol
     {
+        /// <summary>
+        /// 默认常量集合
+        /// </summary>
+        public static class CDefault
+        {
+            public const string CDbConfig = "DbConnections.config";
+            public const string CProtocolConfig = "ProtocolConfig.config";
+            public const string CLogger = "ServiceLog";
+        }
+        /// <summary>
+        /// Report域常量集合
+        /// </summary>
         public static class CReport
         {
             public const int CSuccess = 1;//成功

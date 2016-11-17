@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>VL.Common.Object</id>
+    <version>1.0.1611171625.0</version>
+    <authors>vlong638</authors>
+    <owners>vlong638</owners>
+    <description>常量和对象集合</description>
+    <copyright>Copyright ©  2016</copyright>
+    <tags></tags>
+  </metadata>
+  <files>
+      <file src="lib\net452\System.Runtime.Serialization.dll"  target="lib\net452"/>
+  </files>
+</package>

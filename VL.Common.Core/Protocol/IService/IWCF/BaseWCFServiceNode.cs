@@ -1,5 +1,5 @@
 ﻿using System;
-using VL.Common.Constraints.Protocol;
+using VL.Common.Object.Protocol;
 
 namespace VL.Common.Protocol//.IService.IWCF
 {
@@ -10,7 +10,7 @@ namespace VL.Common.Protocol//.IService.IWCF
     public class BaseWCFServiceNode<T> where T: ServiceContext,new()
     {
         T _serviceContext;
-        Object ServiceLock = new object();
+        object ServiceLock = new object();
         public T ServiceContext
         {
             get

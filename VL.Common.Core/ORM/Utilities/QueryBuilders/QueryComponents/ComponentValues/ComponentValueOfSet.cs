@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using VL.Common.Object.ORM;
 using VL.Common.DAS;
 using VL.Common.ORM;
 

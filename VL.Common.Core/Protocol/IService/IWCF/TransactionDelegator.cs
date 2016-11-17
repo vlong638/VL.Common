@@ -1,5 +1,5 @@
 ﻿using System;
-using VL.Common.Constraints.Protocol;
+using VL.Common.Object.Protocol;
 using VL.Common.DAS;
 
 namespace VL.Common.Protocol//.IService.IWCF
