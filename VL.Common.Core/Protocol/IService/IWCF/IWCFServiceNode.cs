@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using VL.Common.Constraints.Protocol;
 
 namespace VL.Common.Protocol//.IService.IWCF
 {

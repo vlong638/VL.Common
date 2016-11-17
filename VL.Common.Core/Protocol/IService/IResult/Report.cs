@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using VL.Common.Constraints;
+using VL.Common.Constraints.Protocol;
 
 namespace VL.Common.Protocol//.IService.IResult
 {

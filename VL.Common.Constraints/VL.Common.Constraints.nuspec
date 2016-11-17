@@ -2,12 +2,12 @@
 <package>
   <metadata>
     <id>VL.Common.Constraints</id>
-    <version>1.0.1611151133.1</version>
+    <version>1.0.1611161753.1</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
     <description>常量集合
--VL.Common.Constraints增加Report常量基类希望借以简化常量的处理
-+简化命名为C开头表示Constraint</description>
+DependencyXXX实体对象迁移至VL.Common.Constraint
+VL.Common.Constraint库用作通用常识的集合类库</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

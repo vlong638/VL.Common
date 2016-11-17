@@ -2,11 +2,12 @@
 <package>
   <metadata>
     <id>VL.Common.Protocol</id>
-    <version>1.0.1611151046.1</version>
+    <version>1.0.1611161748.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL生态圈协议
-调整常量 增加CodeOfFailure用于常规失败</description>
+DependencyXXX实体对象迁移至VL.Common.Constraint
+VL.Common.Constraint库用作通用常识的集合类库</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

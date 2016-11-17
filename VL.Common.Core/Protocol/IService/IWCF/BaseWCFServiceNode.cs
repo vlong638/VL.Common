@@ -1,4 +1,5 @@
 ﻿using System;
+using VL.Common.Constraints.Protocol;
 
 namespace VL.Common.Protocol//.IService.IWCF
 {
@@ -28,25 +29,6 @@ namespace VL.Common.Protocol//.IService.IWCF
                 return _serviceContext;
             }
         }
-        //DependencyResult _dependencyResult;
-        //Object DependencyLock = new object();
-        //DependencyResult DependencyResult
-        //{
-        //    get
-        //    {
-        //        if (_dependencyResult == null)
-        //        {
-        //            lock (DependencyLock)
-        //            {
-        //                if (_dependencyResult == null)
-        //                {
-        //                    _dependencyResult = ServiceContext.Init();
-        //                }
-        //            }
-        //        }
-        //        return _dependencyResult;
-        //    }
-        //}
         public bool CheckAlive()
         {
             return ServiceContext.Init().IsAllDependenciesAvailable;

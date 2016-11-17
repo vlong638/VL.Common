@@ -2,12 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Core</id>
-    <version>1.0.1611161505.1</version>
+    <version>1.0.1611170905.1</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
     <description>
-移除多余的内容-备注
-补充配置文件log4net.config</description>
+Dependency修正,上一版未成功提交</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

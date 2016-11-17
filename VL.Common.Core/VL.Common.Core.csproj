@@ -48,7 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -109,9 +109,6 @@
     <Compile Include="Protocol\IService\IResult\IValidate.cs" />
     <Compile Include="Protocol\IService\IResult\Report.cs" />
     <Compile Include="Protocol\IService\IWCF\BaseWCFServiceNode.cs" />
-    <Compile Include="Protocol\IService\IWCF\DependencyDetail.cs" />
-    <Compile Include="Protocol\IService\IWCF\DependencyResult.cs" />
-    <Compile Include="Protocol\IService\IWCF\DependencyType.cs" />
     <Compile Include="Protocol\IService\IWCF\IWCFServiceNode.cs" />
     <Compile Include="Protocol\IService\IWCF\TransactionDelegator.cs" />
     <Compile Include="Protocol\IService\IWCF\Validator.cs" />

@@ -1,4 +1,4 @@
-﻿namespace VL.Common.Constraints
+﻿namespace VL.Common.Constraints.Protocol
 {
     public static class CProtocol
     {
@@ -10,7 +10,4 @@
             public const int CManualStart = 10;//人工指定的开始值
         }
     }
-
-
-
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using VL.Common.Configurator;
+using VL.Common.Constraints.Protocol;
 using VL.Common.DAS;
 using VL.Common.Logger;
 
