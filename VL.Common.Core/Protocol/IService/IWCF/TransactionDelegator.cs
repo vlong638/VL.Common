@@ -17,6 +17,61 @@ namespace VL.Common.Protocol//.IService.IWCF
         }
         public ServiceContext ServiceContext { set; get; }
 
+        #region 非事务处理_标准化
+        /// <summary>
+        /// 封装了非事务处理的方法
+        /// 只需专注于业务逻辑的实现
+        /// </summary>
+        public Report<T> HandleEvent<T>(DbSession session1, Func<DbSession, Report<T>> func)
+        {
+            //业务逻辑处理
+            try
+            {
+                session1.Open();
+                Report<T> result;
+                try
+                {
+                    result = func(session1);
+                }
+                catch (Exception ex)
+                {
+                    var report= ReportHelper.GetReport(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                    ServiceContext.ServiceLogger.Error(report.ToString());
+                    return report;
+                }
+                session1.Close();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                if (session1 != null && session1.Connection.State == System.Data.ConnectionState.Open)
+                {
+                    session1.Close();
+                }
+                var report = ReportHelper.GetReport(default(T), nameof(HandleEvent), CProtocol.CReport.CError, ex.ToString());
+                ServiceContext.ServiceLogger.Error(report.ToString());
+                return report;
+            }
+        }
+        /// <summary>
+        /// 封装了非事务处理的方法
+        /// 只需专注于业务逻辑的实现
+        /// </summary>HandleTransactionEvent
+        public Report<T> HandleEvent<T>(string session1Name, Func<DbSession, Report<T>> func)
+        {
+            try
+            {
+                return HandleEvent(ServiceContext.GetDbSession(session1Name), func);
+            }
+            catch (Exception ex)
+            {
+                var report= ReportHelper.GetReport(default(T), nameof(HandleEvent), CProtocol.CReport.CError, ex.ToString());
+                ServiceContext.ServiceLogger.Error(report.ToString());
+                return report;
+            }
+        }
+        #endregion
+
         #region 事务处理_标准化 无T
         /// <summary>
         /// 封装了事务处理的方法
@@ -36,7 +91,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 }
                 catch (Exception ex)
                 {
-                    return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                    var report = ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                    ServiceContext.ServiceLogger.Error(report.ToString());
+                    return report;
                 }
                 if (result.Code == CProtocol.CReport.CSuccess)
                 {
@@ -55,7 +112,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session1.Close();
                 }
-                return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                var report = ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                ServiceContext.ServiceLogger.Error(report.ToString());
+                return report;
             }
         }
         /// <summary>
@@ -70,7 +129,9 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             {
-                return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                var report = ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                ServiceContext.ServiceLogger.Error(report.ToString());
+                return report;
             }
         }
         /// <summary>
@@ -93,7 +154,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 }
                 catch (Exception ex)
                 {
-                    return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                    var report = ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                    ServiceContext.ServiceLogger.Error(report.ToString());
+                    return report;
                 }
                 if (result.Code == CProtocol.CReport.CSuccess)
                 {
@@ -119,7 +182,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session2.Close();
                 }
-                return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                var report = ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                ServiceContext.ServiceLogger.Error(report.ToString());
+                return report;
             }
         }
         /// <summary>
@@ -134,10 +199,13 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             {
-                return ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                var report = ReportHelper.GetReport(nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                ServiceContext.ServiceLogger.Error(report.ToString());
+                return report;
             }
         }
         #endregion
+
         #region 事务处理_标准化 T
         /// <summary>
         /// 封装了事务处理的方法
@@ -157,7 +225,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 }
                 catch (Exception ex)
                 {
-                    return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                    var report = ReportHelper.GetReport(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                    ServiceContext.ServiceLogger.Error(report.ToString());
+                    return report;
                 }
                 if (result.Code == CProtocol.CReport.CSuccess)
                 {
@@ -176,7 +246,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session1.Close();
                 }
-                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                var report = ReportHelper.GetReport(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                ServiceContext.ServiceLogger.Error(report.ToString());
+                return report;
             }
         }
         /// <summary>
@@ -191,7 +263,9 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             {
-                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                var report = ReportHelper.GetReport(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                ServiceContext.ServiceLogger.Error(report.ToString());
+                return report;
             }
         }
         /// <summary>
@@ -214,7 +288,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 }
                 catch (Exception ex)
                 {
-                    return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                    var report = ReportHelper.GetReport(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                    ServiceContext.ServiceLogger.Error(report.ToString());
+                    return report;
                 }
                 if (result.Code == CProtocol.CReport.CSuccess)
                 {
@@ -240,7 +316,9 @@ namespace VL.Common.Protocol//.IService.IWCF
                 {
                     session2.Close();
                 }
-                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                var report = ReportHelper.GetReport(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                ServiceContext.ServiceLogger.Error(report.ToString());
+                return report;
             }
         }
         /// <summary>
@@ -255,7 +333,9 @@ namespace VL.Common.Protocol//.IService.IWCF
             }
             catch (Exception ex)
             {
-                return ReportHelper.GetReport<T>(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                var report = ReportHelper.GetReport(default(T), nameof(HandleTransactionEvent), CProtocol.CReport.CError, ex.ToString());
+                ServiceContext.ServiceLogger.Error(report.ToString());
+                return report;
             }
         }
         #endregion

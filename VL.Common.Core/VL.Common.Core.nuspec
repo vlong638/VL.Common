@@ -2,11 +2,14 @@
 <package>
   <metadata>
     <id>VL.Common.Core</id>
-    <version>1.0.1611181548.1</version>
+    <version>1.0.1611181743.1</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
     <description>
-修正对数据库的检测</description>
+添加了非事务的标准方法
+CProtocol.CReport.CError调整为2
+移除CProtocol.CReport.CFailure
+优化对日志的记录</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

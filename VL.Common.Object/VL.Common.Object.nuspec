@@ -2,10 +2,13 @@
 <package>
   <metadata>
     <id>VL.Common.Object</id>
-    <version>1.0.1611171625.0</version>
+    <version>1.0.1611181721.0</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
-    <description>常量和对象集合</description>
+    <description>常量和对象集合
+添加了非事务的标准方法
+CProtocol.CReport.CError调整为2
+移除CProtocol.CReport.CFailure</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

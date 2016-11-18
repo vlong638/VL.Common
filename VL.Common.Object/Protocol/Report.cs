@@ -25,6 +25,11 @@ namespace VL.Common.Object.Protocol
         [DataMember]
         public List<string> Messages { set; get; } = new List<string>();
         public string Locator { set; get; }
+
+        public override string ToString()
+        {
+            return string.Format("错误位置:{0},错误详情:{1}", Locator, string.Join(",", Messages));
+        }
     }
     [DataContract]
     public class Report<T> : Report
