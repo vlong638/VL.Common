@@ -116,9 +116,10 @@ namespace VL.Common.Protocol//.IService.IContext
             };
             //配置文件依赖检测
             result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(ProtocolConfig));
-            result.DependencyDetails.Add(CheckAvailabilityOfConfigForService(DatabaseConfig));
+            var dbResult = CheckAvailabilityOfConfigForService(DatabaseConfig);
+            result.DependencyDetails.Add(dbResult);
             //数据库依赖检测
-            if (result.IsAllDependenciesAvailable)
+            if (dbResult.IsDependencyAvailable)
             {
                 foreach (var dbConfigItem in DatabaseConfig.DbConfigItems)
                 {

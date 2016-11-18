@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Core</id>
-    <version>1.0.1611171634.1</version>
+    <version>1.0.1611181548.1</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
     <description>
-更改Core对Constraints的依赖为对Object的依赖</description>
+修正对数据库的检测</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
