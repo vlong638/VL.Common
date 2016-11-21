@@ -22,6 +22,8 @@ namespace VL.Common.Object.VL.Blog
         public DateTime CreatedTime { get; set; }
         [DataMember]
         public DateTime LastEditTime { get; set; }
+        [DataMember]
+        public Boolean IsVisible { get; set; }
         #endregion
 
         #region Constructors
@@ -46,6 +48,7 @@ namespace VL.Common.Object.VL.Blog
             this.BreviaryContent = Convert.ToString(reader[nameof(this.BreviaryContent)]);
             this.CreatedTime = Convert.ToDateTime(reader[nameof(this.CreatedTime)]);
             this.LastEditTime = Convert.ToDateTime(reader[nameof(this.LastEditTime)]);
+            this.IsVisible = Convert.ToBoolean(reader[nameof(this.IsVisible)]);
         }
         public override void Init(IDataReader reader, List<string> fields)
         {
@@ -72,6 +75,10 @@ namespace VL.Common.Object.VL.Blog
             if (fields.Contains(nameof(LastEditTime)))
             {
                 this.LastEditTime = Convert.ToDateTime(reader[nameof(this.LastEditTime)]);
+            }
+            if (fields.Contains(nameof(IsVisible)))
+            {
+                this.IsVisible = Convert.ToBoolean(reader[nameof(this.IsVisible)]);
             }
         }
         [DataMember]

@@ -108,6 +108,7 @@
     <Compile Include="Protocol\IService\IResult\IValidate.cs" />
     <Compile Include="Protocol\IService\IResult\Report.cs" />
     <Compile Include="Protocol\IService\IWCF\BaseWCFServiceNode.cs" />
+    <Compile Include="Protocol\IService\IWCF\WCFServiceNode.cs" />
     <Compile Include="Protocol\IService\IWCF\IWCFServiceNode.cs" />
     <Compile Include="Protocol\IService\IWCF\TransactionDelegator.cs" />
     <Compile Include="Protocol\IService\IWCF\Validator.cs" />

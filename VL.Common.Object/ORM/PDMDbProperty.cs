@@ -5,7 +5,7 @@ namespace VL.Common.Object.ORM
     /// <summary>
     /// 由pdm解析的列字段
     /// </summary>
-    public class PDMDbProperty 
+    public class PDMDbProperty
     {
         #region Properties
         /// <summary>
@@ -40,26 +40,10 @@ namespace VL.Common.Object.ORM
         /// 是否允许空值
         /// </summary>
         public bool Nullable { get; set; }
-        /// <summary>
-        /// 默认值
-        /// </summary>
-        public string DefaultValue { get; set; }
         #endregion
 
-        /// <summary>
-        /// PDM模型属性
-        /// </summary>
-        /// <param name="title"></param>
-        /// <param name="code"></param>
-        /// <param name="comment"></param>
-        /// <param name="isPrimaryKey"></param>
-        /// <param name="type"></param>
-        /// <param name="length"></param>
-        /// <param name="precision"></param>
-        /// <param name="nullable"></param>
-        /// <param name="defaultValue"></param>
         public PDMDbProperty(string title, string code, string comment
-            , bool isPrimaryKey, PDMDataType type, int length, int precision, bool nullable, string defaultValue = null)
+            , bool isPrimaryKey, PDMDataType type, int length, int precision, bool nullable)
         {
             this.Title = title;
             this.Code = code;
@@ -70,7 +54,6 @@ namespace VL.Common.Object.ORM
             this.Length = length;
             this.Precision = precision;
             this.Nullable = nullable;
-            this.DefaultValue = defaultValue;
         }
 
         /// <summary>
@@ -111,6 +94,24 @@ namespace VL.Common.Object.ORM
                 default:
                     throw new NotImplementedException("该PDM字段类型未设置对应的C#类型");
             }
+        }
+    }
+    /// <summary>
+    /// 由pdm解析的列字段
+    /// </summary>
+    public class PDMDbProperty<T>: PDMDbProperty
+    {
+        #region Properties
+        /// 默认值
+        /// </summary>
+        public T DefaultValue { get; set; }
+        #endregion
+
+        public PDMDbProperty(string title, string code, string comment, bool isPrimaryKey, 
+            PDMDataType type, int length, int precision, bool nullable, T defaultValue = default(T))
+            : base(title, code, comment, isPrimaryKey, type, length, precision, nullable)
+        {
+            this.DefaultValue = defaultValue;
         }
     }
 }
