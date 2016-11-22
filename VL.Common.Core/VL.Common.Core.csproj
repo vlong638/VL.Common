@@ -83,7 +83,6 @@
     <Compile Include="ORM\Utilities\Interfaces\IQueriableWithParameter.cs" />
     <Compile Include="ORM\Utilities\Interfaces\IQueryBuilder.cs" />
     <Compile Include="ORM\Utilities\Interfaces\IQueryFetcher.cs" />
-    <Compile Include="ORM\Utilities\ITOperator.cs" />
     <Compile Include="ORM\Utilities\QueryBuilders\MSSQLQueryBuilder.cs" />
     <Compile Include="ORM\Utilities\QueryBuilders\QueryBuilderEx.cs" />
     <Compile Include="ORM\Utilities\QueryBuilders\QueryComponents\Builders\DeleteBuilder.cs" />

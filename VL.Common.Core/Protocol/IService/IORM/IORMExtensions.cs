@@ -36,7 +36,7 @@ namespace VL.Common.Protocol//.IService.IORM
             switch (session.DatabaseType)
             {
                 case EDatabaseType.MSSQL:
-                    result = new MSSQLQueryOperator();
+                    result = new MSSQLQueryOperator(session);
                     break;
                 case EDatabaseType.Oracle:
                 case EDatabaseType.MySQL:

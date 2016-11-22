@@ -2,12 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Core</id>
-    <version>1.0.1611211436.1</version>
+    <version>1.0.1611221045.1</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
     <description>
-添加WCFServiceNode以简化服务实现
-优化CodeGenerator的生成逻辑</description>
+IQueryOperator 增加内置属性DbSession 以简化使用</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
