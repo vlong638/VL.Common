@@ -15,7 +15,7 @@ namespace VL.Common.ORM//.Utilities.QueryOperators
     {
         public MSSQLQueryOperator(DbSession session)
         {
-            Session = Session;
+            Session = session;
         }
 
 

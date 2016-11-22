@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("VL.Common.Object")]
-[assembly: AssemblyDescription("常量和对象集合")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("VL.Common.Object")]

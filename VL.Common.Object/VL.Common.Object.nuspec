@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Object</id>
-    <version>1.0.1611211453.0</version>
+    <version>1.0.1611221406.0</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
-    <description>常量和对象集合
-Blog更新</description>
+    <description>
+IQueryOperator 增加内置属性DbSession 以简化使用</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
