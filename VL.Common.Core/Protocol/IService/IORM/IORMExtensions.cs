@@ -1,8 +1,10 @@
 ﻿using System;
-using VL.Common.DAS;
-using VL.Common.ORM;
+using VL.Common.Core.DAS;
+using VL.Common.Core.DAS;
+using VL.Common.Core.ORM;
+using VL.Common.Core.ORM;
 
-namespace VL.Common.Protocol//.IService.IORM
+namespace VL.Common.Core.Protocol//.IService.IORM
 {
     public static class IORMExtensions
     {
@@ -17,7 +19,7 @@ namespace VL.Common.Protocol//.IService.IORM
             switch (session.DatabaseType)
             {
                 case EDatabaseType.MSSQL:
-                    result = new MSSQLQueryBuilder();
+                    result = new IDbQueryBuilder();
                     break;
                 case EDatabaseType.MySQL:
                 case EDatabaseType.Oracle:

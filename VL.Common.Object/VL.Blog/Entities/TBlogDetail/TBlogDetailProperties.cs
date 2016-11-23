@@ -1,5 +1,5 @@
 using System;
-using VL.Common.Object.ORM;
+using VL.Common.Core.ORM;
 
 namespace VL.Common.Object.VL.Blog
 {

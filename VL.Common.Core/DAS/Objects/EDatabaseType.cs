@@ -1,4 +1,4 @@
-﻿namespace VL.Common.DAS
+﻿namespace VL.Common.Core.DAS
 {
     /// <summary>
     /// 数据库类别

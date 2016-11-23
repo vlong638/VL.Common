@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 
-namespace VL.Common.DAS
+namespace VL.Common.Core.DAS
 {
     /// <summary>
     /// 会话对象

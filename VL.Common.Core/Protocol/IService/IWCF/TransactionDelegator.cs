@@ -1,15 +1,16 @@
 ﻿using System;
-using VL.Common.Object.Protocol;
-using VL.Common.DAS;
+using VL.Common.Core.Protocol;
+using VL.Common.Core.DAS;
+using VL.Common.Core.DAS;
 
-namespace VL.Common.Protocol//.IService.IWCF
+namespace VL.Common.Core.Protocol//.IService.IWCF
 {
     /// <summary>
     /// 用于规范服务的方法外框架(以隔离核心处理逻辑)
     /// </summary>
     public class TransactionDelegator
     {
-        public static ClassReportHelper ReportHelper = new ClassReportHelper(nameof(VL.Common.Protocol), nameof(TransactionDelegator));
+        public static ClassReportHelper ReportHelper = new ClassReportHelper(nameof(VL.Common.Core.Protocol), nameof(TransactionDelegator));
 
         public TransactionDelegator(ServiceContext serviceContext)
         {

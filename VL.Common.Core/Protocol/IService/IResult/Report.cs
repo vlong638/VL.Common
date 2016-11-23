@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using VL.Common.Object.Protocol;
+using VL.Common.Core.Protocol;
 
-namespace VL.Common.Protocol//.IService.IResult
+namespace VL.Common.Core.Protocol//.IService.IResult
 {
     public class ModuleReportHelper
     {

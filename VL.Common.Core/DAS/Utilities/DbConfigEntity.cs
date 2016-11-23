@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using VL.Common.Configurator;
 
-namespace VL.Common.DAS
+namespace VL.Common.Core.DAS
 {
     public abstract class DbConfigEntity : XMLConfigEntity
     {

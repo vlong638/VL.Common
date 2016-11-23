@@ -4,7 +4,7 @@
 //using System.Text;
 //using System.Threading.Tasks;
 
-//namespace VL.Common.Protocol.IWCF//.IResult
+//namespace VL.Common.Core.Protocol.IWCF//.IResult
 //{
 //    class IValidate
 //    {

@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel;
-using VL.Common.Object.Protocol;
+using VL.Common.Core.Protocol;
 
-namespace VL.Common.Protocol//.IService.IWCF
+namespace VL.Common.Core.Protocol//.IService.IWCF
 {
     /// <summary>
     /// 服务节点规范

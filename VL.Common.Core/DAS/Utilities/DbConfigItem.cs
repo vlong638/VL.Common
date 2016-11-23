@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Xml.Linq;
-using VL.Common.DAS;
+using VL.Common.Core.DAS;
+using VL.Common.Core.DAS;
 
-namespace VL.Common.DAS
+namespace VL.Common.Core.DAS
 {
     public class DbConfigItem
     {
