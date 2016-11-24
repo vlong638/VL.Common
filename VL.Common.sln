@@ -31,8 +31,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TODO", "TODO", "{2B8F8E84-9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Common.Constraints", "VL.Common.Constraints\VL.Common.Constraints.csproj", "{2116047F-3043-4FA9-AEDC-DD4A189EBB4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Common.Object", "VL.Common.Object\VL.Common.Object.csproj", "{939D06D1-E570-4B85-9677-8A6F9648349F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,10 +85,6 @@ Global
 		{2116047F-3043-4FA9-AEDC-DD4A189EBB4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2116047F-3043-4FA9-AEDC-DD4A189EBB4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2116047F-3043-4FA9-AEDC-DD4A189EBB4D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{939D06D1-E570-4B85-9677-8A6F9648349F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{939D06D1-E570-4B85-9677-8A6F9648349F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{939D06D1-E570-4B85-9677-8A6F9648349F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{939D06D1-E570-4B85-9677-8A6F9648349F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

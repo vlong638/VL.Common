@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Runtime.Serialization;
 
@@ -32,14 +33,20 @@ namespace VL.Common.Core.ORM
         /// 通过DataReader初始化数据
         /// </summary>
         /// <param name="reader"></param>
-        public abstract void Init(IDataReader reader);
+        public virtual void Init(IDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// 通过DataReader初始化数据
         /// </summary>
-        public abstract void Init(IDataReader reader, List<string> fields);
+        public virtual void Init(IDataReader reader, List<string> fields)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// 获取表名
         /// </summary>
-        public abstract string TableName { get; }
+        public virtual string TableName { get; }
     }
 }

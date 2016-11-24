@@ -71,6 +71,16 @@
     <Compile Include="Logger\Objects\Log4netLogger.cs" />
     <Compile Include="Logger\Objects\TextLogger.cs" />
     <Compile Include="Logger\Utilities\LoggerProvider.cs" />
+    <Compile Include="Objects\VL.User\Entities\TUserBasicInfo\TUserBasicInfo.cs" />
+    <Compile Include="Objects\VL.User\Entities\TUserBasicInfo\TUserBasicInfoProperties.cs" />
+    <Compile Include="Objects\VL.User\Entities\TUserBasicInfo\TUserBasicInfoReference.cs" />
+    <Compile Include="Objects\VL.User\Entities\TUserRole\TUserRole.cs" />
+    <Compile Include="Objects\VL.User\Entities\TUserRole\TUserRoleProperties.cs" />
+    <Compile Include="Objects\VL.User\Entities\TUser\TUser.cs" />
+    <Compile Include="Objects\VL.User\Entities\TUser\TUserProperties.cs" />
+    <Compile Include="Objects\VL.User\Entities\TUser\TUserReference.cs" />
+    <Compile Include="Objects\VL.User\Enums\ERole.cs" />
+    <Compile Include="Objects\VL.User\Enums\ESignInStatus.cs" />
     <Compile Include="ORM\Builders\DeleteBuilder.cs" />
     <Compile Include="ORM\Builders\InsertBuilder.cs" />
     <Compile Include="ORM\Builders\SelectBuilder.cs" />
@@ -114,6 +124,16 @@
     <Compile Include="Protocol\Objects\DependencyResult.cs" />
     <Compile Include="Protocol\Objects\DependencyType.cs" />
     <Compile Include="Protocol\Objects\Report.cs" />
+    <Compile Include="Objects\VL.Blog\Entities\TBlogDetail\TBlogDetail.cs" />
+    <Compile Include="Objects\VL.Blog\Entities\TBlogDetail\TBlogDetailProperties.cs" />
+    <Compile Include="Objects\VL.Blog\Entities\TBlogTagMapper\TBlogTagMapper.cs" />
+    <Compile Include="Objects\VL.Blog\Entities\TBlogTagMapper\TBlogTagMapperProperties.cs" />
+    <Compile Include="Objects\VL.Blog\Entities\TBlog\TBlog.cs" />
+    <Compile Include="Objects\VL.Blog\Entities\TBlog\TBlogProperties.cs" />
+    <Compile Include="Objects\VL.Blog\Entities\TBlog\TBlogReference.cs" />
+    <Compile Include="Objects\VL.Blog\Entities\TTag\TTag.cs" />
+    <Compile Include="Objects\VL.Blog\Entities\TTag\TTagProperties.cs" />
+    <Compile Include="Objects\VL.Blog\Enums\ESample.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -56,6 +56,7 @@
     <Compile Include="VL.Blog\Entities\TBlogTagMapper\TBlogTagMapperProperties.cs" />
     <Compile Include="VL.Blog\Entities\TBlog\TBlog.cs" />
     <Compile Include="VL.Blog\Entities\TBlog\TBlogProperties.cs" />
+    <Compile Include="VL.Blog\Entities\TBlog\TBlogReference.cs" />
     <Compile Include="VL.Blog\Entities\TTag\TTag.cs" />
     <Compile Include="VL.Blog\Entities\TTag\TTagProperties.cs" />
     <Compile Include="VL.Blog\Enums\ESample.cs" />

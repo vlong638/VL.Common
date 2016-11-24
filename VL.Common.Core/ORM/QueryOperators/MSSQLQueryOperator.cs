@@ -306,6 +306,30 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
+        public override Guid? SelectAsGuid<T>(SelectBuilder selectBuilder)
+        {
+            if (selectBuilder == null)
+            {
+                throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
+            }
+            DbCommand command = Session.CreateCommand();
+            command.CommandText = selectBuilder.ToQueryString(Session, new T().TableName);
+            selectBuilder.AddParameter(command, Session);
+            WriteQueryLog(command, Session);
+            var data = Session.ExecuteScalar(command);
+            Guid result;
+            if (data != null && Guid.TryParse(data.ToString(), out result))
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
         public override string SelectAsString<T>(SelectBuilder selectBuilder)
         {
             if (selectBuilder == null)

@@ -2,14 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Object</id>
-    <version>1.0.1611231738.0</version>
+    <version>1.0.1611241523.0</version>
     <authors>vlong638</authors>
     <owners>vlong638</owners>
     <description>
-支持ComponentWhere.Add(@property=@value)的Expression表达式
-
-VL.Common.Core用于VL开发环境的内核构建,承载通用共识
-VL.Common.Object是内核关于基于ORM生成的对象部分</description>
+移除TagId,直接使用TagName</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

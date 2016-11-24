@@ -160,6 +160,10 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
+        public abstract Guid? SelectAsGuid<T>(SelectBuilder selectBuilder) where T : IPDMTBase, new();
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
         public abstract string SelectAsString<T>(SelectBuilder selectBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 未查询到数据时返回 null

@@ -4,29 +4,28 @@ using System.Data;
 using System.Runtime.Serialization;
 using VL.Common.Core.ORM;
 
-namespace VL.Common.Object.VL.Blog
+namespace VL.Common.Core.Object.VL.Blog
 {
     [DataContract]
-    public partial class TTag : IPDMTBase
+    public partial class TBlogTagMapper : IPDMTBase
     {
         #region Properties
         [DataMember]
-        public String UserName { get; set; }
-        [DataMember]
-        public Guid TagId { get; set; }
+        public Guid BlogId { get; set; }
         [DataMember]
         public String TagName { get; set; }
         #endregion
 
         #region Constructors
-        public TTag()
+        public TBlogTagMapper()
         {
         }
-        public TTag(Guid tagId)
+        public TBlogTagMapper(Guid blogId, String tagName)
         {
-            TagId = tagId;
+            BlogId = blogId;
+            TagName = tagName;
         }
-        public TTag(IDataReader reader) : base(reader)
+        public TBlogTagMapper(IDataReader reader) : base(reader)
         {
         }
         #endregion
@@ -34,19 +33,14 @@ namespace VL.Common.Object.VL.Blog
         #region Methods
         public override void Init(IDataReader reader)
         {
-            this.UserName = Convert.ToString(reader[nameof(this.UserName)]);
-            this.TagId = new Guid(reader[nameof(this.TagId)].ToString());
+            this.BlogId = new Guid(reader[nameof(this.BlogId)].ToString());
             this.TagName = Convert.ToString(reader[nameof(this.TagName)]);
         }
         public override void Init(IDataReader reader, List<string> fields)
         {
-            if (fields.Contains(nameof(UserName)))
+            if (fields.Contains(nameof(BlogId)))
             {
-                this.UserName = Convert.ToString(reader[nameof(this.UserName)]);
-            }
-            if (fields.Contains(nameof(TagId)))
-            {
-                this.TagId = new Guid(reader[nameof(this.TagId)].ToString());
+                this.BlogId = new Guid(reader[nameof(this.BlogId)].ToString());
             }
             if (fields.Contains(nameof(TagName)))
             {
@@ -58,7 +52,7 @@ namespace VL.Common.Object.VL.Blog
         {
             get
             {
-                return nameof(TTag);
+                return nameof(TBlogTagMapper);
             }
         }
         #endregion
