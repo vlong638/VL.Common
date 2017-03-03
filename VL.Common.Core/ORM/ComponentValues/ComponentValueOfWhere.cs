@@ -94,6 +94,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryBuilders
                                 switch (this.Property.Type)
                                 {
                                     case PDMDataType.varchar:
+                                    case PDMDataType.text:
                                         var varchars = this.Value as IEnumerable<String>;
                                         if (varchars == null)
                                         {

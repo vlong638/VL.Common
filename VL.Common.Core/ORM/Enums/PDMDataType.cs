@@ -16,5 +16,6 @@ namespace VL.Common.Core.ORM
         datetime,
         uniqueidentifier,
         boolean,
+        text,
     }
 }
