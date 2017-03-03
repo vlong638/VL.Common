@@ -71,16 +71,6 @@
     <Compile Include="Logger\Objects\Log4netLogger.cs" />
     <Compile Include="Logger\Objects\TextLogger.cs" />
     <Compile Include="Logger\Utilities\LoggerProvider.cs" />
-    <Compile Include="Objects\VL.User\Entities\TUserBasicInfo\TUserBasicInfo.cs" />
-    <Compile Include="Objects\VL.User\Entities\TUserBasicInfo\TUserBasicInfoProperties.cs" />
-    <Compile Include="Objects\VL.User\Entities\TUserBasicInfo\TUserBasicInfoReference.cs" />
-    <Compile Include="Objects\VL.User\Entities\TUserRole\TUserRole.cs" />
-    <Compile Include="Objects\VL.User\Entities\TUserRole\TUserRoleProperties.cs" />
-    <Compile Include="Objects\VL.User\Entities\TUser\TUser.cs" />
-    <Compile Include="Objects\VL.User\Entities\TUser\TUserProperties.cs" />
-    <Compile Include="Objects\VL.User\Entities\TUser\TUserReference.cs" />
-    <Compile Include="Objects\VL.User\Enums\ERole.cs" />
-    <Compile Include="Objects\VL.User\Enums\ESignInStatus.cs" />
     <Compile Include="ORM\Builders\DeleteBuilder.cs" />
     <Compile Include="ORM\Builders\InsertBuilder.cs" />
     <Compile Include="ORM\Builders\SelectBuilder.cs" />
