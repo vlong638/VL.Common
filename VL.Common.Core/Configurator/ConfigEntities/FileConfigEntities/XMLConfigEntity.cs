@@ -21,8 +21,12 @@ namespace VL.Common.Configurator
 
         public override void Load()
         {
-            XDocument doc = XDocument.Load(InputFilePath);
-            Load(doc);
+            XDocument doc;
+            if (File.Exists(InputFilePath))
+            {
+                doc = XDocument.Load(InputFilePath);
+                Load(doc);
+            }
         }
         public override void Save()
         {
