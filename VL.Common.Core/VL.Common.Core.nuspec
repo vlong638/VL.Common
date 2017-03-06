@@ -2,11 +2,12 @@
 <package>
   <metadata>
     <id>VL.Common.Core</id>
-    <version>1.0.1703061316.1</version>
+    <version>1.0.1703061709.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
     <description>VL.Common.Core
-修复SelectAsBool()</description>
+ComponentOfOrder增加Suffix用以补足后续可能存在的后缀内容
+ComponentOfSet增加默认的参数前缀"Set-"以避免和Where部分的参数重复</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>

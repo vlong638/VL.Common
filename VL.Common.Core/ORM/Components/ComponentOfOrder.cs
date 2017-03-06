@@ -9,6 +9,8 @@ namespace VL.Common.Core.ORM
     /// </summary>
     public class ComponentOfOrder : IComponentBuilder, IQueriable
     {
+        public string Suffix = "";
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -46,7 +48,7 @@ namespace VL.Common.Core.ORM
                 return "";
             }
 
-            return " order by " + string.Join(",", Orders.Select(c => c.FieldName + " " + c.OrderType.ToString()));
+            return " order by " + string.Join(",", Orders.Select(c => c.FieldName + " " + c.OrderType.ToString())) + Suffix;
         }
     }
 }

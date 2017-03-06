@@ -98,6 +98,7 @@
     <Compile Include="ORM\Interfaces\IQueriable.cs" />
     <Compile Include="ORM\Interfaces\IQueriableWithParameter.cs" />
     <Compile Include="ORM\Interfaces\IQueryBuilder.cs" />
+    <Compile Include="ORM\QueryOperators\MySQLQueryOperator.cs" />
     <Compile Include="ORM\QueryOperators\MSSQLQueryOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocol\Config\ProtocolConfig.cs" />

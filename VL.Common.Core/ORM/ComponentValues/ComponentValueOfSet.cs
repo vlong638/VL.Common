@@ -33,9 +33,8 @@ namespace VL.Common.Core.ORM//.Utilities.QueryBuilders
         /// <param name="property"></param>
         /// <param name="value"></param>
         /// <param name="nickName"></param>
-        public ComponentValueOfSet(PDMDbProperty property, object value, string nickName = null)
+        public ComponentValueOfSet(PDMDbProperty property, object value, string nickName = null) : this(property, value, UpdateType.SetValue, nickName)
         {
-            init(property, UpdateType.SetValue, value, !string.IsNullOrEmpty(nickName) ? nickName : property.Title);
         }
         /// <summary>
         /// 构造函数
@@ -46,7 +45,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryBuilders
         /// <param name="nickName"></param>
         public ComponentValueOfSet(PDMDbProperty property, object value, UpdateType updateType, string nickName = null)
         {
-            init(property, updateType, value, !string.IsNullOrEmpty(nickName) ? nickName : property.Title);
+            init(property, updateType, value, !string.IsNullOrEmpty(nickName) ? nickName : "Set" + property.Title);
         }
 
         private void init(PDMDbProperty property, UpdateType updateType, object value, string nickName)
