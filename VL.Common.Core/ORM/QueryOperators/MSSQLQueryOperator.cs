@@ -22,7 +22,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 返回 是否成功新增
         /// </summary>
-        public override bool Insert<T>(IDbQueryBuilder queryBuilder)
+        public override bool Insert<T>(DbQueryBuilder queryBuilder)
         {
             var insertBuilder = queryBuilder.InsertBuilders.First();
             return Insert<T>(insertBuilder);
@@ -47,7 +47,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 返回 全部新增都成功
         /// </summary>
-        public override bool InsertAll<T>(IDbQueryBuilder queryBuilder)
+        public override bool InsertAll<T>(DbQueryBuilder queryBuilder)
         {
             bool result = true;
             DbCommand command = Session.CreateCommand();
@@ -66,7 +66,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 失败表示影响数据为0
         /// </summary>
-        public override bool Delete<T>(IDbQueryBuilder queryBuilder)
+        public override bool Delete<T>(DbQueryBuilder queryBuilder)
         {
             var deleteBuilder = queryBuilder.DeleteBuilder;
             return Delete<T>(deleteBuilder);
@@ -91,7 +91,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 失败表示存在更新影响条数为0的update
         /// </summary>
-        public override bool Update<T>(IDbQueryBuilder queryBuilder)
+        public override bool Update<T>(DbQueryBuilder queryBuilder)
         {
             var updateBuilder = queryBuilder.UpdateBuilders.First();
             return Update<T>(updateBuilder);
@@ -116,7 +116,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 失败表示存在更新影响条数为0的update
         /// </summary>
-        public override bool UpdateAll<T>(IDbQueryBuilder queryBuilder)
+        public override bool UpdateAll<T>(DbQueryBuilder queryBuilder)
         {
             bool result = true;
             DbCommand command = Session.CreateCommand();
@@ -134,7 +134,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 失败返回null
         /// </summary>
-        public override T Select<T>(IDbQueryBuilder queryBuilder)
+        public override T Select<T>(DbQueryBuilder queryBuilder)
         {
             SelectBuilder selectBuilder = queryBuilder.SelectBuilders.FirstOrDefault();
             return Select<T>(selectBuilder);
@@ -198,7 +198,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 失败返回 new List<T>()
         /// </summary>
-        public override List<T> SelectAll<T>(IDbQueryBuilder queryBuilder)
+        public override List<T> SelectAll<T>(DbQueryBuilder queryBuilder)
         {
             SelectBuilder selectBuilder = queryBuilder.SelectBuilders.First();
             return SelectAll<T>(selectBuilder);
@@ -249,12 +249,59 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <param name="Session"></param>
         /// <param name="queryBuilder"></param>
         /// <returns></returns>
-        public override List<T> SelectUnion<T>(IDbQueryBuilder queryBuilder)
+        public override List<T> SelectUnion<T>(DbQueryBuilder queryBuilder)
         {
             throw new NotImplementedException();
         }
         #endregion
         #region SelectAs
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public override bool? SelectAsBool<T>(SelectBuilder selectBuilder)
+        {
+            if (selectBuilder == null)
+            {
+                throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
+            }
+            DbCommand command = Session.CreateCommand();
+            command.CommandText = selectBuilder.ToQueryString(Session, new T().TableName);
+            selectBuilder.AddParameter(command, Session);
+            WriteQueryLog(command, Session);
+            var data = Session.ExecuteScalar(command);
+            if (data != null)
+            {
+                return Convert.ToBoolean(data);
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public override short? SelectAsShort<T>(SelectBuilder selectBuilder)
+        {
+            if (selectBuilder == null)
+            {
+                throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
+            }
+            DbCommand command = Session.CreateCommand();
+            command.CommandText = selectBuilder.ToQueryString(Session, new T().TableName);
+            selectBuilder.AddParameter(command, Session);
+            WriteQueryLog(command, Session);
+            var data = Session.ExecuteScalar(command);
+            short result;
+            if (data != null && short.TryParse(data.ToString(), out result))
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>

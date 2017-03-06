@@ -88,7 +88,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 返回 是否有数据受操作影响
         /// </summary>
-        public abstract bool Insert<T>(IDbQueryBuilder queryBuilder) where T : IPDMTBase, new();
+        public abstract bool Insert<T>(DbQueryBuilder queryBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 返回 是否有数据受操作影响
         /// </summary>
@@ -96,11 +96,11 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 返回 是否有数据受操作影响
         /// </summary>
-        public abstract bool InsertAll<T>(IDbQueryBuilder queryBuilder) where T : IPDMTBase, new();
+        public abstract bool InsertAll<T>(DbQueryBuilder queryBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 返回 是否有数据受操作影响
         /// </summary>
-        public abstract bool Delete<T>(IDbQueryBuilder queryBuilder) where T : IPDMTBase, new();
+        public abstract bool Delete<T>(DbQueryBuilder queryBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 返回 是否有数据受操作影响
         /// </summary>
@@ -108,7 +108,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 返回 是否有数据受操作影响
         /// </summary>
-        public abstract bool Update<T>(IDbQueryBuilder queryBuilder) where T : IPDMTBase, new();
+        public abstract bool Update<T>(DbQueryBuilder queryBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 返回 是否有数据受操作影响
         /// </summary>
@@ -116,11 +116,11 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 返回 是否有数据受操作影响
         /// </summary>
-        public abstract bool UpdateAll<T>(IDbQueryBuilder queryBuilder) where T : IPDMTBase, new();
+        public abstract bool UpdateAll<T>(DbQueryBuilder queryBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
-        public abstract T Select<T>(IDbQueryBuilder queryBuilder) where T : IPDMTBase, new();
+        public abstract T Select<T>(DbQueryBuilder queryBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
@@ -129,7 +129,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// 未查询到数据时返回 New List()
         /// 单个SelectBuilder查询一组数据
         /// </summary>
-        public abstract List<T> SelectAll<T>(IDbQueryBuilder queryBuilder) where T : IPDMTBase, new();
+        public abstract List<T> SelectAll<T>(DbQueryBuilder queryBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 未查询到数据时返回 New List()
         /// 单个SelectBuilder查询一组数据
@@ -144,11 +144,19 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// 未查询到数据时返回 New List()
         /// 多个SelectBuilder组合查询
         /// </summary>
-        public abstract List<T> SelectUnion<T>(IDbQueryBuilder queryBuilder) where T : IPDMTBase, new();
+        public abstract List<T> SelectUnion<T>(DbQueryBuilder queryBuilder) where T : IPDMTBase, new();
         ///// <summary>
         ///// 未查询到数据时返回 New List()
         ///// </summary>
         //public abstract List<T> SelectAll<T>(DbQueryBuilder queryBuilder) where T : IPDMTBase, new();
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public abstract bool? SelectAsBool<T>(SelectBuilder selectBuilder) where T : IPDMTBase, new();
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public abstract short? SelectAsShort<T>(SelectBuilder selectBuilder) where T : IPDMTBase, new();
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>

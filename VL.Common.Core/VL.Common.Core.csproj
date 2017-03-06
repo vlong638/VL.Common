@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VL.Common.Core</RootNamespace>
     <AssemblyName>VL.Common.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -129,8 +129,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="DAS\Additions\DbConnections.config" />
-    <None Include="lib\net452\System.Runtime.Serialization.dll" />
-    <None Include="lib\net452\System.ServiceModel.dll" />
+    <None Include="lib\net452\System.Runtime.Serialization.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="lib\net452\System.ServiceModel.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="log4net.config" />
     <None Include="Logger\Additions\App.config" />
     <None Include="Logger\Additions\log4net.config" />

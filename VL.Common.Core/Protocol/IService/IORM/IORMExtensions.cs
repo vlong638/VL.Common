@@ -13,15 +13,15 @@ namespace VL.Common.Core.Protocol//.IService.IORM
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
-        public static IDbQueryBuilder GetDbQueryBuilder(this DbSession session)
+        public static DbQueryBuilder GetDbQueryBuilder(this DbSession session)
         {
-            IDbQueryBuilder result;
+            DbQueryBuilder result;
             switch (session.DatabaseType)
             {
                 case EDatabaseType.MSSQL:
-                    result = new IDbQueryBuilder();
+                case EDatabaseType.MySQL://TODO MySQL暂时启用MSSQL方案
+                    result = new DbQueryBuilder();
                     break;
-                case EDatabaseType.MySQL:
                 case EDatabaseType.Oracle:
                 //TODO 未支持多数据库
                 default:
@@ -38,10 +38,10 @@ namespace VL.Common.Core.Protocol//.IService.IORM
             switch (session.DatabaseType)
             {
                 case EDatabaseType.MSSQL:
+                case EDatabaseType.MySQL://TODO MySQL暂时启用MSSQL方案
                     result = new MSSQLQueryOperator(session);
                     break;
                 case EDatabaseType.Oracle:
-                case EDatabaseType.MySQL:
                 //TODO 未支持多数据库
                 default:
                     throw new NotImplementedException("未为该类型" + session.DatabaseType + "实现对应的QueryOperator");

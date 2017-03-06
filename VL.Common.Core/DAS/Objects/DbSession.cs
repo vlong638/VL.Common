@@ -29,9 +29,9 @@ namespace VL.Common.Core.DAS
             switch (DatabaseType)
             {
                 case EDatabaseType.MSSQL:
+                case EDatabaseType.MySQL:
                     return "@";
                 case EDatabaseType.Oracle:
-                case EDatabaseType.MySQL:
                     return ":";
                 default:
                     throw new NotImplementedException();

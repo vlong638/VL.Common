@@ -5,7 +5,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryBuilders
     /// <summary>
     /// 数据库语句构建类
     /// </summary>
-    public class IDbQueryBuilder
+    public class DbQueryBuilder
     {
         /// <summary>
         /// 操作类型

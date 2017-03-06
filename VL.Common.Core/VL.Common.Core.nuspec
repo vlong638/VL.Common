@@ -2,10 +2,11 @@
 <package>
   <metadata>
     <id>VL.Common.Core</id>
-    <version>1.0.1703031743.1</version>
+    <version>1.0.1703061316.1</version>
     <authors>SecretV</authors>
     <owners>SecretV</owners>
-    <description>VL.Common.Core</description>
+    <description>VL.Common.Core
+修复SelectAsBool()</description>
     <copyright>Copyright ©  2016</copyright>
     <tags></tags>
   </metadata>
