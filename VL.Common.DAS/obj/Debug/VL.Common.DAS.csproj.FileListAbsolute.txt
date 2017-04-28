@@ -18,3 +18,15 @@ D:\GitProjects\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.dll
 D:\GitProjects\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.pdb
 D:\GitProjects\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.Configurator.pdb
 D:\GitProjects\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.csprojResolveAssemblyReference.cache
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.csprojResolveAssemblyReference.cache
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.DAS.dll.config
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.DAS.dll
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.DAS.pdb
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\bin\Debug\MySql.Data.dll
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\bin\Debug\Newtonsoft.Json.dll
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\bin\Debug\Oracle.ManagedDataAccess.dll
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.Configurator.dll
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\bin\Debug\VL.Common.Configurator.pdb
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\bin\Debug\Newtonsoft.Json.xml
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.dll
+E:\WorkingSpace\Repository\Git\VL.Common\VL.Common.DAS\obj\Debug\VL.Common.DAS.pdb

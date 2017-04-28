@@ -66,14 +66,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\VL.Common.Caching.Redis\VL.Common.Caching.Redis.csproj">
-      <Project>{bcafc198-ed5c-46de-9726-1422251e82ce}</Project>
-      <Name>VL.Common.Caching.Redis</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VL.Common.Caching\VL.Common.Caching.csproj">
-      <Project>{7c3f7157-0dd1-47e2-9fb6-aa5cd8435bc9}</Project>
-      <Name>VL.Common.Caching</Name>
-    </ProjectReference>
     <ProjectReference Include="..\VL.Common.Configurator\VL.Common.Configurator.csproj">
       <Project>{4167518b-d35a-4f12-8a5e-b7bea320c76d}</Project>
       <Name>VL.Common.Configurator</Name>

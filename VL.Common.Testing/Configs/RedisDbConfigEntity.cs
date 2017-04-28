@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using VL.Common.Caching.Redis.Configs;
+using VL.Common.DAS.Utilities;
 
 namespace VL.Common.Testing.Configs
 {
