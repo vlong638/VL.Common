@@ -166,6 +166,7 @@ namespace VL.Common.Core.Protocol//.IService.IContext
                         dbConfig.DbConfigItems.Add(new DbConfigItem("OracleSample") { ConnectingString = "", DbType = EDatabaseType.Oracle });
                         dbConfig.DbConfigItems.Add(new DbConfigItem("MySQLSample") { ConnectingString = "", DbType = EDatabaseType.MySQL });
                         dbConfig.DbConfigItems.Add(new DbConfigItem("MSSQLSample") { ConnectingString = "", DbType = EDatabaseType.MSSQL });
+                        dbConfig.DbConfigItems.Add(new DbConfigItem("SQLiteSample") { ConnectingString = "", DbType = EDatabaseType.SQLite });
                     }
                     configEntity.Save();
                     message.AppendLine("已创建默认的配置文件,请在配置后重试,文件路径:" + configEntity.InputFilePath);

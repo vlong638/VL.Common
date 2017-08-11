@@ -1,49 +1,60 @@
 ﻿using System;
-using System.Linq;
-using VL.Common.Logger.Utilities;
-using VL.Common.Protocol;
-using VL.Common.Testing.Configs;
+using VL.Account.Business;
+using VL.Common.Core.Object.VL.Account;
+using VL.Common.Testing.Utilities;
+using static VL.Account.Business.TAccountDomain;
 
 namespace VL.Common.Testing
 {
-    public static class StringEx
-    {
-        public static void ChangeString(this string s)
-        {
-            s = "2";
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            ProtocolConfig protocol = new ProtocolConfig("ProtocolConfig.config");
-            protocol.IsSQLLogAvailable.Value = true;
-            protocol.Save();
-            protocol.IsSQLLogAvailable.Value = false;
-            protocol.Load();
-            //var isSimulationAvailable = ProtocolConfig.IsSimulationAvailable;
-
-
-
-
-
-            //var isSimulationAvailable = ProtocolConfig.IsSimulationAvailable;
-            //TestCreateConfig();
-            //TestLogger();
-
-            //0422标准的测试
-            //CreateRedisConfig();
-            //MemoryCache();
-            //try
-            //{
-            //    RedisCache();
-            //}
-            //catch (Exception ex)
-            //{
-            //    string s = "";
-            //}
+            #region 0810 ORM优化
+            var connect= SQLiteHelper.Connect();
+            SQLiteHelper.PrepareTables();
+            TAccount account = new TAccount()
+            {
+                AccountId = Guid.NewGuid(),
+                AccountName = "vlong638",
+                Password = "701616",
+                CreatedOn = DateTime.Now,
+                LastEditedOn = DateTime.Now,
+            };
+            TransactionHelper.HandleTransactionEvent(DbConfigs.DbNameOfAccount, (session) =>
+            {
+                return account.Create(session);
+            });
+            #endregion
         }
+
+        #region old
+        //ProtocolConfig protocol = new ProtocolConfig("ProtocolConfig.config");
+        //protocol.IsSQLLogAvailable.Value = true;
+        //protocol.Save();
+        //protocol.IsSQLLogAvailable.Value = false;
+        //protocol.Load();
+        //var isSimulationAvailable = ProtocolConfig.IsSimulationAvailable;
+
+
+
+
+
+        //var isSimulationAvailable = ProtocolConfig.IsSimulationAvailable;
+        //TestCreateConfig();
+        //TestLogger();
+
+        //0422标准的测试
+        //CreateRedisConfig();
+        //MemoryCache();
+        //try
+        //{
+        //    RedisCache();
+        //}
+        //catch (Exception ex)
+        //{
+        //    string s = "";
+        //}
 
         //private static void RedisCache()
         //{
@@ -81,6 +92,7 @@ namespace VL.Common.Testing
         //private static void TestCreateConfig()
         //{
         //    //DbConfigHelper.CreateConfigFile();
-        //}
+        //} 
+        #endregion
     }
 }

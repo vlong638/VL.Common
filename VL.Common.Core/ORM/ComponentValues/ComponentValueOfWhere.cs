@@ -150,6 +150,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryBuilders
                                                 break;
                                             case EDatabaseType.MSSQL:
                                             case EDatabaseType.MySQL:
+                                            case EDatabaseType.SQLite:
                                                 command.CommandText = command.CommandText.Replace(parameterPlaceholder, "'" + string.Join("','", this.Value) + "'");
                                                 break;
                                             default:

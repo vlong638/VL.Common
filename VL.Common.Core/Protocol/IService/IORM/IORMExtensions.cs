@@ -20,7 +20,8 @@ namespace VL.Common.Core.Protocol//.IService.IORM
             {
                 case EDatabaseType.MSSQL:
                 case EDatabaseType.MySQL://TODO MySQL暂时启用MSSQL方案
-                    result = new DbQueryBuilder();
+                case EDatabaseType.SQLite:// TODO SQLite暂时启用MSSQL方案
+                     result = new DbQueryBuilder();
                     break;
                 case EDatabaseType.Oracle:
                 //TODO 未支持多数据库
@@ -40,6 +41,9 @@ namespace VL.Common.Core.Protocol//.IService.IORM
                 case EDatabaseType.MSSQL:
                 case EDatabaseType.MySQL://TODO MySQL暂时启用MSSQL方案
                     result = new MSSQLQueryOperator(session);
+                    break;
+                case EDatabaseType.SQLite:
+                    result = new SQLiteQueryOperator(session);
                     break;
                 case EDatabaseType.Oracle:
                 //TODO 未支持多数据库

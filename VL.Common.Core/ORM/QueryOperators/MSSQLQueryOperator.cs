@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using VL.Common.Core.DAS;
-using VL.Common.Core.ORM;
 
 namespace VL.Common.Core.ORM//.Utilities.QueryOperators
 {
@@ -16,7 +15,6 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         {
             Session = session;
         }
-
 
         #region Insert
         /// <summary>

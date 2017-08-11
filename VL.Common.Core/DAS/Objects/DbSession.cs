@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 
 namespace VL.Common.Core.DAS
 {
@@ -30,6 +31,7 @@ namespace VL.Common.Core.DAS
             {
                 case EDatabaseType.MSSQL:
                 case EDatabaseType.MySQL:
+                case EDatabaseType.SQLite:
                     return "@";
                 case EDatabaseType.Oracle:
                     return ":";
@@ -54,10 +56,6 @@ namespace VL.Common.Core.DAS
             this.DatabaseType = databaseType;
             this.Connection = CreateConnection(databaseType, connectString);
             //this.Open();
-        }
-        ~DbSession()
-        {
-            Close();
         }
         public void Dispose()
         {
@@ -87,6 +85,9 @@ namespace VL.Common.Core.DAS
                     break;
                 case EDatabaseType.Oracle:
                     conn = new OracleConnection(connectionString);
+                    break;
+                case EDatabaseType.SQLite:
+                    conn = new SQLiteConnection(connectionString);
                     break;
                 default:
                     throw new NotImplementedException();
@@ -134,7 +135,7 @@ namespace VL.Common.Core.DAS
         /// </summary>
         public void Close()
         {
-            if (Connection != null && Connection.State == ConnectionState.Open)
+            if (Connection != null&& Connection.State == ConnectionState.Open)
                 Connection.Close();
         }
         #endregion
@@ -236,6 +237,10 @@ namespace VL.Common.Core.DAS
                         case EDatabaseType.MySQL:
                             _adapter = new MySqlDataAdapter();
                             _adapter.SelectCommand = new MySqlCommand();
+                            break;
+                        case EDatabaseType.SQLite:
+                            _adapter = new SQLiteDataAdapter();
+                            _adapter.SelectCommand = new SQLiteCommand();
                             break;
                         default:
                             throw new NotImplementedException("无该类型适配器");
@@ -356,6 +361,7 @@ namespace VL.Common.Core.DAS
                 case EDatabaseType.MSSQL:
                 case EDatabaseType.Oracle:
                 case EDatabaseType.MySQL:
+                case EDatabaseType.SQLite:
                     break;
                 default:
                     throw new NotImplementedException();

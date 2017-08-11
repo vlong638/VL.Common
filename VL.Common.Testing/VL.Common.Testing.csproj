@@ -9,12 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VL.Common.Testing</RootNamespace>
     <AssemblyName>VL.Common.Testing</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -33,9 +34,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\System.Data.SQLite.DLL</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +68,13 @@
     <Compile Include="Objects\ConsoloMenuItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\DbConfigs.cs" />
+    <Compile Include="Utilities\TransactionHelper.cs" />
+    <Compile Include="Utilities\SQLiteHelper.cs" />
+    <Compile Include="VL.Account\Business\DAL\TAccount\TAccountOperator.cs" />
+    <Compile Include="VL.Account\Business\Domain\TAccountDomain.cs" />
+    <Compile Include="VL.Account\Objects\Entities\TAccount\TAccount.cs" />
+    <Compile Include="VL.Account\Objects\Entities\TAccount\TAccountProperties.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -63,25 +89,18 @@
     <None Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\VL.Common.Configurator\VL.Common.Configurator.csproj">
-      <Project>{4167518b-d35a-4f12-8a5e-b7bea320c76d}</Project>
-      <Name>VL.Common.Configurator</Name>
+    <ProjectReference Include="..\VL.Common.Core\VL.Common.Core.csproj">
+      <Project>{cf00b1ae-9365-44cc-a055-bc8ecd3e2166}</Project>
+      <Name>VL.Common.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VL.Common.DAS\VL.Common.DAS.csproj">
-      <Project>{1af58dc2-559c-46da-b27c-2c9a7cf10af1}</Project>
-      <Name>VL.Common.DAS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VL.Common.Logger\VL.Common.Logger.csproj">
-      <Project>{0293cb98-eab0-43cc-b293-9a84fd84b518}</Project>
-      <Name>VL.Common.Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VL.Common.Protocol\VL.Common.Protocol.csproj">
-      <Project>{8cd7b6ca-a803-4fac-9acd-85555f6c2844}</Project>
-      <Name>VL.Common.Protocol</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dlls\Newtonsoft.Json.dll" />
+    <Content Include="Dlls\SQLite.Interop.dll" />
+    <Content Include="Dlls\System.Data.SQLite.DLL" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -79,6 +79,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
                     File.AppendAllText(FilePath, sb.ToString());
                 }
             }
+
         }
         #endregion
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Text;
 using VL.Common.Core.DAS;
 
@@ -31,6 +32,8 @@ namespace VL.Common.Core.ORM
                     return new OracleParameter(name, value);
                 case EDatabaseType.MySQL:
                     return new MySqlParameter(name, value);
+                case EDatabaseType.SQLite:
+                    return new SQLiteParameter(name, value);
                 default:
                     throw new NotImplementedException("未支持该类型数据库的参数生成" + session.DatabaseType.ToString());
             }
@@ -48,6 +51,8 @@ namespace VL.Common.Core.ORM
                     return new OracleParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value.GetType().IsEnum ? (int)value : value);
                 case EDatabaseType.MySQL:
                     return new MySqlParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value.GetType().IsEnum ? (int)value : value);
+                 case EDatabaseType.SQLite:
+                    return new SQLiteParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value.GetType().IsEnum ? (int)value : value);
                 default:
                     throw new NotImplementedException("未支持该类型数据库的参数生成" + session.DatabaseType.ToString());
             }

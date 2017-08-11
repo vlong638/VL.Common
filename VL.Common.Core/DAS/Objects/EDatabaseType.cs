@@ -9,5 +9,6 @@
         Oracle,
         MSSQL,
         MySQL,
+        SQLite,
     }
 }

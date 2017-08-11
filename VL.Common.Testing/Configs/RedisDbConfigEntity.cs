@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using VL.Common.DAS.Utilities;
+using VL.Common.Core.DAS;
 
 namespace VL.Common.Testing.Configs
 {

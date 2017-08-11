@@ -4,14 +4,14 @@ using System.Data.Common;
 using System.Linq;
 using VL.Common.Core.DAS;
 
-namespace VL.Common.Core.ORM//.Utilities.QueryOperators
+namespace VL.Common.Core.ORM
 {
     /// <summary>
-    /// 针对MSSQL数据库的操作类
+    /// 针对SQLite数据库的操作类
     /// </summary>
-    public class MySQLQueryOperator : IDbQueryOperator
+    public class SQLiteQueryOperator : IDbQueryOperator
     {
-        public MySQLQueryOperator(DbSession session)
+        public SQLiteQueryOperator(DbSession session)
         {
             Session = session;
         }
