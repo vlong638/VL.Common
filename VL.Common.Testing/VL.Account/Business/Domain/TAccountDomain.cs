@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using VL.Common.Core.DAS;
 using VL.Common.Core.Object.VL.Account;
 
 namespace VL.Account.Business
 {
+    #region Report
     /// <summary>
     /// 负责指示调用的执行状态
     /// </summary>
@@ -36,6 +38,10 @@ namespace VL.Account.Business
             get { return string.IsNullOrEmpty(_Message) ? Exception.ToString() : _Message; }
         }
     }
+
+    /// <summary>
+    /// 可以使用Exception初始化的Report
+    /// </summary>
     public interface IExcetionReport
     {
         void Init(Exception ex);
@@ -45,7 +51,7 @@ namespace VL.Account.Business
     /// 负责反馈调用的全面结果(包含执行状态,执行信息)
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Report: IExcetionReport
+    public class Report : IExcetionReport
     {
         public Report()
         {
@@ -71,7 +77,7 @@ namespace VL.Account.Business
     /// 负责反馈调用的全面结果(包含执行状态,执行信息)
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class Report<T>:Report
+    public abstract class Report<T> : Report
     {
         public Report()
         {
@@ -87,7 +93,8 @@ namespace VL.Account.Business
 
         public T Data { set; get; }
         protected abstract bool IsSuccess(T data);
-    }
+    } 
+    #endregion
 
     /// <summary>
     /// TAccount开放接口
@@ -150,7 +157,11 @@ namespace VL.Account.Business
                 return new AccountCreateReport(CreateStatus.Success);
             else
                 return new AccountCreateReport(CreateStatus.Failure);
-        } 
+        }
         #endregion
+
+        public static List<TAccount> SelectAllAccounts(DbSession session) {
+            return new List<TAccount>().DbSelect(session);
+        }
     }
 }

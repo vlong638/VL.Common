@@ -1,7 +1,5 @@
 ﻿using System;
 using VL.Common.Core.DAS;
-using VL.Common.Core.DAS;
-using VL.Common.Core.ORM;
 using VL.Common.Core.ORM;
 
 namespace VL.Common.Core.Protocol//.IService.IORM

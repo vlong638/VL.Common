@@ -97,14 +97,14 @@ namespace VL.Common.Core.ORM
             }
         }
 
-        public static ComponentValueOfWhere operator == (PDMDbProperty property, object value)
-        {
-            return new ComponentValueOfWhere(property, value, LocateType.Equal);
-        }
-        public static ComponentValueOfWhere operator !=(PDMDbProperty property, object value)
-        {
-            return new ComponentValueOfWhere(property, value, LocateType.NotEqual);
-        }
+        //public static ComponentValueOfWhere operator == (PDMDbProperty property, object value)
+        //{
+        //    return new ComponentValueOfWhere(property, value, LocateType.Equal);
+        //}
+        //public static ComponentValueOfWhere operator !=(PDMDbProperty property, object value)
+        //{
+        //    return new ComponentValueOfWhere(property, value, LocateType.NotEqual);
+        //}
     }
     /// <summary>
     /// 由pdm解析的列字段
