@@ -64,7 +64,7 @@ namespace VL.Common.Testing.Utilities
                         t.Init(ex);
                         return t;
                     }
-                    if (result.ReportStatus == ReportStatus.Success)
+                    if (result.ReportData.ReportStatus == ReportStatus.Success)
                         session1.CommitTransaction();
                     else
                         session1.RollBackTransaction();

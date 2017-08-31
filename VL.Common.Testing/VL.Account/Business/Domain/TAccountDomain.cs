@@ -15,27 +15,30 @@ namespace VL.Account.Business
         Failure,
         Error,
     }
+
     /// <summary>
     /// 负责反馈调用的执行信息
     /// </summary>
     public class ReportData
     {
+        public ReportStatus ReportStatus { set; get; }
         string _Message;
         Exception Exception;
 
-        public ReportData(Exception exception)
+        public ReportData(ReportStatus reportStatus, Exception exception)
         {
-            this.Exception = exception;
+            ReportStatus = reportStatus;
+            Exception = exception;
         }
-
-        public ReportData(string _Message)
+        public ReportData(ReportStatus reportStatus, string _Message)
         {
+            ReportStatus = reportStatus;
             this._Message = _Message;
         }
 
-        public string Message
+        public override string ToString()
         {
-            get { return string.IsNullOrEmpty(_Message) ? Exception.ToString() : _Message; }
+            return string.IsNullOrEmpty(_Message) ? Exception.ToString() : _Message;
         }
     }
 
@@ -61,15 +64,13 @@ namespace VL.Account.Business
             Init(ex);
         }
 
-        public ReportStatus ReportStatus { set; get; }
         public ReportData ReportData { set; get; }
         public string ModuleName { get; }
         public string FucntionName { get; }
 
         public void Init(Exception ex)
         {
-            ReportData = new ReportData(ex);
-            ReportStatus = ReportStatus.Error;
+            ReportData = new ReportData(ReportStatus.Error,ex);
         }
     }
 
@@ -79,33 +80,30 @@ namespace VL.Account.Business
     /// <typeparam name="T"></typeparam>
     public class Report<T> : Report
     {
-        public Report(Func<T, ReportStatus> updateReportStatus)
+        public Report(Func<T, ReportData> updateReportStatus)
         {
-            UpdateReportStatus = updateReportStatus;
+            UpdateReportData = updateReportStatus;
         }
-        public Report(Func<T, ReportStatus> updateReportStatus, Exception ex) : base(ex)
+        public Report(Func<T, ReportData> updateReportStatus, Exception ex) : base(ex)
         {
-            UpdateReportStatus = updateReportStatus;
+            UpdateReportData = updateReportStatus;
         }
-        public Report(Func<T, ReportStatus> updateReportStatus, T data)
+        public Report(Func<T, ReportData> updateReportStatus, T data)
         {
-            UpdateReportStatus = updateReportStatus;
+            UpdateReportData = updateReportStatus;
             Data = data;
         }
 
         public T Data { set; get; }
 
+        public Func<T, ReportData> UpdateReportData;
+
         public bool IsSuccess(T data)
         {
-            var result = UpdateReportStatus?.Invoke(Data);
-            if (result.HasValue)
-            {
-                ReportStatus = result.Value;
-            }
-            return ReportStatus == ReportStatus.Success;
+            ReportData = UpdateReportData?.Invoke(Data);
+            return ReportData.ReportStatus == ReportStatus.Success;
         }
 
-        public Func<T, ReportStatus> UpdateReportStatus;
     }
     #endregion
 
@@ -114,7 +112,7 @@ namespace VL.Account.Business
     /// </summary>
     public static class TAccountDomain
     {
-        #region Create
+        #region 创建
         public enum CreateStatus
         {
             Success,//成功
@@ -126,7 +124,32 @@ namespace VL.Account.Business
 
         public static Report<CreateStatus> Create(this TAccount tAccount, DbSession session)
         {
-            var result = new Report<CreateStatus>((data) => { return data == CreateStatus.Success ? ReportStatus.Success : ReportStatus.Failure; });
+            var result = new Report<CreateStatus>((data) =>
+            {
+                var status = data == CreateStatus.Success ? ReportStatus.Success : ReportStatus.Failure;
+                string message = "";
+                switch (data)
+                {
+                    case CreateStatus.Success:
+                        message = "创建成功";
+                        break;
+                    case CreateStatus.Failure:
+                        message = "创建失败";
+                        break;
+                    case CreateStatus.Empty_AccountName:
+                        message = "用户名不可为空";
+                        break;
+                    case CreateStatus.Empty_Password:
+                        message = "密码不可为空";
+                        break;
+                    case CreateStatus.Repeat_UserName:
+                        message = "用户名已存在";
+                        break;
+                    default:
+                        break;
+                }
+                return new ReportData(status, message);
+            });
             //检测
             if (string.IsNullOrEmpty(tAccount.AccountName))
             {
@@ -152,10 +175,10 @@ namespace VL.Account.Business
         }
         #endregion
 
-        #region SelectAllAccounts
+        #region 搜索全部
         public static Report<List<TAccount>> SelectAllAccounts(DbSession session)
         {
-            var result = new Report<List<TAccount>>((data) => { return data == null ? ReportStatus.Failure : ReportStatus.Success; });
+            var result = new Report<List<TAccount>>((data) => { return new ReportData(data == null ? ReportStatus.Failure : ReportStatus.Success, "");  });
             result.Data = new List<TAccount>().DbSelect(session);
             return result;
         } 

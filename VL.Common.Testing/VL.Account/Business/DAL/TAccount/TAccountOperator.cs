@@ -238,7 +238,7 @@ namespace VL.Account.Business
             return session.GetQueryOperator().Select<TAccount>(query);
         }
         /// <summary>
-        /// 未查询到数据时返回 null
+        /// 未查询到数据时返回 new List<T>()
         /// </summary>
         public static List<TAccount> DbSelect(this List<TAccount> entities, DbSession session, params PDMDbProperty[] fields)
         {
