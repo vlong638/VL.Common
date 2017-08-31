@@ -56,10 +56,7 @@ namespace VL.Common.Core.Object.VL.Account
         public override void Init(IDataReader reader)
         {
             this.AccountId = new Guid(reader[nameof(this.AccountId)].ToString());
-            if (reader[nameof(this.AccountName)] != DBNull.Value)
-            {
-                this.AccountName = Convert.ToString(reader[nameof(this.AccountName)]);
-            }
+            this.AccountName = Convert.ToString(reader[nameof(this.AccountName)]);
             if (reader[nameof(this.Phone)] != DBNull.Value)
             {
                 this.Phone = Convert.ToInt32(reader[nameof(this.Phone)]);
@@ -83,10 +80,7 @@ namespace VL.Common.Core.Object.VL.Account
             }
             if (fields.Contains(nameof(AccountName)))
             {
-                if (reader[nameof(this.AccountName)] != DBNull.Value)
-                {
-                    this.AccountName = Convert.ToString(reader[nameof(this.AccountName)]);
-                }
+                this.AccountName = Convert.ToString(reader[nameof(this.AccountName)]);
             }
             if (fields.Contains(nameof(Phone)))
             {

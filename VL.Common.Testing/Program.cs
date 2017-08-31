@@ -24,8 +24,7 @@ namespace VL.Common.Testing
             TransactionHelper.HandleTransactionEvent(DbConfigs.DbNameOfAccount, (session) =>
             {
                 var accounts = TAccountDomain.SelectAllAccounts(session);
-
-                return account.Create(session);
+                var result = account.Create(session);
             });
             #endregion
         }

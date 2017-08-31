@@ -51,7 +51,7 @@ namespace VL.Account.Business
     /// 负责反馈调用的全面结果(包含执行状态,执行信息)
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Report : IExcetionReport
+    public abstract class Report : IExcetionReport
     {
         public Report()
         {
@@ -63,8 +63,8 @@ namespace VL.Account.Business
 
         public ReportStatus ReportStatus { set; get; }
         public ReportData ReportData { set; get; }
-        public virtual string ModuleName { get; }
-        public virtual string FucntionName { get; }
+        public string ModuleName { get; }
+        public string FucntionName { get; }
 
         public void Init(Exception ex)
         {
@@ -77,23 +77,36 @@ namespace VL.Account.Business
     /// 负责反馈调用的全面结果(包含执行状态,执行信息)
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class Report<T> : Report
+    public class Report<T> : Report
     {
-        public Report()
+        public Report(Func<T, ReportStatus> updateReportStatus)
         {
+            UpdateReportStatus = updateReportStatus;
         }
-        public Report(Exception ex) : base(ex)
+        public Report(Func<T, ReportStatus> updateReportStatus, Exception ex) : base(ex)
         {
+            UpdateReportStatus = updateReportStatus;
         }
-        public Report(T data)
+        public Report(Func<T, ReportStatus> updateReportStatus, T data)
         {
+            UpdateReportStatus = updateReportStatus;
             Data = data;
-            ReportStatus = IsSuccess(data) ? ReportStatus.Success : ReportStatus.Failure;
         }
 
         public T Data { set; get; }
-        protected abstract bool IsSuccess(T data);
-    } 
+
+        public bool IsSuccess(T data)
+        {
+            var result = UpdateReportStatus?.Invoke(Data);
+            if (result.HasValue)
+            {
+                ReportStatus = result.Value;
+            }
+            return ReportStatus == ReportStatus.Success;
+        }
+
+        public Func<T, ReportStatus> UpdateReportStatus;
+    }
     #endregion
 
     /// <summary>
@@ -110,58 +123,42 @@ namespace VL.Account.Business
             Empty_Password,//密码不可为空
             Repeat_UserName,//用户名已存在
         }
-        public class AccountCreateReport : Report<CreateStatus>
+
+        public static Report<CreateStatus> Create(this TAccount tAccount, DbSession session)
         {
-            public AccountCreateReport() : base()
-            {
-            }
-
-            public AccountCreateReport(Exception ex) : base(ex)
-            {
-            }
-
-            public AccountCreateReport(CreateStatus data) : base(data)
-            {
-            }
-
-            public override string FucntionName
-            {
-                get
-                {
-                    return nameof(Create);
-                }
-            }
-
-            public override string ModuleName
-            {
-                get
-                {
-                    return nameof(Business);
-                }
-            }
-
-            protected override bool IsSuccess(CreateStatus data)
-            {
-                return data == CreateStatus.Success;
-            }
-        }
-        public static AccountCreateReport Create(this TAccount tAccount, DbSession session)
-        {
+            var result = new Report<CreateStatus>((data) => { return data == CreateStatus.Success ? ReportStatus.Success : ReportStatus.Failure; });
             //检测
             if (string.IsNullOrEmpty(tAccount.AccountName))
-                return new AccountCreateReport(CreateStatus.Empty_AccountName);
+            {
+                result.Data = CreateStatus.Empty_AccountName;
+                return result;
+            }
             if (string.IsNullOrEmpty(tAccount.Password))
-                return new AccountCreateReport(CreateStatus.Empty_Password);
+            {
+                result.Data = CreateStatus.Empty_Password;
+                return result;
+            }
             //处理
             if (tAccount.DbInsert(session))
-                return new AccountCreateReport(CreateStatus.Success);
+            {
+                result.Data = CreateStatus.Success;
+                return result;
+            }
             else
-                return new AccountCreateReport(CreateStatus.Failure);
+            {
+                result.Data = CreateStatus.Failure;
+                return result;
+            }
         }
         #endregion
 
-        public static List<TAccount> SelectAllAccounts(DbSession session) {
-            return new List<TAccount>().DbSelect(session);
-        }
+        #region SelectAllAccounts
+        public static Report<List<TAccount>> SelectAllAccounts(DbSession session)
+        {
+            var result = new Report<List<TAccount>>((data) => { return data == null ? ReportStatus.Failure : ReportStatus.Success; });
+            result.Data = new List<TAccount>().DbSelect(session);
+            return result;
+        } 
+        #endregion
     }
 }
