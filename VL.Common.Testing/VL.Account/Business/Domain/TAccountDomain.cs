@@ -22,9 +22,13 @@ namespace VL.Account.Business
     public class ReportData
     {
         public ReportStatus ReportStatus { set; get; }
-        string _Message;
+        public string Message { set; get; }
         Exception Exception;
 
+        public ReportData(ReportStatus reportStatus)
+        {
+            ReportStatus = reportStatus;
+        }
         public ReportData(ReportStatus reportStatus, Exception exception)
         {
             ReportStatus = reportStatus;
@@ -33,12 +37,12 @@ namespace VL.Account.Business
         public ReportData(ReportStatus reportStatus, string _Message)
         {
             ReportStatus = reportStatus;
-            this._Message = _Message;
+            this.Message = _Message;
         }
 
         public override string ToString()
         {
-            return string.IsNullOrEmpty(_Message) ? Exception.ToString() : _Message;
+            return string.IsNullOrEmpty(Message) ? Exception.ToString() : Message;
         }
     }
 
@@ -126,50 +130,32 @@ namespace VL.Account.Business
         {
             var result = new Report<CreateStatus>((data) =>
             {
-                var status = data == CreateStatus.Success ? ReportStatus.Success : ReportStatus.Failure;
-                string message = "";
-                switch (data)
-                {
-                    case CreateStatus.Success:
-                        message = "创建成功";
-                        break;
-                    case CreateStatus.Failure:
-                        message = "创建失败";
-                        break;
-                    case CreateStatus.Empty_AccountName:
-                        message = "用户名不可为空";
-                        break;
-                    case CreateStatus.Empty_Password:
-                        message = "密码不可为空";
-                        break;
-                    case CreateStatus.Repeat_UserName:
-                        message = "用户名已存在";
-                        break;
-                    default:
-                        break;
-                }
-                return new ReportData(status, message);
+                return new ReportData(data == CreateStatus.Success ? ReportStatus.Success : ReportStatus.Failure);
             });
             //检测
             if (string.IsNullOrEmpty(tAccount.AccountName))
             {
                 result.Data = CreateStatus.Empty_AccountName;
+                result.ReportData.Message = "用户名不可为空";
                 return result;
             }
             if (string.IsNullOrEmpty(tAccount.Password))
             {
                 result.Data = CreateStatus.Empty_Password;
+                result.ReportData.Message = "密码不可为空";
                 return result;
             }
             //处理
             if (tAccount.DbInsert(session))
             {
                 result.Data = CreateStatus.Success;
+                result.ReportData.Message = "创建成功";
                 return result;
             }
             else
             {
                 result.Data = CreateStatus.Failure;
+                result.ReportData.Message = "创建失败";
                 return result;
             }
         }
@@ -178,7 +164,7 @@ namespace VL.Account.Business
         #region 搜索全部
         public static Report<List<TAccount>> SelectAllAccounts(DbSession session)
         {
-            var result = new Report<List<TAccount>>((data) => { return new ReportData(data == null ? ReportStatus.Failure : ReportStatus.Success, "");  });
+            var result = new Report<List<TAccount>>((data) => { return new ReportData(data == null ? ReportStatus.Failure : ReportStatus.Success); });
             result.Data = new List<TAccount>().DbSelect(session);
             return result;
         } 
