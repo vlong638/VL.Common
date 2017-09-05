@@ -65,6 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompositeTemplate\Base\FunctionedNavigator.cs" />
+    <Compile Include="CompositeTemplate\Base\FunctionItem.cs" />
+    <Compile Include="CompositeTemplate\Base\HelperBase.cs" />
+    <Compile Include="CompositeTemplate\Base\NavigatorItem.cs" />
+    <Compile Include="CompositeTemplate\Navigators\MainNavigator.cs" />
     <Compile Include="Configs\RedisDbConfigEntity.cs" />
     <Compile Include="Controllers\Executers\ConsoleExecuter.cs" />
     <Compile Include="Objects\ConsoloMenuItem.cs" />

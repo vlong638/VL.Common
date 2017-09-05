@@ -1,6 +1,7 @@
 ﻿using System;
 using VL.Account.Business;
 using VL.Common.Core.Object.VL.Account;
+using VL.Common.Testing.CompositeTemplate;
 using VL.Common.Testing.Utilities;
 using static VL.Account.Business.TAccountDomain;
 
@@ -10,23 +11,26 @@ namespace VL.Common.Testing
     {
         static void Main(string[] args)
         {
-            #region 0810 ORM优化
-            var connect= SQLiteHelper.Connect();
-            SQLiteHelper.PrepareTables();
-            TAccount account = new TAccount()
-            {
-                AccountId = Guid.NewGuid(),
-                AccountName = "vlong638",
-                Password = "701616",
-                CreatedOn = DateTime.Now,
-                LastEditedOn = DateTime.Now,
-            };
-            TransactionHelper.HandleTransactionEvent(DbConfigs.DbNameOfAccount, (session) =>
-            {
-                var selectResult = TAccountDomain.SelectAllAccounts(session);
-                var createResult = account.Create(session);
-            });
+            #region 0810 ORM优化 增加对SQLite的支持
+            //var connect= SQLiteHelper.Connect();
+            //SQLiteHelper.PrepareTables();
+            //TAccount account = new TAccount()
+            //{
+            //    AccountId = Guid.NewGuid(),
+            //    AccountName = "vlong638",
+            //    Password = "701616",
+            //    CreatedOn = DateTime.Now,
+            //    LastEditedOn = DateTime.Now,
+            //};
+            //TransactionHelper.HandleTransactionEvent(DbConfigs.DbNameOfAccount, (session) =>
+            //{
+            //    var selectResult = TAccountDomain.SelectAllAccounts(session);
+            //    var createResult = account.Create(session);
+            //});
             #endregion
+
+            new MainNavigator().ShowMenuWithResult();
+
         }
 
         #region old
@@ -36,11 +40,6 @@ namespace VL.Common.Testing
         //protocol.IsSQLLogAvailable.Value = false;
         //protocol.Load();
         //var isSimulationAvailable = ProtocolConfig.IsSimulationAvailable;
-
-
-
-
-
         //var isSimulationAvailable = ProtocolConfig.IsSimulationAvailable;
         //TestCreateConfig();
         //TestLogger();
