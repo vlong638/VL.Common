@@ -72,6 +72,10 @@ namespace VL.Common.Core.ORM
                     return "in";
                 case LocateType.NotIn:
                     return "not in";
+                case LocateType.GreatThan:
+                    return ">";
+                case LocateType.LessThan:
+                    return "<";
                 default:
                     throw new NotImplementedException("未支持该类型的操作符" + operatorType.ToString());
             }

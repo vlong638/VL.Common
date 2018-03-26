@@ -80,6 +80,8 @@ namespace VL.Common.Core.ORM//.Utilities.QueryBuilders
                     {
                         case LocateType.Equal:
                         case LocateType.NotEqual:
+                        case LocateType.GreatThan:
+                        case LocateType.LessThan:
                             command.Parameters.Add(this.Property.GetDbParameter(session, this.Value, this.NickName));
                             break;
                         case LocateType.In:
@@ -210,11 +212,11 @@ namespace VL.Common.Core.ORM//.Utilities.QueryBuilders
     {
         Equal,// ==
         NotEqual,// !=
-        //GreatThan,// >
-        //EqualOrGreatThan,// >=
-        //LessThan,// <
-        //EqualOrLessThan,// <=
         In,// in
         NotIn,// not in
+        GreatThan,// >
+        LessThan,// <
+        //EqualOrGreatThan,// >=
+        //EqualOrLessThan,// <=
     }
 }

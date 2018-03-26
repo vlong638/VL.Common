@@ -12,12 +12,29 @@ namespace Test.Helper.CompositeTemplate
         {
         }
 
-        public NavigatorItem(HelperBase parent, string description = "未添加功能描述")
-            : base(parent, description) { }
+        public NavigatorItem(HelperBase parent, string description = "未添加功能描述", string doorPlate = "")
+            : base(parent, description)
+        {
+            DoorPlate = doorPlate;
+        }
 
         public override void  Execute()
         {
             ShowMenuWithResult();
+        }
+
+        public string DoorPlate { set; get; }
+        public string GetDoorPlateBoard()
+        {
+            StringBuilder sb = new StringBuilder();
+            string line = "";
+            int boardLength = 10;
+            PadToRight(ref line, boardLength, "*");
+            sb.AppendLine(line);
+            string text = DoorPlate;
+            PadToRight(ref text, boardLength, "");
+            sb.AppendLine(text);
+            return sb.ToString();
         }
 
         public void ShowMenuWithResult()
@@ -47,6 +64,10 @@ namespace Test.Helper.CompositeTemplate
         }
         protected void ShowMenu()
         {
+            if (string.IsNullOrEmpty(DoorPlate))
+            {
+                Console.WriteLine(GetDoorPlateBoard());
+            }
             Console.ForegroundColor = ConsoleColor.Yellow;
             if (SonList.Count() > 0)
             {

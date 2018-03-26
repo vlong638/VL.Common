@@ -27,7 +27,7 @@ namespace Test.Helper.CompositeTemplate
                 if (string.IsNullOrEmpty(_menuStr))
                 {
                     _menuStr = Index + ":";
-                    PadRight(ref _menuStr,LENGTH_INDEX, PADDING_STRING);
+                    PadToRight(ref _menuStr,LENGTH_INDEX, PADDING_STRING);
                     _menuStr += Description;
                 }
                 return _menuStr;
@@ -60,7 +60,7 @@ namespace Test.Helper.CompositeTemplate
             }
         }
 
-        private void PadRight(ref string s, int length, string paddingString)
+        protected void PadToRight(ref string s, int length, string paddingString)
         {
             if (s.Length >= length)
                 return;

@@ -50,7 +50,6 @@ namespace VL.Common.Testing.Utilities
                 //业务逻辑处理
                 try
                 {
-
                     session1.Open();
                     session1.BeginTransaction();
                     T result;

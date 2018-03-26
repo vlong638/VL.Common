@@ -1,9 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using Test.Helper.CompositeTemplate;
+using VL.Common.Core.Object.VL.Account;
 
 namespace VL.Common.Testing.CompositeTemplate
 {
+    /// <summary>
+    /// 主菜单
+    /// </summary>
     public class MainNavigator : NavigatorItem
     {
         public MainNavigator() : base()
@@ -29,7 +32,14 @@ namespace VL.Common.Testing.CompositeTemplate
                         return false;
                     }
                     return true;
-                });
+                })
+                && CommonService.CreateAccount(new TAccount() { AccountName = account, Password = password }).IsSuccess;
+                if (!isSuccess)
+                    return;
+
+                //new HomeNavigator()
+
+
             }, "用户登录"));
             SonList.Add(new FunctionItem(this, () =>
             {

@@ -84,6 +84,9 @@ namespace VL.Account.Business
     /// <typeparam name="T"></typeparam>
     public class Report<T> : Report
     {
+        public Report()
+        {
+        }
         public Report(Func<T, ReportData> updateReportStatus)
         {
             UpdateReportData = updateReportStatus;
@@ -102,12 +105,14 @@ namespace VL.Account.Business
 
         public Func<T, ReportData> UpdateReportData;
 
-        public bool IsSuccess(T data)
+        public bool IsSuccess
         {
-            ReportData = UpdateReportData?.Invoke(Data);
-            return ReportData.ReportStatus == ReportStatus.Success;
+            get
+            {
+                ReportData = UpdateReportData?.Invoke(Data);
+                return ReportData.ReportStatus == ReportStatus.Success;
+            }
         }
-
     }
     #endregion
 
@@ -145,6 +150,10 @@ namespace VL.Account.Business
                 result.ReportData.Message = "密码不可为空";
                 return result;
             }
+            //最新值
+            tAccount.AccountId = Guid.NewGuid();
+            tAccount.CreatedOn = DateTime.Now;
+            tAccount.LastEditedOn = DateTime.Now;
             //处理
             if (tAccount.DbInsert(session))
             {
@@ -162,6 +171,9 @@ namespace VL.Account.Business
         #endregion
 
         #region 搜索全部
+
+
+
         public static Report<List<TAccount>> SelectAllAccounts(DbSession session)
         {
             var result = new Report<List<TAccount>>((data) => { return new ReportData(data == null ? ReportStatus.Failure : ReportStatus.Success); });

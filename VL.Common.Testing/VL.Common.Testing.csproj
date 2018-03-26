@@ -65,16 +65,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompositeTemplate\Base\FunctionedNavigator.cs" />
-    <Compile Include="CompositeTemplate\Base\FunctionItem.cs" />
-    <Compile Include="CompositeTemplate\Base\HelperBase.cs" />
-    <Compile Include="CompositeTemplate\Base\NavigatorItem.cs" />
-    <Compile Include="CompositeTemplate\Navigators\MainNavigator.cs" />
+    <Compile Include="MyGame0906\CompositeTemplate\Base\FunctionItem.cs" />
+    <Compile Include="MyGame0906\CompositeTemplate\Base\HelperBase.cs" />
+    <Compile Include="MyGame0906\CompositeTemplate\Base\NavigatorItem.cs" />
+    <Compile Include="MyGame0906\CompositeTemplate\Navigators\HomeNavigator.cs" />
+    <Compile Include="MyGame0906\CompositeTemplate\Navigators\MainNavigator.cs" />
     <Compile Include="Configs\RedisDbConfigEntity.cs" />
     <Compile Include="Controllers\Executers\ConsoleExecuter.cs" />
+    <Compile Include="MyGame0906\DataContext.cs" />
     <Compile Include="Objects\ConsoloMenuItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service.cs" />
     <Compile Include="Utilities\DbConfigs.cs" />
     <Compile Include="Utilities\TransactionHelper.cs" />
     <Compile Include="Utilities\SQLiteHelper.cs" />
