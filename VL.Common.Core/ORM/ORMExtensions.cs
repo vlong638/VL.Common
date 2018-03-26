@@ -2,9 +2,9 @@
 using VL.Common.Core.DAS;
 using VL.Common.Core.ORM;
 
-namespace VL.Common.Core.Protocol//.IService.IORM
+namespace VL.Common.Core.ORM//.IService.IORM
 {
-    public static class IORMExtensions
+    public static class ORMEx
     {
         /// <summary>
         /// 提供对应数据库的数据库语句构建类
