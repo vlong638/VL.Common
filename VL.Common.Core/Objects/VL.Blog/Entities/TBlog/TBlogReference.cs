@@ -4,7 +4,7 @@ using VL.Common.Core.ORM;
 
 namespace VL.Common.Core.Object.VL.Blog
 {
-    public partial class TBlog : IPDMTBase
+    public partial class TBlog : VLModel_DB
     {
         public List<TBlogTagMapper> BlogTagMappers { get; set; }
     }

@@ -7,7 +7,7 @@ using VL.Common.Core.ORM;
 namespace VL.Common.Core.Object.VL.Blog
 {
     [DataContract]
-    public partial class TTag : IPDMTBase
+    public partial class TTag : VLModel_DB
     {
         #region Properties
         [DataMember]

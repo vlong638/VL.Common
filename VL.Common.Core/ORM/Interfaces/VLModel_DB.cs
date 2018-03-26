@@ -12,19 +12,19 @@ namespace VL.Common.Core.ORM
     /// 同时他定义了基于会话IDbSession的操作基本规范
     /// </summary>
     [DataContract]
-    public abstract class IPDMTBase
+    public abstract class VLModel_DB
     {
         /// <summary>
         /// 构造函数
         /// </summary>
-        public IPDMTBase()
+        public VLModel_DB()
         {
         }
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="reader"></param>
-        public IPDMTBase(IDataReader reader)
+        public VLModel_DB(IDataReader reader)
         {
             Init(reader);
         }

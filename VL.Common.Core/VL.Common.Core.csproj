@@ -119,7 +119,7 @@
     <Compile Include="ORM\Interfaces\IDbQueryBuilder.cs" />
     <Compile Include="ORM\Interfaces\IDbQueryOperator.cs" />
     <Compile Include="ORM\Interfaces\IParameterizable.cs" />
-    <Compile Include="ORM\Interfaces\IPDMTBase.cs" />
+    <Compile Include="ORM\Interfaces\VLModel_DB.cs" />
     <Compile Include="ORM\Interfaces\IQueriable.cs" />
     <Compile Include="ORM\Interfaces\IQueriableWithParameter.cs" />
     <Compile Include="ORM\Interfaces\IQueryBuilder.cs" />

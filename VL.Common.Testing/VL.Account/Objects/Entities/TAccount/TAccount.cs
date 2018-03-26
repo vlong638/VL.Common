@@ -6,7 +6,7 @@ using VL.Common.Core.ORM;
 
 namespace VL.Common.Core.Object.VL.Account
 {
-    public partial class TAccount : IPDMTBase
+    public partial class TAccount : VLModel_DB
     {
         #region Properties
         /// <summary>
