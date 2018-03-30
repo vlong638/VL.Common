@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VL.Common.Core</RootNamespace>
     <AssemblyName>VL.Common.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
@@ -23,7 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -154,7 +154,9 @@
     <Compile Include="Objects\VL.Blog\Enums\ESample.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DAS\Additions\DbConnections.config" />
     <None Include="lib\net452\System.Runtime.Serialization.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -164,7 +166,9 @@
     </None>
     <Content Include="lib\Newtonsoft.Json.dll" />
     <Content Include="lib\System.Data.SQLite.DLL" />
-    <Content Include="log4net.config" />
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Logger\Additions\App.config" />
     <None Include="Logger\Additions\log4net.config" />
     <None Include="packages.config" />
