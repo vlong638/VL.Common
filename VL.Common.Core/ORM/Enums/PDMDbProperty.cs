@@ -40,6 +40,10 @@ namespace VL.Common.Core.ORM
         /// 是否允许空值
         /// </summary>
         public bool Nullable { get; set; }
+        /// <summary>
+        /// 是否是关键词
+        /// </summary>
+        public bool IsKeyWord { get; set; }
         #endregion
 
         public PDMDbProperty(string title, string code, string comment

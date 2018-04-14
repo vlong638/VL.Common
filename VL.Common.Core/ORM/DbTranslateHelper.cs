@@ -52,7 +52,7 @@ namespace VL.Common.Core.ORM
                 case EDatabaseType.MySQL:
                     return new MySqlParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value.GetType().IsEnum ? (int)value : value);
                  case EDatabaseType.SQLite:
-                    return new SQLiteParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value.GetType().IsEnum ? (int)value : value);
+                    return new SQLiteParameter(!string.IsNullOrEmpty(nickName) ? nickName : (property.IsKeyWord ? "[" + property.Title + "]" : property.Title), value.GetType().IsEnum ? (int)value : value);
                 default:
                     throw new NotImplementedException("未支持该类型数据库的参数生成" + session.DatabaseType.ToString());
             }
