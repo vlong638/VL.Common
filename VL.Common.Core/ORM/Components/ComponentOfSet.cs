@@ -69,9 +69,9 @@ namespace VL.Common.Core.ORM
                 switch (c.Operator)
                 {
                     case UpdateType.SetValue:
-                        return c.Property.Title + c.Operator.ToQueryString() + c.GetParameterName(session);
+                        return c.Property.GetFieldName() + c.Operator.ToQueryString() + c.GetParameterName(session);
                     case UpdateType.IncreaseByValue:
-                        return c.Property.Title + UpdateType.SetValue.ToQueryString() + c.Property.Title + c.GetParameterName(session);
+                        return c.Property.GetFieldName() + UpdateType.SetValue.ToQueryString() + c.Property.GetFieldName() + c.GetParameterName(session);
                     default:
                         throw new NotImplementedException("Error08030915-暂未支持该操作符的处理" + c.Operator.ToString());
                 }

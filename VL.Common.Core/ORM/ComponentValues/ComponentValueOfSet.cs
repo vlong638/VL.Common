@@ -45,7 +45,7 @@ namespace VL.Common.Core.ORM//.Utilities.QueryBuilders
         /// <param name="nickName"></param>
         public ComponentValueOfSet(PDMDbProperty property, object value, UpdateType updateType, string nickName = null)
         {
-            init(property, updateType, value, !string.IsNullOrEmpty(nickName) ? nickName : "Set" + property.Title);
+            init(property, updateType, value, !string.IsNullOrEmpty(nickName) ? nickName : "Set" + property.GetFieldName(nickName));
         }
 
         private void init(PDMDbProperty property, UpdateType updateType, object value, string nickName)
@@ -92,9 +92,9 @@ namespace VL.Common.Core.ORM//.Utilities.QueryBuilders
             switch (Operator)
             {
                 case UpdateType.SetValue:
-                    return Property.Title + Operator.ToQueryString() + GetParameterName(session);
+                    return Property.GetFieldName() + Operator.ToQueryString() + GetParameterName(session);
                 case UpdateType.IncreaseByValue:
-                    return Property.Title + UpdateType.SetValue.ToQueryString() + Property.Title + GetParameterName(session);
+                    return Property.GetFieldName() + UpdateType.SetValue.ToQueryString() + Property.GetFieldName() + GetParameterName(session);
                 default:
                     throw new NotImplementedException("Error08030915-暂未支持该操作符的处理" + Operator.ToString());
             }

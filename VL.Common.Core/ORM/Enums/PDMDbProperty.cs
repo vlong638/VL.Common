@@ -44,20 +44,25 @@ namespace VL.Common.Core.ORM
         /// 是否是关键词
         /// </summary>
         public bool IsKeyWord { get; set; }
+
+        public string GetFieldName(string nickName = "")
+        {
+            return !string.IsNullOrEmpty(nickName) ? nickName : (IsKeyWord ? "[" + Title + "]" : Title);
+        }
         #endregion
 
         public PDMDbProperty(string title, string code, string comment
-            , bool isPrimaryKey, PDMDataType type, int length, int precision, bool nullable)
+            , bool isPrimaryKey, PDMDataType type, int length, int precision, bool nullable,bool isKeyWord)
         {
-            this.Title = title;
-            this.Code = code;
-            this.Comment = comment;
-            this.IsPrimaryKey = isPrimaryKey;
-            //this.Type = type;
-            this.Type = type;
-            this.Length = length;
-            this.Precision = precision;
-            this.Nullable = nullable;
+            Title = title;
+            Code = code;
+            Comment = comment;
+            IsPrimaryKey = isPrimaryKey;
+            Type = type;
+            Length = length;
+            Precision = precision;
+            Nullable = nullable;
+            IsKeyWord = isKeyWord;
         }
 
         /// <summary>
@@ -122,8 +127,8 @@ namespace VL.Common.Core.ORM
         #endregion
 
         public PDMDbProperty(string title, string code, string comment, bool isPrimaryKey, 
-            PDMDataType type, int length, int precision, bool nullable, T defaultValue = default(T))
-            : base(title, code, comment, isPrimaryKey, type, length, precision, nullable)
+            PDMDataType type, int length, int precision, bool nullable, bool isKeyWord, T defaultValue = default(T))
+            : base(title, code, comment, isPrimaryKey, type, length, precision, nullable, isKeyWord)
         {
             this.DefaultValue = defaultValue;
         }

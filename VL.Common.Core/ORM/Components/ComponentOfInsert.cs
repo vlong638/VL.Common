@@ -57,7 +57,7 @@ namespace VL.Common.Core.ORM
         /// <returns></returns>
         public string ToQueryString(DbSession session)
         {
-            return string.Format("({0}) values({1})", string.Join(",", Values.Select(c => c.Property.Title)), string.Join(",", Values.Select(c => c.GetParameterName(session))));
+            return string.Format("({0}) values({1})", string.Join(",", Values.Select(c => c.Property.GetFieldName())), string.Join(",", Values.Select(c => c.GetParameterName(session))));
         }
     }
 }

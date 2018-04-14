@@ -48,11 +48,11 @@ namespace VL.Common.Core.ORM//.Utilities.QueryBuilders
         {
             if (IsMultipleProperties)
             {
-                return session.GetParameterPrefix() + (!string.IsNullOrEmpty(NickName)?NickName : string.Join("", Properties.Select(c => c.Title)));
+                return session.GetParameterPrefix() + (!string.IsNullOrEmpty(NickName) ? NickName : string.Join("", Properties.Select(c => c.GetFieldName())));
             }
             else
             {
-                return session.GetParameterPrefix() + (!string.IsNullOrEmpty(NickName)?NickName : Property.Title);
+                return session.GetParameterPrefix() + (!string.IsNullOrEmpty(NickName) ? NickName : Property.Title);
             }
         }
         public void AddParameter(DbCommand command, DbSession session)

@@ -33,7 +33,7 @@ namespace VL.Common.Core.ORM
         {
             this.Property = property;
             this.Value = value;
-            this.NickName = !string.IsNullOrEmpty(nickName) ? nickName : property.Title;
+            this.NickName = !string.IsNullOrEmpty(nickName) ? nickName : property.Title; ;
         }
 
         public string GetParameterName(DbSession session)

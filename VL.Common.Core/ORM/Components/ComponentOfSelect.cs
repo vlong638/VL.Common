@@ -40,7 +40,7 @@ namespace VL.Common.Core.ORM
         /// <param name="select"></param>
         public void Add(PDMDbProperty property)
         {
-            this.Add(property.Title);
+            this.Add(property.GetFieldName());
         }
         /// <summary>
         /// 转换为Query

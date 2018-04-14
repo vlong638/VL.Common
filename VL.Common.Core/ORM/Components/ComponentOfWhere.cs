@@ -93,11 +93,11 @@ namespace VL.Common.Core.ORM
                 //Fields
                 if (where.IsMultipleProperties)
                 {
-                    whereCondition.AppendFormat("({0})", string.Join(",", where.Properties.Select(c => c.Title)));
+                    whereCondition.AppendFormat("({0})", string.Join(",", where.Properties.Select(c => c.GetFieldName())));
                 }
                 else
                 {
-                    whereCondition.Append(where.Property.Title);
+                    whereCondition.Append(where.Property.GetFieldName());
                 }
                 //Operator
                 whereCondition.AppendFormat(" {0} ", where.Operator.ToQueryString());
