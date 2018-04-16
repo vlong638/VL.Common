@@ -19,6 +19,7 @@ namespace VL.Common.Core.ORM
         /// </summary>
         public VLModel_DB()
         {
+            PreInit();
         }
         /// <summary>
         /// 构造函数
@@ -26,9 +27,15 @@ namespace VL.Common.Core.ORM
         /// <param name="reader"></param>
         public VLModel_DB(IDataReader reader)
         {
+            PreInit();
             Init(reader);
         }
-
+        /// <summary>
+        /// 初始化扩展
+        /// </summary>
+        public virtual void PreInit()
+        {
+        }
         /// <summary>
         /// 通过DataReader初始化数据
         /// </summary>

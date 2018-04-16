@@ -47,6 +47,11 @@ namespace VL.Common.Core.Object.VL.Blog
                 this.TagName = Convert.ToString(reader[nameof(this.TagName)]);
             }
         }
+
+        public override void PreInit()
+        {
+        }
+
         [DataMember]
         public override string TableName
         {
