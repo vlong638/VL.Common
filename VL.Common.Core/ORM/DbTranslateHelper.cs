@@ -60,11 +60,30 @@ namespace VL.Common.Core.ORM
                 case EDatabaseType.MySQL:
                     return new MySqlParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value.GetType().IsEnum ? (int)value : value);
                 case EDatabaseType.SQLite:
-                    return new SQLiteParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value.GetType().IsEnum ? (int)value : value);
+                    return new SQLiteParameter(!string.IsNullOrEmpty(nickName) ? nickName : property.Title, value.ToSQLiteValue(property)) { DbType = property.GetDbType() };
                 default:
                     throw new NotImplementedException("未支持该类型数据库的参数生成" + session.DatabaseType.ToString());
             }
         }
+
+        private static object ToSQLiteValue(this object value, PDMDbProperty property)
+        {
+            switch (property.Type)
+            {
+                case PDMDataType.datetime:
+                    return ((DateTime)value).ToString("yyyy-MM-dd HH:mm:ss");
+                case PDMDataType.varchar:
+                case PDMDataType.nvarchar:
+                case PDMDataType.numeric:
+                case PDMDataType.uniqueidentifier:
+                case PDMDataType.boolean:
+                case PDMDataType.text:
+                    return value.GetType().IsEnum ? (int)value : value;
+                default:
+                    throw new NotImplementedException("暂未支持该类型的数据格式");
+            }
+        }
+
         /// <summary>
         /// 转译为对应数据库的查询语句
         /// </summary>
@@ -84,6 +103,10 @@ namespace VL.Common.Core.ORM
                     return ">";
                 case LocateType.LessThan:
                     return "<";
+                case LocateType.EqualOrGreatThan:
+                    return ">=";
+                case LocateType.EqualOrLessThan:
+                    return "<=";
                 default:
                     throw new NotImplementedException("未支持该类型的操作符" + operatorType.ToString());
             }

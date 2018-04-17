@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace VL.Common.Core.ORM
 {
@@ -103,6 +104,45 @@ namespace VL.Common.Core.ORM
                     return CSharpDataType.Guid;
                 default:
                     throw new NotImplementedException("该PDM字段类型未设置对应的C#类型");
+            }
+        }
+
+        internal DbType GetDbType()
+        {
+            switch (Type)
+            {
+                case PDMDataType.varchar:
+                case PDMDataType.text:
+                case PDMDataType.nvarchar:
+                case PDMDataType.uniqueidentifier:
+                    return DbType.String;
+                case PDMDataType.numeric:
+                    if (Precision > 0)
+                    {
+                        return DbType.Decimal;
+                    }
+                    if (Length > 32 || Length == 0)
+                    {
+                        return DbType.Int64;
+                    }
+                    else if (Length > 16)
+                    {
+                        return DbType.Int32;
+                    }
+                    else if (Length > 1)
+                    {
+                        return DbType.Int16;
+                    }
+                    else
+                    {
+                        return DbType.Boolean;
+                    }
+                case PDMDataType.datetime:
+                    return DbType.DateTime;
+                case PDMDataType.boolean:
+                    return DbType.Boolean;
+                default:
+                    throw new NotImplementedException("暂未实现该类型的GetDbType()");
             }
         }
 

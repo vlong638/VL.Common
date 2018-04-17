@@ -110,6 +110,8 @@ namespace VL.Common.Core.ORM
                         case LocateType.NotEqual:
                         case LocateType.GreatThan:
                         case LocateType.LessThan:
+                        case LocateType.EqualOrGreatThan:
+                        case LocateType.EqualOrLessThan:
                             whereCondition.Append(where.GetParameterName(session));
                             break;
                         case LocateType.In:
