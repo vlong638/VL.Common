@@ -22,7 +22,7 @@
         public ComponentValueOfSelect(string fieldName, string alias = null)
         {
             this.FieldName = fieldName;
-            this.Alias = Alias;
+            this.Alias = alias;
         }
     }
 }

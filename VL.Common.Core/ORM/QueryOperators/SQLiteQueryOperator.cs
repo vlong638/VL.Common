@@ -398,6 +398,26 @@ namespace VL.Common.Core.ORM
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
+        public override List<string> SelectAsStrings<T>(SelectBuilder selectBuilder)
+        {
+            if (selectBuilder == null)
+            {
+                throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
+            }
+            DbCommand command = Session.CreateCommand();
+            command.CommandText = selectBuilder.ToQueryString(Session, new T().TableName);
+            selectBuilder.AddParameter(command, Session);
+            WriteQueryLog(command, Session);
+            var reader = Session.ExecuteReader(command);
+            List<string> result = new List<string>();
+            var field = selectBuilder.ComponentSelect.GetSelectFields().First();
+            while (reader.Read())
+                result.Add(reader[field] as string);
+            return result;
+        }
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
         public override DateTime? SelectAsDateTime<T>(SelectBuilder selectBuilder)
         {
             if (selectBuilder == null)
@@ -418,6 +438,21 @@ namespace VL.Common.Core.ORM
             {
                 return null;
             }
+        }
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public override DbDataReader SelectAsDataReader<T>(SelectBuilder selectBuilder)
+        {
+            if (selectBuilder == null)
+            {
+                throw new NotImplementedException("缺少有效的" + nameof(SelectBuilder));
+            }
+            DbCommand command = Session.CreateCommand();
+            command.CommandText = selectBuilder.ToQueryString(Session, new T().TableName);
+            selectBuilder.AddParameter(command, Session);
+            WriteQueryLog(command, Session);
+            return Session.ExecuteReader(command);
         }
         #endregion
     }

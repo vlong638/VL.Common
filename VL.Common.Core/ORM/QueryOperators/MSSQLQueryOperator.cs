@@ -419,6 +419,16 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
                 return null;
             }
         }
+
+        public override List<string> SelectAsStrings<T>(SelectBuilder selectBuilder)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override DbDataReader SelectAsDataReader<T>(SelectBuilder selectBuilder)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

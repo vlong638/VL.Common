@@ -177,7 +177,15 @@ namespace VL.Common.Core.ORM//.Utilities.QueryOperators
         /// <summary>
         /// 未查询到数据时返回 null
         /// </summary>
+        public abstract List<string> SelectAsStrings<T>(SelectBuilder selectBuilder) where T : VLModel_DB, new();
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
         public abstract DateTime? SelectAsDateTime<T>(SelectBuilder selectBuilder) where T : VLModel_DB, new();
+        /// <summary>
+        /// 未查询到数据时返回 null
+        /// </summary>
+        public abstract DbDataReader SelectAsDataReader<T>(SelectBuilder selectBuilder) where T : VLModel_DB, new();
         #endregion
     }
 }
