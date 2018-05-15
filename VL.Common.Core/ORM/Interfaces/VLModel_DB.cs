@@ -35,7 +35,10 @@ namespace VL.Common.Core.ORM
         public VLModel_DB(IDataReader reader, List<string> fields)
         {
             PreInit();
-            Init(reader, fields);
+            if (fields == null || fields.Count == 0)
+                Init(reader);
+            else
+                Init(reader, fields);
         }
         /// <summary>
         /// 初始化扩展
