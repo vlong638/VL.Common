@@ -24,11 +24,18 @@ namespace VL.Common.Core.ORM
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="reader"></param>
         public VLModel_DB(IDataReader reader)
         {
             PreInit();
             Init(reader);
+        }
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public VLModel_DB(IDataReader reader, List<string> fields)
+        {
+            PreInit();
+            Init(reader, fields);
         }
         /// <summary>
         /// 初始化扩展
